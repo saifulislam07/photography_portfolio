@@ -68,36 +68,16 @@
                         <p>About Me </p>
                     </a>
                 </li>
-                <!--  <li class="nav-item">-->
-                <!--    <a href="{{ route('contactsemail') }}" class="nav-link" style="color: rgb(255, 255, 255)">-->
-                <!--      <i class="nav-icon fa-user"></i>-->
-                <!--        <p>Email </p>-->
-                <!--    </a>-->
-                <!--</li>-->
-                <li class="nav-item">
-                    <a href="{{ route('rules') }}" class="nav-link" style="color: rgb(255, 255, 255)">
-                        <i class="nav-icon fas fa-key"></i>
-                        <p>Rules </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('contactsmail') }}" class="nav-link" style="color: rgb(255, 255, 255)">
-                        <i class="nav-icon fas fa-envelope"></i>
-                        <p>Mail </p>
-                    </a>
-                </li>
+
+
+
                 <li class="nav-item">
                     <a href="{{ route('sliders') }}" class="nav-link" style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-image"></i>
                         <p>Sliders </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('zone') }}" class="nav-link" style="color: rgb(255, 255, 255)">
-                        <i class="nav-icon  fa fa-map-marker"></i>
-                        <p>Zone</p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('social_media') }}" class="nav-link" style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fa fa-search"></i>

@@ -66,16 +66,7 @@ class AdminController extends Controller
         //
     }
 
-    public function all_list_payment(Request $request)
-    {
-        $allPayments = Payment::all();
-        $allPayments = DB::table('payments')
-            ->select('payments.*', 'users.name')
-            ->join('users', 'users.id', '=', 'payments.approved_by')
-            ->get();
 
-        return view('admin.pages.alllistpayment', get_defined_vars());
-    }
 
     /**
      * Display the specified resource.
@@ -85,15 +76,11 @@ class AdminController extends Controller
      */
     public function userlist(Admin $admin)
     {
-        $users = DB::table('users')->where('type', 1)->get();
+        $users = DB::table('users')->get();
         return view('admin.pages.userList', get_defined_vars());
     }
 
-    public function memeberslist(Admin $admin)
-    {
-        $users = DB::table('users')->where('type', 2)->get();
-        return view('admin.pages.memberList', get_defined_vars());
-    }
+
 
     public function view_member(Admin $admin, $id)
     {
@@ -136,46 +123,9 @@ class AdminController extends Controller
         //
     }
 
-    public function approvePayment(Request $request, $id)
-    {
-        $userid = auth()->user()->id;
-        $dataList = DB::table('payments')->where('id', $id)->first();
-        if ($dataList->type == "Joining") {
-            //  echo 'joining';die();
-            $data['payment'] = 1;
-            User::where('id', $dataList->member_id)->update($data);
-            $datas['accept_status'] = 1;
-            $datas['approved_by'] = $userid;
-            Payment::where('id', $id)->update($datas);
-        } else {
-            // echo 'renew';die();
-            $datas['accept_status'] = 1;
-            $datas['approved_by'] = $userid;
-            Payment::where('id', $id)->update($datas);
-        }
 
-        session()->flash('success', 'Payment Accepted');
-        return redirect('/All-payment-list');
-    }
 
-    public function rejectPayment(Request $request, $id)
-    {
-        $userid = auth()->user()->id;
-        $dataList = DB::table('payments')->where('id', $id)->first();
-        if ($dataList->type == "Joining") {
-            $data['payment'] = 0;
-            User::where('id', $dataList->member_id)->update($data);
-            $datas['accept_status'] = 0;
-            $datas['approved_by'] = 0;
-            Payment::where('id', $id)->update($datas);
-        } else {
-            $datas['accept_status'] = 0;
-            $datas['approved_by'] = 0;
-            Payment::where('id', $id)->update($datas);
-        }
-        session()->flash('success', 'Payment Rejected');
-        return redirect('/All-payment-list');
-    }
+
 
     public function changepass()
     {

@@ -20,7 +20,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <!-- Profile Image -->
                         <div class="card">
                             <div class="card-header bg-cyan">
@@ -32,8 +32,8 @@
                                     <div class="form-group row">
                                         <label for="inputName" class="col-sm-3 col-form-label">Title</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="title" value="" class="form-control" id=""
-                                                placeholder="Media Title">
+                                            <input type="text" name="title" value="" class="form-control"
+                                                id="" placeholder="Media Title">
                                             @error('title')
                                                 <div style="color: red; padding: 0;">
                                                     <strong>
@@ -48,8 +48,8 @@
                                     <div class="form-group row">
                                         <label for="inputName" class="col-sm-3 col-form-label">Url</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="url" value="" class="form-control" id=""
-                                                placeholder="Media link">
+                                            <input type="text" name="url" value="" class="form-control"
+                                                id="" placeholder="Media link">
                                             @error('url')
                                                 <div style="color: red; padding: 0;">
                                                     <strong>

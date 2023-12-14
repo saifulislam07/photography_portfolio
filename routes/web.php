@@ -4,18 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontEndController;
-use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\WebGalleryController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\RulesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SocialmediaController;
-use App\Http\Controllers\JournalAndPublicationController;
-use App\Http\Controllers\ZoneController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutmeController;
@@ -39,10 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/approvePayment/{media}', [AdminController::class, 'approvePayment'])->name('approvePayment');
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
-    Route::get('/Rules', [RulesController::class, 'rules'])->name('rules');
-    Route::get('/Addrules', [RulesController::class, 'addrules'])->name('addrules');
-    Route::post('/storeRulses', [RulesController::class, 'storeRulses'])->name('storeRulses');
-
 
     Route::get('/contactsmail', [AdminController::class, 'contactsmail'])->name('contactsmail');
     Route::get('/createmedia', [MedialinkController::class, 'create'])->name('createmedia');
@@ -95,42 +85,21 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/vstore', [VideoController::class, 'store'])->name('vstore');
     Route::get('/delete-Image/{media}', [WebGalleryController::class, 'deleteImage'])->name('delete-Image');
     Route::get('/delete-video/{media}', [VideoController::class, 'deletevideo'])->name('delete-video');
-    Route::get('/Member-payment', [PaymentController::class, 'pyament'])->name('memebr-payment');
-    Route::get('/List-payment', [PaymentController::class, 'list_payment'])->name('list-payment');
-    Route::post('/Payment-store', [PaymentController::class, 'payment_store'])->name('payment-store');
+
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('/addnewcat', [CategoryController::class, 'create'])->name('addnewcat');
     Route::post('/storecat', [CategoryController::class, 'store'])->name('storecat');
 
     //job company
-    Route::get('/Company-profile', [JobController::class, 'company_profile'])->name('company_profile');
-    Route::get('/edit-comp', [JobController::class, 'edit_comp'])->name('edit-comp');
-    Route::post('/editSave', [JobController::class, 'editSave'])->name('editSave');
-    Route::get('/jobs', [JobController::class, 'jobs'])->name('jobs');
-    Route::get('/add_job', [JobController::class, 'add_job'])->name('add_job');
-    Route::post('/saveJob', [JobController::class, 'saveJob'])->name('saveJob');
-    Route::get('appliedJobs', [ApplyController::class, 'appliedJobs'])->name('appliedJobs');
 
     //rabbi // Work on zone
-    Route::get('zone', [ZoneController::class, 'index'])->name('zone');
-    Route::get('Zone-add', [ZoneController::class, 'create'])->name('addzone');
-    Route::post('store-zone', [ZoneController::class, 'store'])->name('storezone');
-    Route::get('deletezone/{id}', [ZoneController::class, 'destroy']);
-    Route::get('editzone/{id}', [ZoneController::class, 'edit']);
-    Route::post('updatezone/{id}', [ZoneController::class, 'update'])->name('updatezone');
-    Route::post('/zoneDistList', [ZoneController::class, 'zoneDistList'])->name('zoneDistList');
-    Route::post('/zoneThanaList', [ZoneController::class, 'zoneThanaList'])->name('zoneThanaList');
+
     //rabbi  // Social Media
     Route::get('Social-media', [SocialmediaController::class, 'index'])->name('social_media');
     Route::post('Social-update', [SocialmediaController::class, 'update'])->name('socialupdate');
     //rabbi// Journal And Publications
-    Route::get('Journal-publications', [JournalAndPublicationController::class, 'index'])->name('Journalpublications');
-    Route::get('Add-publications', [JournalAndPublicationController::class, 'create'])->name('addpublications');
-    Route::post('Store-publications', [JournalAndPublicationController::class, 'store'])->name('storepublications');
-    Route::post('updatepublications/{id}', [JournalAndPublicationController::class, 'update']);
-    Route::get('editJournal/{id}', [JournalAndPublicationController::class, 'edit']);
-    Route::get('deleteJournal/{id}', [JournalAndPublicationController::class, 'destroy']);
+
     //    rabbi //contact
     Route::get('Contactindex', [ContactUsController::class, 'index'])->name('Contactindex');
     Route::post('updatecontact/{id}', [ContactUsController::class, 'update']);
@@ -138,7 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/jobView/{media}', [FrontEndController::class, 'jobView'])->name('jobView');
 Route::post('seekerlogin', [FrontEndController::class, 'seekerlogin'])->name('seekerlogin');
-Route::post('applicationStore', [ApplyController::class, 'applicationStore'])->name('applicationStore');
+
 
 Route::get('/aboutsme', [FrontEndController::class, 'aboutsme'])->name('aboutsme');
 Route::get('/portfolio', [FrontEndController::class, 'portfolio'])->name('portfolio');
@@ -168,16 +137,3 @@ Route::get('/Our-Rules', [FrontEndController::class, 'OurRules']);
 //avi route
 Route::get('/signin', [RegistrationController::class, 'index'])->name('signin');
 Route::post('/regstore', [RegistrationController::class, 'store'])->name('regstore');
-
-//job section
-Route::get('/emp_signin', [JobController::class, 'emp_signin'])->name('emp_signin');
-Route::get('/emp_signup', [JobController::class, 'emp_signup'])->name('emp_signup');
-Route::post('/emp_registration', [JobController::class, 'emp_registration'])->name('emp_registration');
-
-//corporate job post
-Route::get('/corp_signin', [JobController::class, 'corp_signin'])->name('corp_signin');
-Route::get('/corp_signup', [JobController::class, 'corp_signup'])->name('corp_signup');
-Route::post('/corp_registration', [JobController::class, 'corp_registration'])->name('corp_registration');
-Route::post('/getDistList', [JobController::class, 'getDistList'])->name('getDistList');
-Route::post('/getDistList2', [JobController::class, 'getDistList2'])->name('getDistList2');
-Route::post('/getThanaList', [JobController::class, 'getThanaList'])->name('getThanaList');

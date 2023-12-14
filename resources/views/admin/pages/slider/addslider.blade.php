@@ -27,8 +27,8 @@
                 <div class="row">
 
                     <!-- /.col -->
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
+
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header bg-blue text-center">-: ADD NEW SLIDER :-</div>
                             <div class="card-body">
@@ -41,7 +41,8 @@
                                                 <label for="inputName" class="col-sm-3 col-form-label">Type</label>
                                                 <div class="col-sm-9">
                                                     <select name="type" class="form-control">
-                                                        <option value="0" selected="" disabled="">Select Slider Type
+                                                        <option value="0" selected="" disabled="">Select Slider
+                                                            Type
                                                         </option>
                                                         <option value="1">Home Slide</option>
                                                         <option value="2">Partner</option>
@@ -59,15 +60,16 @@
                                             <div class="form-group row">
                                                 <label for="inputName" class="col-sm-3 col-form-label">Title</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="title" value="" class="form-control" id=""
-                                                        placeholder="Slider Title">
+                                                    <input type="text" name="title" value="" class="form-control"
+                                                        id="" placeholder="Slider Title">
 
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="inputName" class="col-sm-3 col-form-label">Slider Image</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" class="form-control" name="image" value="" />
+                                                    <input type="file" class="form-control" name="image"
+                                                        value="" />
                                                     <span style="color: red; font-size: 9px">Image size should be width:
                                                         1920px, height: 1076px</span>
                                                     @error('image')

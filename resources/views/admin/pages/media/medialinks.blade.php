@@ -10,7 +10,6 @@
             line-height: 0;
             font-size: 10px;
         }
-
     </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
