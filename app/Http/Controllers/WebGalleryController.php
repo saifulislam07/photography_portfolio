@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\DB;
 class WebGalleryController extends Controller
 {
 
-    public function gallery()
+    public function galleryImagesUpload()
     {
 
         $categorys = DB::table('categories')->get();
-        return view('admin.pages.gallery', get_defined_vars());
+        return view('admin.pages.galleryImages.gallery-upload', get_defined_vars());
+        // return view('admin.pages.gallery', get_defined_vars());
     }
 
     public function viewall()

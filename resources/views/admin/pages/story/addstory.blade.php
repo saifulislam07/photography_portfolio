@@ -23,8 +23,8 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
+
+                    <div class="col-md-12">
                         <!-- Profile Image -->
                         <div class="card">
                             <div class="card-header bg-cyan">
@@ -105,7 +105,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-12" >
+                                        <div class="col-sm-12">
 
                                             <textarea class="textarea textareavalue" name="details" placeholder=" Place some text here"
                                                 style="width: 100%;  font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">

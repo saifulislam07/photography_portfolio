@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->title = $request->title;
         $category->save();
-        session()->flash('success', 'Category Updated Successfully.');
+        session()->flash('success', 'Category created Successfully.');
 
         return redirect('/category');
     }

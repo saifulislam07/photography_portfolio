@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/edit-job', [RegistrationController::class, 'edit_job'])->name('edit-job');
     Route::post('/edit-education', [RegistrationController::class, 'edit_education'])->name('edit-education');
     Route::get('/view-member/{media}', [AdminController::class, 'view_member'])->name('view-member');
-    Route::get('/Gallery', [WebGalleryController::class, 'gallery'])->name('gallery');
+    Route::get('/gallery-images-upload', [WebGalleryController::class, 'galleryImagesUpload'])->name('gallery');
     Route::get('/vGallery', [VideoController::class, 'create'])->name('vgallery');
     Route::get('/Gallery-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
     Route::get('/v-List', [VideoController::class, 'index'])->name('v-gallery');
