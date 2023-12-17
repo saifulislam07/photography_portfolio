@@ -33,24 +33,46 @@ class WebGalleryController extends Controller
 
     public function store(Request $req)
     {
-
+        // dd($req->all());
         $req->validate([
-            'category_id' => 'required',
-            //'image' => 'required|image|mimes:jpeg,png,jpg|max:500',
+            'catName' => 'required',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg|max:800',
+            'url' => 'required',
         ]);
-        //        dd($req);
+        $catName = $req->input('catName');
+        $url = $req->input('url');
+        $tags = $req->input('tags');
+        $details = $req->input('details');
+        $image = $req->input('image');
+        foreach ($catName as  $key => $itemData) {
 
-        if ($req->hasfile('image')) {
-            foreach ($req->file('image') as $key => $image) {
-                $name = $image->getClientOriginalName();
-                $image->move(public_path() . '/uploads/gallery/', $name);
-                $imgData[] = $name;
-                $fileModal = new WebGallery();
-                $fileModal->category = $req->category_id;
-                $fileModal->images = $imgData[$key];
-                $fileModal->save();
-            }
+
+
+            $details = $req->image->move(public_path('/uploads/gallery/'), $image[$key]);
+
+            $galleryItem = new WebGallery();
+            $galleryItem->category = $catName[$key];
+            $galleryItem->url =   $url[$key];
+            $galleryItem->tags =  $tags[$key];
+            $galleryItem->details = $details[$key];
+            $galleryItem->images = $details;
+            $galleryItem->save();
         }
+
+
+        // foreach ($req->file('image') as $key => $image) {
+        //     $name = $image->getClientOriginalName();
+        //     $image->move(public_path() . '/uploads/gallery/', $name);
+        //     $imgData[] = $name;
+        //     $fileModal = new WebGallery();
+        //     $fileModal->category = $req->category_id[$key];
+        //     $fileModal->url = $req->url[$key];
+        //     $fileModal->tags = $req->tags[$key];
+        //     $fileModal->details = $req->details[$key];
+        //     $fileModal->images = $imgData[$key];
+        //     $fileModal->save();
+        // }
+
         return back()->with('success', 'File has successfully uploaded!');
     }
 

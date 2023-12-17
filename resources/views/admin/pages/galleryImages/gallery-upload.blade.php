@@ -58,12 +58,13 @@
                                                         <td class="text-center"><strong>Category</strong></td>
                                                         <td class="text-center"><strong>Image</strong></td>
                                                         <td class="text-center"><strong>URL</strong></td>
+                                                        <td class="text-center"><strong>TAG</strong></td>
+                                                        <td class="text-center"><strong>Details</strong></td>
                                                         <td class="text-center"><strong>Action</strong></td>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-
                                                         <td>
                                                             <select class="form-control catName reset" id="categoryID"
                                                                 data-placeholder="Search Category">
@@ -75,16 +76,22 @@
                                                                 @endforeach
                                                             </select>
                                                         </td>
-
                                                         <td>
                                                             <input type="file" readonly step="any" id="image"
-                                                                class="form-control text-right image reset_image"
-                                                                placeholder="sku code">
+                                                                class="form-control  image reset_image">
                                                         </td>
                                                         <td>
                                                             <input type="text" step="any"
-                                                                class="form-control text-right url reset_url" id="url"
-                                                                placeholder="Quantity">
+                                                                class="form-control  url reset_url" id="url"
+                                                                placeholder="Drive link for download">
+                                                        </td>
+                                                        <td>
+                                                            <textarea type="text" step="any" oninput="addHashtags()" rows="1"
+                                                                class="form-control tagInput tags reset_tags" id="tags" placeholder="Tags (maximum 10)"></textarea>
+                                                        </td>
+                                                        <td>
+                                                            <textarea type="text" step="any" rows="1" class="form-control details reset_details" id="details"
+                                                                placeholder="Image Details"></textarea>
                                                         </td>
                                                         <td class="text-center">
                                                             <a id="add_item" class="btn btn-info "
@@ -95,17 +102,10 @@
                                                             </a>
                                                         </td>
                                                     </tr>
-
                                                 </tbody>
-
                                             </table>
                                         </div>
-
                                     </div>
-
-
-
-
                                     <button class="btn btn-primary">SAVE IMAGE</button>
                                 </form>
                             </div>
@@ -116,38 +116,36 @@
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
 
-
             <script type="text/javascript">
                 $(document).on('click', '#add_item', function() {
                     var parent = $(this).parents('tr');
                     var image = $('.image').val();
+                    var tags = $('.tags').val();
+                    var details = $('.details').val();
                     var url = $('.url').val();
                     var catId = $('.catName').val();
                     var catName = $(".catName").find('option:selected').attr('catName');
 
-                    console.log(catId);
+
 
                     if (catId == '' || catId == null) {
                         toastr.error('Category can not be empty');
-                        // alertMessage.error("Product can't be empty.");
                         return false;
                     }
                     if (image == '' || image == null) {
                         toastr.error('Image can not be empty');
-                        // alertMessage.error("Product can't be empty.");
                         return false;
                     }
 
-                    // start check duplicate product
+
                     let seaschproduct = $('#categoryID option:selected')[0].getAttribute("value");
                     let tbody = $('tbody').find(".new_item" + seaschproduct).length;
 
 
-                    // end check duplicate product
+
 
                     if (url == '' || url == null || url == 0) {
                         toastr.error('URL can not be empty');
-                        // alertMessage.error('Quantity cannot be empty');
                         return false;
                     } else {
 
@@ -156,11 +154,10 @@
                     <tr class="new_item${catId}">
 
                         <td class="text-right">${catName}<input type="hidden" class=" " product-id="${catId}" name="catName[]" value="${catId}"></td>
-
-                        <td class="text-right">${image}<input type="hidden" class="ttlurl" name="image[]" value="${image}"></td>
-                        <td class="text-right">${url}<input type="hidden" class="ttlurl" name="url[]" value="${url}"></td>
-
-
+                        <td class="text-right">${image}<input type="hidden" class="" name="image[]" value="${image}"></td>
+                        <td class="text-right">${url}<input type="hidden" class="" name="url[]" value="${url}"></td>
+                        <td class="text-right">${tags}<input type="hidden" class="" name="tags[]" value="${tags}"></td>
+                        <td class="text-right">${details}<input type="hidden" class="" name="details[]" value="${details}"></td>
                         <td>
                             <a del_id="${catId}" class="delete_item btn form-control btn-danger " href="javascript:;" title="">
                                 <i class="fa fa-times"></i> Remove
@@ -173,6 +170,8 @@
 
                     $('.reset_image').val('');
                     $('.reset_url').val('');
+                    $('.reset_tags').val('');
+                    $('.reset_details').val('');
                     $(".reset").val(null).trigger("change");
                 });
 
@@ -183,24 +182,11 @@
 
                     let deleteItem = $(this).parents('tr');
                     deleteItem.remove();
-                    // let deleteitem = () => {
-                    //     $(this).parents('tr').remove();
-                    // }
-                    //  toastr.error('{{ Session::get('error', 'Item removed!!') }}');
-                    //  alertMessage.confirm('You want to remove this', deleteitem);
 
                 });
             </script>
 
-            {{-- <script>
-                $(document).ready(function() {
-                    // Trigger Toastr messages in JavaScript
-                    toastr.success('This is a success message');
-                    toastr.error('This is an error message');
-                    toastr.warning('This is a warning message');
-                    toastr.info('This is an info message');
-                });
-            </script> --}}
+
         </section>
         <!-- /.content -->
     </div>
