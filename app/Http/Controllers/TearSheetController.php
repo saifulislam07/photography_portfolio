@@ -12,7 +12,8 @@ class TearSheetController extends Controller
      */
     public function index()
     {
-        //
+        $allclient = TearSheet::all();
+        return view('admin.pages.tear.index', get_defined_vars());
     }
 
     /**
@@ -20,15 +21,30 @@ class TearSheetController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.tear.add', get_defined_vars());
     }
-
+    public function deleteclient($id)
+    {
+    }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'image' => 'required',
+        ]);
+
+        $image = time() . '.' . 'TearSheet' . '.' . $request->image->extension();
+        $request->image->move(public_path('TearSheet'), $image);
+        $category = new TearSheet();
+        $category->url = $request->url;
+        $category->image = $image;
+        $category->save();
+
+        session()->flash('success', 'Tear Sheet logo Successfully.');
+        return  redirect()->route('tearsheet.index');
     }
 
     /**
@@ -58,8 +74,10 @@ class TearSheetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TearSheet $tearSheet)
+    public function destroy(TearSheet $tearSheet, $id)
     {
-        //
+        TearSheet::where('id', $id)->delete();
+        session()->flash('success', 'Tear Sheet Deleted Successfully.');
+        return redirect('/tearsheet');
     }
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\ContactmeController;
 use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TearSheetController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes([
@@ -39,6 +40,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/medialinks', [MedialinkController::class, 'index'])->name('medialinks');
     Route::post('/storemedia', [MedialinkController::class, 'store'])->name('storemedia');
 
+
+    //tearsheet
+    Route::resource('tearsheet', TearSheetController::class);
     //about me
     Route::get('/aboutme', [AboutmeController::class, 'index'])->name('aboutme');
     Route::get('/addaboutme', [AboutmeController::class, 'create'])->name('addaboutme');
