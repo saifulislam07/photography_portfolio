@@ -37,18 +37,12 @@
 
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form action="{{ route('store') }}" enctype="multipart/form-data" method="post">
+
+                                <form action="" enctype="multipart/form-data" method="post" id="imageForm">
                                     @csrf
-
-
                                     <div class="row">
                                         <div class="form-row col-md-12">
-
-
-                                            {{-- html load by js --}}
-
-
-                                            <table class="table table-bordered table-hover " id="show_item">
+                                            <table class="table table-bordered table-hover ">
                                                 <thead>
                                                     <tr>
                                                         <th colspan="8">Select Image Item</th>
@@ -66,9 +60,10 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <select class="form-control catName reset" id="categoryID"
-                                                                data-placeholder="Search Category">
-                                                                <option disabled selected>---Select Category---</option>
+                                                            <select name="category_id" class="form-control catid"
+                                                                id="categoryID" data-placeholder="Search Category">
+                                                                <option disabled selected value="">---Select
+                                                                    Category---</option>
                                                                 @foreach ($categorys as $each)
                                                                     <option catName="{{ $each->title }}"
                                                                         value="{{ $each->id }}">
@@ -77,28 +72,27 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="file" readonly step="any" id="image"
-                                                                class="form-control  image reset_image">
+                                                            <input type="file" name="images" step="any"
+                                                                id="images" class="form-control  image reset_image">
                                                         </td>
                                                         <td>
                                                             <input type="text" step="any"
-                                                                class="form-control  url reset_url" id="url"
-                                                                placeholder="Drive link for download">
+                                                                class="form-control  url reset_url" name="url"
+                                                                id="url" placeholder="Drive link for download">
                                                         </td>
                                                         <td>
-                                                            <textarea type="text" step="any" oninput="addHashtags()" rows="1"
-                                                                class="form-control tagInput tags reset_tags" id="tags" placeholder="Tags (maximum 10)"></textarea>
+                                                            <textarea type="text" step="any" name="tags" rows="1" class="form-control tagInput tags reset_tags"
+                                                                id="tags" placeholder="Tags (maximum 10)"></textarea>
                                                         </td>
                                                         <td>
-                                                            <textarea type="text" step="any" rows="1" class="form-control details reset_details" id="details"
-                                                                placeholder="Image Details"></textarea>
+                                                            <textarea type="text" step="any" rows="1" class="form-control " name="details" id="details"
+                                                                placeholder="Image Short Details"></textarea>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a id="add_item" class="btn btn-info "
-                                                                style="white-space: nowrap" href="javascript:;"
-                                                                title="Add Item">
+                                                            <a class="btn btn-info text-white" type="submit" id="addButton"
+                                                                style="white-space: nowrap">
                                                                 <i class="fa fa-plus"></i>
-                                                                Add Image
+                                                                Save Image
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -106,7 +100,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary">SAVE IMAGE</button>
+
                                 </form>
                             </div>
                             <!-- /.card-body -->
@@ -116,73 +110,53 @@
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
 
-            <script type="text/javascript">
-                $(document).on('click', '#add_item', function() {
-                    var parent = $(this).parents('tr');
-                    var image = $('.image').val();
-                    var tags = $('.tags').val();
-                    var details = $('.details').val();
-                    var url = $('.url').val();
-                    var catId = $('.catName').val();
-                    var catName = $(".catName").find('option:selected').attr('catName');
-
-
-
-                    if (catId == '' || catId == null) {
-                        toastr.error('Category can not be empty');
-                        return false;
-                    }
-                    if (image == '' || image == null) {
-                        toastr.error('Image can not be empty');
-                        return false;
-                    }
-
-
-                    let seaschproduct = $('#categoryID option:selected')[0].getAttribute("value");
-                    let tbody = $('tbody').find(".new_item" + seaschproduct).length;
+            <script>
+                $(document).ready(function() {
+                    $('#addButton').click(function() {
+                        var formData = new FormData($('#imageForm')[0]);
 
 
 
 
-                    if (url == '' || url == null || url == 0) {
-                        toastr.error('URL can not be empty');
-                        return false;
-                    } else {
-
-
-                        const row = `
-                    <tr class="new_item${catId}">
-
-                        <td class="text-right">${catName}<input type="hidden" class=" " product-id="${catId}" name="catName[]" value="${catId}"></td>
-                        <td class="text-right">${image}<input type="hidden" class="" name="image[]" value="${image}"></td>
-                        <td class="text-right">${url}<input type="hidden" class="" name="url[]" value="${url}"></td>
-                        <td class="text-right">${tags}<input type="hidden" class="" name="tags[]" value="${tags}"></td>
-                        <td class="text-right">${details}<input type="hidden" class="" name="details[]" value="${details}"></td>
-                        <td>
-                            <a del_id="${catId}" class="delete_item btn form-control btn-danger " href="javascript:;" title="">
-                                <i class="fa fa-times"></i> Remove
-                            </a>
-                        </td>
-                    </tr>
-                `;
-                        $("#show_item tbody").append(row);
-                    }
-
-                    $('.reset_image').val('');
-                    $('.reset_url').val('');
-                    $('.reset_tags').val('');
-                    $('.reset_details').val('');
-                    $(".reset").val(null).trigger("change");
-                });
+                        var image = $('#images').val();
+                        if (image == '' || image == null) {
+                            toastr.error('Image can not be empty');
+                            return false;
+                        }
 
 
 
+                        $.ajax({
+                            type: 'POST',
+                            url: '/insert-image',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                toastr.success('Image addedd successfully');
+                                $('#details').val('');
+                                $('#url').val('');
+                                $('#tags').val('');
+                                $('#categoryID').val('');
+                                $('#images').val('');
+                            },
+                            error: function(error) {
 
-                $(document).on('click', '.delete_item', function() {
-
-                    let deleteItem = $(this).parents('tr');
-                    deleteItem.remove();
-
+                                if (error.responseJSON && error.responseJSON.errors) {
+                                    // Handle validation errors using Toastr
+                                    var errors = error.responseJSON.errors;
+                                    Object.keys(errors).forEach(function(key) {
+                                        toastr.error(errors[key][0]);
+                                    });
+                                } else {
+                                    console.log(error);
+                                }
+                            }
+                        });
+                    });
                 });
             </script>
 

@@ -79,13 +79,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/view-member/{media}', [AdminController::class, 'view_member'])->name('view-member');
     Route::get('/gallery-images-upload', [WebGalleryController::class, 'galleryImagesUpload'])->name('gallery');
     Route::get('/vGallery', [VideoController::class, 'create'])->name('vgallery');
-    Route::get('/Gallery-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
+    Route::get('/gallery-images-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
     Route::get('/v-List', [VideoController::class, 'index'])->name('v-gallery');
     Route::post('/store', [WebGalleryController::class, 'store'])->name('store');
     Route::post('/vstore', [VideoController::class, 'store'])->name('vstore');
     Route::get('/delete-Image/{media}', [WebGalleryController::class, 'deleteImage'])->name('delete-Image');
     Route::get('/delete-video/{media}', [VideoController::class, 'deletevideo'])->name('delete-video');
 
+    Route::post('/insert-image', [WebGalleryController::class, 'insertImage'])->name('insertImage');
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('/addnewcat', [CategoryController::class, 'create'])->name('addnewcat');

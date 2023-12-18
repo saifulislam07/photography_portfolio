@@ -28,7 +28,7 @@ class WebGalleryController extends Controller
             ->join('categories', 'categories.id', '=', 'web_galleries.category')
             ->get();
 
-        return view('admin.pages.viewgallery', get_defined_vars());
+        return view('admin.pages.galleryImages.viewgallery', get_defined_vars());
     }
 
     public function store(Request $req)
@@ -74,6 +74,32 @@ class WebGalleryController extends Controller
         // }
 
         return back()->with('success', 'File has successfully uploaded!');
+    }
+
+
+    public function insertImage(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'url' => 'required|url',
+            'category_id' => 'required|integer',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+
+        $extension = $request->file('images')->getClientOriginalExtension();
+        $fileName = 'images_' . time() . '.' . $extension;
+
+        $request->file('images')->move(public_path('galleryImage'), $fileName);
+
+        $image = WebGallery::create([
+            'details' => $request->details,
+            'url' => $request->url,
+            'category' => $request->category_id,
+            'tags' => $request->tags,
+            'images' => $fileName,
+        ]);
+
+        return true;
     }
 
     public function deleteImage(Request $request, $id)
