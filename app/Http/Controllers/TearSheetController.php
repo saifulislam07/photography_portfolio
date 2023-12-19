@@ -23,14 +23,13 @@ class TearSheetController extends Controller
     {
         return view('admin.pages.tear.add', get_defined_vars());
     }
-    public function deleteclient($id)
-    {
-    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+
 
         $this->validate($request, [
             'image' => 'required',
@@ -43,8 +42,8 @@ class TearSheetController extends Controller
         $category->image = $image;
         $category->save();
 
-        session()->flash('success', 'Tear Sheet logo Successfully.');
-        return  redirect()->route('tearsheet.index');
+        session()->flash('success', 'Tear Sheet added Successfully.');
+        return redirect()->route('tearsheets.index');
     }
 
     /**
@@ -58,17 +57,38 @@ class TearSheetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TearSheet $tearSheet)
+    public function edit(TearSheet $tearSheet, $id)
     {
-        //
+        $editdata =  TearSheet::find($id);
+        return view('admin.pages.tear.edit', get_defined_vars());
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TearSheet $tearSheet)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $tearSheet = TearSheet::find($id);
+
+        if ($tearSheet) {
+            if ($request->has('image')) {
+                $image = time() . '.' . 'TearSheet' . '.' . $request->image->extension();
+                $request->image->move(public_path('TearSheet'), $image);
+                $tearSheet->image = $image;
+                $file_delete = 'TearSheet/' . $request->oldimage;
+                unlink($file_delete);
+            } else {
+                $tearSheet->image = $request->oldimage;
+            }
+            $tearSheet->url = $request->url;
+            $tearSheet->save();
+            session()->flash('success', 'Tear Sheet Deleted Successfully.');
+            return redirect()->route('tearsheets.index');
+        } else {
+            session()->flash('error', 'Tear Sheet Deleted erro.');
+            return redirect()->route('tearsheets.index');
+        }
     }
 
     /**
@@ -78,6 +98,6 @@ class TearSheetController extends Controller
     {
         TearSheet::where('id', $id)->delete();
         session()->flash('success', 'Tear Sheet Deleted Successfully.');
-        return redirect('/tearsheet');
+        return redirect()->route('tearsheets.index');
     }
 }

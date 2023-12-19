@@ -19,6 +19,7 @@ use App\Http\Controllers\ContactmeController;
 use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\TearSheetController;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,7 +43,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //tearsheet
-    Route::resource('tearsheet', TearSheetController::class);
+    Route::resource('tearsheets', TearSheetController::class);
+
+    //publication
+    Route::resource('public', PublicationController::class);
+
     //about me
     Route::get('/aboutme', [AboutmeController::class, 'index'])->name('aboutme');
     Route::get('/addaboutme', [AboutmeController::class, 'create'])->name('addaboutme');

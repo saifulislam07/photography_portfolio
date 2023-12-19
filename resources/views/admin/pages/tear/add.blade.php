@@ -12,7 +12,7 @@
                         <h5 class="m-0 text-dark"> Trear Sheet</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
-                        <a href="{{ route('tearsheet.index') }}" class="btn btn-sm btn-info float-right"><i
+                        <a href="{{ route('tearsheets.index') }}" class="btn btn-sm btn-info float-right"><i
                                 class="fa fa-plus-square"></i> Trear Sheet</a>
                     </div>
                 </div><!-- /.row -->
@@ -32,14 +32,14 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form class="form-horizontal" action="{{ route('tearsheet.store') }}" method="POST"
+                                <form class="form-horizontal" action="{{ route('tearsheets.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
 
                                         <div class=" col-sm-4 ">
                                             <div class="form-group">
-                                                <label>URL <span style="color: red">*</span></label>
+                                                <label>URL </label>
                                                 <input type="text" class="form-control" name="url">
 
                                                 @error('url')
@@ -55,7 +55,7 @@
                                         <div class=" col-sm-4 ">
                                             <div class="form-group">
                                                 <label>Image <span style="color: red">*</span></label>
-                                                <input type="file" class="form-control" name="image">
+                                                <input type="file" class="form-control" name="image" required>
 
                                                 @error('image')
                                                     <div style="color: red; padding: 0;">

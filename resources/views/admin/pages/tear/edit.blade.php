@@ -1,6 +1,6 @@
 @extends('admin.masterTemplate')
 @section('menu-name')
-    Edit About Me
+    Edit Tearsheet
 @endsection
 @section('main-content')
     <div class="content-wrapper">
@@ -9,11 +9,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h5 class="m-0 text-dark">Edit About Me</h5>
+                        <h5 class="m-0 text-dark">Edit Tearsheet</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
                         <a href="{{ route('aboutme') }}" class="btn btn-sm btn-info float-right"><i
-                                class="fa fa-plus-square"></i> About Me</a>
+                                class="fa fa-plus-square"></i> Tearsheet</a>
                     </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -23,42 +23,38 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
+
+                    <div class="col-md-12">
                         <!-- Profile Image -->
                         <div class="card">
                             <div class="card-header bg-cyan">
-                                <h3 class="card-title"> <i class="fa fa-list-alt"></i> Edit About Me </h3>
+                                <h3 class="card-title"> <i class="fa fa-list-alt"></i> Edit Tearsheet </h3>
                             </div>
+
+
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form class="form-horizontal" action="{{ route('updateabout') }}" method="POST"
-                                    enctype="multipart/form-data">
+                                <form class="form-horizontal" action="{{ route('tearsheets.update', $editdata->id) }}"
+                                    method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group row">
-                                        <div class=" col-sm-12">
+                                        <div class=" col-sm-4">
                                             <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text"
-                                                    placeholder="Title Here (like : Freelance Photographer)"
-                                                    class="form-control" name="title" value="{{ $oldabout->title }}">
+                                                <label>URL</label>
+                                                <input type="text" placeholder="URL Here" class="form-control"
+                                                    name="url" value="{{ $editdata->url }}">
                                             </div>
                                         </div>
-
-                                        <input type="hidden" value="{{ $oldabout->homeimage }}" name="ohomeimage">
-                                        <input type="hidden" value="{{ $oldabout->aboutppageimage }}"
-                                            name="oaboutppageimage">
-                                        <input type="hidden" value="{{ $oldabout->storyimage }}" name="ostoryimage">
-                                        <input type="hidden" value="{{ $oldabout->coverimage }}" name="ocoverimage">
-                                        <input type="hidden" value="{{ $oldabout->mylogo }}" name="omylogo">
-                                        <input type="hidden" value="{{ $oldabout->id }}" name="oid">
 
 
                                         <div class=" col-sm-4 ">
                                             <div class="form-group">
-                                                <label>Home Image <span style="color: red">*</span></label>
-                                                <input type="file" class="form-control" name="homeimage">
-                                                @error('homeimage')
+                                                <label> Image <span style="color: red">*</span></label>
+                                                <input type="file" class="form-control" name="image">
+                                                <input type="hidden" class="form-control" value="{{ $editdata->image }}"
+                                                    name="oldimage">
+                                                @error('image')
                                                     <div style="color: red; padding: 0;">
                                                         <strong>
                                                             {{ $message }}
@@ -67,108 +63,14 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-2 mt-4">
-                                            <img width="30px" src="{{ asset('aboutmes/' . $oldabout->homeimage) }}"
+                                        <div style="margin-top: 33px">
+                                            <img width="40px" src="{{ asset('TearSheet/' . $editdata->image) }}"
                                                 alt="">
                                         </div>
-                                        <div class=" col-sm-4 ">
-                                            <div class="form-group">
-                                                <label>About Page Image <span style="color: red">*</span></label>
-                                                <input type="file" class="form-control" name="aboutppageimage">
-                                                @error('aboutppageimage')
-                                                    <div style="color: red; padding: 0;">
-                                                        <strong>
-                                                            {{ $message }}
-                                                        </strong>
 
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2 mt-4">
-                                            <img width="30px" src="{{ asset('aboutmes/' . $oldabout->aboutppageimage) }}"
-                                                alt="">
-                                        </div>
-                                        <div class=" col-sm-4 ">
-                                            <div class="form-group">
-                                                <label>Story Image <span style="color: red">*</span></label>
-                                                <input type="file" class="form-control" name="storyimage">
-                                                @error('storyimage')
-                                                    <div style="color: red; padding: 0;">
-                                                        <strong>
-                                                            {{ $message }}
-                                                        </strong>
 
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2 mt-4">
-                                            <img width="30px" src="{{ asset('aboutmes/' . $oldabout->storyimage) }}"
-                                                alt="">
-                                        </div>
-                                        <div class=" col-sm-4 ">
-                                            <div class="form-group">
-                                                <label>Cover for Portfolio Image <span style="color: red">*</span></label>
-                                                <input type="file" class="form-control" name="coverimage">
-                                                @error('coverimage')
-                                                    <div style="color: red; padding: 0;">
-                                                        <strong>
-                                                            {{ $message }}
-                                                        </strong>
 
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2 mt-4">
-                                            <img width="30px" src="{{ asset('aboutmes/' . $oldabout->coverimage) }}"
-                                                alt="">
-                                        </div>
-                                        <div class=" col-sm-4 ">
-                                            <div class="form-group">
-                                                <label>My Logo <span style="color: red">*</span></label>
-                                                <input type="file" class="form-control" name="mylogo">
-                                                @error('mylogo')
-                                                    <div style="color: red; padding: 0;">
-                                                        <strong>
-                                                            {{ $message }}
-                                                        </strong>
-
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2 mt-4">
-                                            <img width="30px" src="{{ asset('aboutmes/' . $oldabout->mylogo) }}"
-                                                alt="">
-                                        </div>
-                                        <div class=" col-sm-6">
-                                            <div class="form-group">
-                                                <label>Contact</label>
-                                                <input type="text" placeholder="+8801675909939" class="form-control"
-                                                    name="contact" value="{{ $oldabout->contact }}">
-                                            </div>
-                                        </div>
-                                        <div class=" col-sm-12 ">
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" placeholder="Email address" class="form-control"
-                                                    name="email" value="{{ $oldabout->email }}">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label>Ablut Me <span style="color: red">*</span></label>
-                                                <textarea class="textarea" name="details" placeholder="Place some text here"
-                                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                    {{ $oldabout->details }}
-                                                </textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class=" col-sm-6 ">
+                                        <div class=" col-sm-3 " style="margin-top: 33px">
                                             <button type="submit" class="btn btn-info">UPDATE</button>
                                         </div>
 

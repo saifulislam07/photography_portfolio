@@ -12,7 +12,8 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        //
+        $publication = Publication::all();
+        return view('admin.pages.publication.index', get_defined_vars());
     }
 
     /**
@@ -20,7 +21,7 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.publication.create', get_defined_vars());
     }
 
     /**
@@ -28,7 +29,22 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:800|',
+        ]);
+
+        $image = time() . '.' . 'publication' . '.' . $request->image->extension();
+        $request->image->move(public_path('publication'), $image);
+        $publication = new Publication();
+        $publication->title = $request->title;
+        $publication->url = $request->url;
+        $publication->details = $request->details;
+        $publication->image = $image;
+        $publication->save();
+
+        session()->flash('success', 'Publication added Successfully.');
+        return redirect()->route('public.index');
     }
 
     /**
@@ -42,9 +58,10 @@ class PublicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Publication $publication)
+    public function edit($id)
     {
-        //
+        $editinfo = Publication::find($id);
+        return view('admin.pages.publication.edit', get_defined_vars());
     }
 
     /**
