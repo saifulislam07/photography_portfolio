@@ -69,6 +69,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('commerc.create') }}" class="nav-link" style="color: rgb(255, 255, 255)">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>Commercial</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('achievement') }}" class="nav-link" style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-trophy"></i>
                         <p>Achievement</p>

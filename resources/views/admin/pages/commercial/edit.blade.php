@@ -1,6 +1,6 @@
 @extends('admin.masterTemplate')
 @section('menu-name')
-    Edit Publication
+    Edit Commercial
 @endsection
 @section('main-content')
     <div class="content-wrapper">
@@ -9,11 +9,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h5 class="m-0 text-dark">Edit Publication</h5>
+                        <h5 class="m-0 text-dark">Edit Commercial</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
-                        <a href="{{ route('public.index') }}" class="btn btn-sm btn-info float-right"><i
-                                class="fa fa-plus-square"></i> All Publication</a>
+                        <a href="{{ route('commerc.index') }}" class="btn btn-sm btn-info float-right"><i
+                                class="fa fa-plus-square"></i> All Commercial</a>
                     </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -28,11 +28,11 @@
                         <!-- Profile Image -->
                         <div class="card">
                             <div class="card-header bg-cyan">
-                                <h3 class="card-title"> <i class="fa fa-list-alt"></i> Edit Publication </h3>
+                                <h3 class="card-title"> <i class="fa fa-list-alt"></i> Edit Commercial </h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form class="form-horizontal" action="{{ route('public.update', $editinfo->id) }}"
+                                <form class="form-horizontal" action="{{ route('commerc.update', $editinfo->id) }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
@@ -40,8 +40,9 @@
                                         <div class=" col-sm-6">
                                             <div class="form-group">
                                                 <label>Title</label>
-                                                <input type="text" placeholder="Title Here " class="form-control"
-                                                    name="title" value="{{ $editinfo->title }}">
+                                                <input type="text"
+                                                    placeholder="Title Here (like : Freelance Photographer)"
+                                                    class="form-control" name="title" value="{{ $editinfo->title }}">
                                             </div>
                                         </div>
                                         <input type="hidden" value="{{ $editinfo->image }}" name="oldimage">
@@ -54,14 +55,7 @@
 
                                         <div class="col-sm-1 mt-4" style="padding-top: 10px">
                                             <img class="zoom" width="60px"
-                                                src="{{ asset('publication/' . $editinfo->image) }}" alt="">
-                                        </div>
-                                        <div class=" col-sm-12">
-                                            <div class="form-group">
-                                                <label>URL</label>
-                                                <input type="text" placeholder="url" class="form-control" name="url"
-                                                    value="{{ $editinfo->url }}">
-                                            </div>
+                                                src="{{ asset('commercial/' . $editinfo->image) }}" alt="">
                                         </div>
 
                                         <div class="col-sm-12">

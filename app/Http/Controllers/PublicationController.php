@@ -67,16 +67,39 @@ class PublicationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Publication $publication)
+    public function update(Request $request, $id)
     {
-        //
+        $publication = Publication::find($id);
+
+        if ($publication) {
+            if ($request->has('image')) {
+                $image = time() . '.' . 'publication' . '.' . $request->image->extension();
+                $request->image->move(public_path('publication'), $image);
+                $publication->image = $image;
+                $file_delete = 'publication/' . $request->oldimage;
+                unlink($file_delete);
+            } else {
+                $publication->image = $request->oldimage;
+            }
+            $publication->title = $request->title;
+            $publication->url = $request->url;
+            $publication->details = $request->details;
+            $publication->save();
+            session()->flash('success', 'Publication Deleted Successfully.');
+            return redirect()->route('public.index');
+        } else {
+            session()->flash('error', 'Publication Deleted erro.');
+            return redirect()->route('public.index');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Publication $publication)
+    public function destroy($id)
     {
-        //
+        Publication::where('id', $id)->delete();
+        session()->flash('success', 'Publication Deleted Successfully.');
+        return redirect()->route('public.index');
     }
 }

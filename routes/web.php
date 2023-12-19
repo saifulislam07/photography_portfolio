@@ -19,6 +19,7 @@ use App\Http\Controllers\ContactmeController;
 use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommercialController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\TearSheetController;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     //publication
     Route::resource('public', PublicationController::class);
+
+    //commercials
+    Route::resource('commerc', CommercialController::class);
 
     //about me
     Route::get('/aboutme', [AboutmeController::class, 'index'])->name('aboutme');
