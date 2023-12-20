@@ -65,9 +65,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category, $id)
     {
-        //
+        $editinfo = Category::find($id);
+        return view('admin.pages.album.edit', get_defined_vars());
     }
 
     /**
@@ -77,9 +78,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category, $id)
     {
-        //
+        $publication = Category::find($id);
+        $publication->title = $request->title;
+        $publication->save();
+        session()->flash('success', 'Category updated Successfully.');
+        return redirect()->route('category');
     }
 
     /**

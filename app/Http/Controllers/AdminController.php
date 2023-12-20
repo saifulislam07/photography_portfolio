@@ -81,6 +81,15 @@ class AdminController extends Controller
     }
 
 
+    public function userchangeStatus(Request $request)
+    {
+        $statusid = $request->status;
+        $wbgal = User::find($request->user_id);
+        $wbgal->status = $statusid;
+        $wbgal->save();
+
+        return response()->json(['type' => $statusid]);
+    }
 
     public function view_member(Admin $admin, $id)
     {

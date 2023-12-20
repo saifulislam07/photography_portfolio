@@ -10,7 +10,6 @@
             line-height: 0;
             font-size: 10px;
         }
-
     </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -56,10 +55,9 @@
 
 
                                                 <td>
-                                                    <a href="" class="btn btn-xs btn-warning"><i
-                                                            class="fas fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-danger"><i
-                                                            class="fas fa-trash-alt"></i></a>
+                                                    <a href="{{ route('editcat', $value->id) }}"
+                                                        class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
+
 
                                                 </td>
                                             </tr>

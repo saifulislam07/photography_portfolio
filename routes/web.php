@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
 
+    Route::post('userchangeStatus', [AdminController::class, 'userchangeStatus'])->name('userchangeStatus');
+
     Route::get('/contactsmail', [AdminController::class, 'contactsmail'])->name('contactsmail');
     Route::get('/createmedia', [MedialinkController::class, 'create'])->name('createmedia');
     Route::get('/medialinks', [MedialinkController::class, 'index'])->name('medialinks');
@@ -96,6 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('changeStatus', [WebGalleryController::class, 'changeStatus'])->name('changeStatus');
 
+
     Route::get('/v-List', [VideoController::class, 'index'])->name('v-gallery');
     Route::post('/store', [WebGalleryController::class, 'store'])->name('store');
     Route::post('/vstore', [VideoController::class, 'store'])->name('vstore');
@@ -107,6 +110,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('/addnewcat', [CategoryController::class, 'create'])->name('addnewcat');
     Route::post('/storecat', [CategoryController::class, 'store'])->name('storecat');
+    Route::get('/editcat/{id}', [CategoryController::class, 'edit'])->name('editcat');
+    Route::post('/updatecat/{id}', [CategoryController::class, 'update'])->name('updatecat');
 
     //job company
 
