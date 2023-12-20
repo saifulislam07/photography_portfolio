@@ -16,7 +16,6 @@ class WebGalleryController extends Controller
 
         $categorys = DB::table('categories')->get();
         return view('admin.pages.galleryImages.gallery-upload', get_defined_vars());
-        // return view('admin.pages.gallery', get_defined_vars());
     }
 
     public function viewall()
@@ -30,6 +29,16 @@ class WebGalleryController extends Controller
 
         return view('admin.pages.galleryImages.viewgallery', get_defined_vars());
     }
+    public function changeStatus(Request $request)
+    {
+        $statusid = $request->status;
+        $wbgal = WebGallery::find($request->image_id);
+        $wbgal->status = $statusid;
+        $wbgal->save();
+
+        return response()->json(['type' => $statusid]);
+    }
+
 
     public function store(Request $req)
     {

@@ -93,6 +93,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/gallery-images-upload', [WebGalleryController::class, 'galleryImagesUpload'])->name('gallery');
     Route::get('/vGallery', [VideoController::class, 'create'])->name('vgallery');
     Route::get('/gallery-images-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
+
+    Route::post('changeStatus', [WebGalleryController::class, 'changeStatus'])->name('changeStatus');
+
     Route::get('/v-List', [VideoController::class, 'index'])->name('v-gallery');
     Route::post('/store', [WebGalleryController::class, 'store'])->name('store');
     Route::post('/vstore', [VideoController::class, 'store'])->name('vstore');

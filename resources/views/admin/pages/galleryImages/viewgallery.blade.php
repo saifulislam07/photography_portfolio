@@ -72,13 +72,15 @@
                                                 <td>
                                                     {{ Str::of($value->details)->limit(20) }}
                                                 <td>
-                                                    @if ($value->status == 1)
-                                                        <button style="width: 50px"
-                                                            class="btn btn-success btn-xs">Active</button>
-                                                    @elseif($value->status == 0)
-                                                        <button style="color: white"
-                                                            class="btn btn-warning btn-xs">Inactive</button>
-                                                    @endif
+
+                                                    <input id="image_active_inactive_{{ $value->id }}"
+                                                        name="image_active_inactive" class="toggle-class" type="checkbox"
+                                                        data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
+                                                        data-on="Active" data-off="Inactive"
+                                                        @if ($value->status == 1) {{ 'checked' }} @endif
+                                                        onchange="imageActiveInactive({{ $value->id }})">
+
+
                                                 </td>
                                                 <td>
                                                     <a onclick="return confirm('Are you sure you want to Delete This Record ?')"
@@ -98,5 +100,35 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        function imageActiveInactive(id) {
+            var status = $('#image_active_inactive_' + id).prop('checked') ? 1 : 0;
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/changeStatus',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                data: {
+                    'status': status,
+                    'image_id': id
+                },
+                success: function(data) {
+                    if (data.type == 1) {
+                        toastr.success('Active: Status changed successfully.');
+                    } else {
+                        toastr.info('Inactive: Status changed successfully.');
+                    }
+                },
+                error: function(error) {
+                    // location.reload();
+                }
+            });
+        }
+    </script>
 @endsection
 <!-- Content Wrapper. Contains page content -->

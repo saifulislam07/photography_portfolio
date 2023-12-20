@@ -27,7 +27,11 @@
         href="{{ asset('admin_assets/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('admin_assets/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/dist/css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('admin_assets/assets/plugins/toastr/toastr.min.css') }}">
 
 
     <style>
@@ -49,6 +53,7 @@
             /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
     </style>
+    @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -141,6 +146,7 @@
     <script src="{{ asset('admin_assets/assets/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}">
     </script>
+    <script src="{{ asset('admin_assets/assets/plugins/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('admin_assets/assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -156,6 +162,8 @@
     <script src="{{ asset('admin_assets/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
     </script>
     <script src="{{ asset('admin_assets/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -219,15 +227,6 @@
             //Bootstrap Duallistbox
             $('.duallistbox').bootstrapDualListbox()
 
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-            //color picker with addon
-            $('.my-colorpicker2').colorpicker()
-
-            $('.my-colorpicker2').on('colorpickerChange', function(event) {
-                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-            });
-
             $("input[data-bootstrap-switch]").each(function() {
                 $(this).bootstrapSwitch('state', $(this).prop('checked'));
             });
@@ -257,6 +256,7 @@
             $('.textarea').summernote()
         })
     </script>
+    @yield('js')
 </body>
 
 </html>
