@@ -21,7 +21,7 @@ class VideoController extends Controller
             ->join('categories', 'categories.id', '=', 'videos.category_id')
             ->get();
 
-        return view('admin.pages.vallgallery', get_defined_vars());
+        return view('admin.pages.videogallery.vallgallery', get_defined_vars());
     }
 
     public function deletevideo(Request $request, $id)
@@ -38,7 +38,7 @@ class VideoController extends Controller
     public function create()
     {
         $categorys = DB::table('categories')->get();
-        return view('admin.pages.vgallery', get_defined_vars());
+        return view('admin.pages.videogallery.vgallery', get_defined_vars());
     }
 
     /**

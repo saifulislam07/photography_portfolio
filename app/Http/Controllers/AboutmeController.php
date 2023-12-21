@@ -15,7 +15,7 @@ class AboutmeController extends Controller
      */
     public function index()
     {
-
+        abort(404);
         $aboutme = Aboutme::all();
         return view('admin.pages.aboutme.aboutme', get_defined_vars());
     }
@@ -28,6 +28,7 @@ class AboutmeController extends Controller
      */
     public function create()
     {
+        $aboutme = Aboutme::first();
         return view('admin.pages.aboutme.addaboutme', get_defined_vars());
     }
 
@@ -37,38 +38,48 @@ class AboutmeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // dd($request->all());
         $this->validate($request, [
-            'contact' => 'required',
             'details' => 'required',
             'title' => 'required',
-            'homeimage' => 'required|image|mimes:jpeg,png,jpg',
-            'aboutppageimage' => 'required|image|mimes:jpeg,png,jpg',
-            'storyimage' => 'required|image|mimes:jpeg,png,jpg',
-            'coverimage' => 'required|image|mimes:jpeg,png,jpg',
-            'mylogo' => 'required|mimes:jpeg,png,jpg',
         ]);
 
-        $homeimage = time() . '.' . 'home' . '.' . $request->homeimage->extension();
-        $aboutppageimage = time() . '.' . 'about' . '.' . $request->aboutppageimage->extension();
-        $storyimage = time() . '.' . 'story' . '.' . $request->storyimage->extension();
-        $coverimage = time() . '.' . 'cover' . '.' . $request->coverimage->extension();
-        $mylogo = time() . '.' . 'abc' . '.' . '.' . $request->mylogo->extension();
+        if ($request->has('homeimage')) {
+            $homeimage = time() . '.' . 'homeimage' . '.' . $request->homeimage->extension();
+            $request->homeimage->move(public_path('aboutmes'), $homeimage);
+        } else {
+            $homeimage = $request->old_homeimage;
+        }
 
-        $request->homeimage->move(public_path('aboutmes'), $homeimage);
-        $request->aboutppageimage->move(public_path('aboutmes'), $aboutppageimage);
-        $request->storyimage->move(public_path('aboutmes'), $storyimage);
-        $request->coverimage->move(public_path('aboutmes'), $coverimage);
-        $request->mylogo->move(public_path('aboutmes'), $mylogo);
+        if ($request->has('aboutppageimage')) {
+            $aboutppageimage = time() . '.' . 'aboutppageimage' . '.' . $request->aboutppageimage->extension();
+            $request->aboutppageimage->move(public_path('aboutmes'), $aboutppageimage);
+        } else {
+            $aboutppageimage = $request->old_aboutppageimage;
+        }
+
+        if ($request->has('storyimage')) {
+            $storyimage = time() . '.' . 'storyimage' . '.' . $request->storyimage->extension();
+            $request->storyimage->move(public_path('aboutmes'), $storyimage);
+        } else {
+            $storyimage = $request->old_storyimage;
+        }
+
+        if ($request->has('coverimage')) {
+            $coverimage = time() . '.' . 'coverimage' . '.' . $request->coverimage->extension();
+            $request->coverimage->move(public_path('aboutmes'), $coverimage);
+        } else {
+            $coverimage = $request->old_coverimage;
+        }
 
 
 
 
-        $aboutme = new Aboutme();
-        $aboutme->contact = $request->contact;
-        $aboutme->email = $request->email;
+
+        $aboutme = Aboutme::find($id);
+
         $aboutme->title = $request->title;
         $aboutme->details = $request->details;
         $aboutme->status = 1;
@@ -76,11 +87,10 @@ class AboutmeController extends Controller
         $aboutme->aboutppageimage = $aboutppageimage;
         $aboutme->storyimage = $storyimage;
         $aboutme->coverimage = $coverimage;
-        $aboutme->mylogo = $mylogo;
         $aboutme->save();
         session()->flash('success', 'About details Updated Successfully.');
 
-        return redirect('/aboutme');
+        return redirect(route('addaboutme'));
     }
 
     /**

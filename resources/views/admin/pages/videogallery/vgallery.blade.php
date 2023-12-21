@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h5 class="m-0 text-dark">VIDEO GALLERY</h5>
+                        <h5 class="m-0 text-dark">VIDEO ADD</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
                         <a href="{{ route('v-gallery') }}" class="btn btn-sm btn-info float-right"><i

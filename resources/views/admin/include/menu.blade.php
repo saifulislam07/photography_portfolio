@@ -109,7 +109,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('aboutme') }}" class="nav-link" style="color: rgb(255, 255, 255)">
+                    <a href="{{ route('addaboutme') }}" class="nav-link" style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-user"></i>
                         <p>About Me </p>
                     </a>

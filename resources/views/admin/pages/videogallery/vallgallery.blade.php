@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h5 class="m-0 text-dark">ALL GALLERY VIDEO</h5>
+                        <h5 class="m-0 text-dark">ALL VIDEO</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
                         <a href="{{ route('vgallery') }}" class="btn btn-sm btn-info float-right"><i
@@ -38,7 +38,7 @@
 
                         <div class="card">
                             <div class="card-header bg-cyan">
-                                <h3 class="card-title"> <i class="fa fa-users"></i> ALL GALLERY IMAGES</h3>
+                                <h3 class="card-title"> <i class="fa fa-users"></i> All gallery video</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

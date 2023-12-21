@@ -62,9 +62,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('commerc', CommercialController::class);
 
     //about me
-    Route::get('/aboutme', [AboutmeController::class, 'index'])->name('aboutme');
-    Route::get('/addaboutme', [AboutmeController::class, 'create'])->name('addaboutme');
-    Route::post('/storeaboutme', [AboutmeController::class, 'store'])->name('storeaboutme');
+    // Route::get('/about-me', [AboutmeController::class, 'index'])->name('aboutme');
+    Route::get('/add-about-me', [AboutmeController::class, 'create'])->name('addaboutme');
+    Route::post('/storeaboutme/{id}', [AboutmeController::class, 'store'])->name('storeaboutme');
     Route::get('editabout/{id}', [AboutmeController::class, 'edit'])->name('editabout');
     Route::post('updateabout', [AboutmeController::class, 'update'])->name('updateabout');
 
@@ -100,13 +100,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/edit-education', [RegistrationController::class, 'edit_education'])->name('edit-education');
     Route::get('/view-member/{media}', [AdminController::class, 'view_member'])->name('view-member');
     Route::get('/gallery-images-upload', [WebGalleryController::class, 'galleryImagesUpload'])->name('gallery');
-    Route::get('/vGallery', [VideoController::class, 'create'])->name('vgallery');
+    Route::get('/video-add', [VideoController::class, 'create'])->name('vgallery');
     Route::get('/gallery-images-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
 
     Route::post('changeStatus', [WebGalleryController::class, 'changeStatus'])->name('changeStatus');
 
 
-    Route::get('/v-List', [VideoController::class, 'index'])->name('v-gallery');
+    Route::get('/video-list', [VideoController::class, 'index'])->name('v-gallery');
     Route::post('/store', [WebGalleryController::class, 'store'])->name('store');
     Route::post('/vstore', [VideoController::class, 'store'])->name('vstore');
     Route::get('/delete-Image/{media}', [WebGalleryController::class, 'deleteImage'])->name('delete-Image');
@@ -142,7 +142,7 @@ Route::get('/aboutsme', [FrontEndController::class, 'aboutsme'])->name('aboutsme
 Route::get('/portfolio', [FrontEndController::class, 'portfolio'])->name('portfolio');
 Route::get('/myachievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
 Route::get('/mygallery', [FrontEndController::class, 'mygallery'])->name('mygallery');
-Route::get('/myvideogallery', [FrontEndController::class, 'myvideogallery'])->name('myvideogallery');
+Route::get('/my-video-gallery', [FrontEndController::class, 'myvideogallery'])->name('myvideogallery');
 Route::get('/photostory', [FrontEndController::class, 'photostory'])->name('photostory');
 
 Route::get('/buyphoto', [FrontEndController::class, 'buyphoto'])->name('buyphoto');
