@@ -22,6 +22,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommercialController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\TearSheetController;
+use App\Http\Controllers\WebSetupController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes([
@@ -31,6 +32,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/user-list', [AdminController::class, 'userlist'])->name('user-list');
+    Route::get('/edit-user/{id}', [AdminController::class, 'edit'])->name('editUser');
+    Route::post('/updateuser/{id}', [AdminController::class, 'update'])->name('updateuser');
+    Route::get('/my-client-list', [AdminController::class, 'myClientList'])->name('my-client-list');
     Route::get('/member-list', [AdminController::class, 'memeberslist'])->name('member-list');
     Route::get('/All-payment-list', [AdminController::class, 'all_list_payment'])->name('all-payment-list');
     Route::get('/approvePayment/{media}', [AdminController::class, 'approvePayment'])->name('approvePayment');
@@ -47,6 +51,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     //tearsheet
     Route::resource('tearsheets', TearSheetController::class);
+
+    //websetup
+    Route::resource('web', WebSetupController::class);
 
     //publication
     Route::resource('public', PublicationController::class);

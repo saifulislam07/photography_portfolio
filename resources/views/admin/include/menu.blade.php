@@ -7,24 +7,52 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
+        @php
+            $current_route = Route::current()->getName();
+        @endphp
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item ">
-                    <a href="{{ route('dashboard') }}" class="nav-link active" style="color: rgb(255, 255, 255)">
+                    <a href="{{ route('dashboard') }}"
+                        class="nav-link @if ($current_route == 'dashboard') {{ 'active' }} @endif "
+                        style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="{{ route('user-list') }}" class="nav-link" style="color: rgb(255, 255, 255)">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Users </p>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Users
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item ">
+                            <a href="{{ route('user-list') }}"
+                                class="nav-link @if ($current_route == 'user-list') {{ 'active' }} @endif "
+                                style="color: rgb(255, 255, 255)">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Users </p>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{ route('my-client-list') }}"
+                                class="nav-link @if ($current_route == 'my-client-list') {{ 'active' }} @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Client</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
+
                 <li class="nav-item">
                     <a href="{{ route('category') }}" class="nav-link" style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-list"></i>
@@ -106,6 +134,12 @@
                     <a href="{{ route('medialinks') }}" class="nav-link" style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fa fa-search"></i>
                         <p>Media</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('web.index') }}" class="nav-link" style="color: rgb(255, 255, 255)">
+                        <i class="nav-icon fa fa-cog"></i>
+                        <p>Website Setup</p>
                     </a>
                 </li>
 

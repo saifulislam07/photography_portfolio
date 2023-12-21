@@ -1,7 +1,7 @@
 @extends('admin.masterTemplate')
 
 @section('menu-name')
-    ALL USERS
+    ALL Client
 @endsection
 @section('main-content')
     <div class="content-wrapper">
@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h5 class="m-0 text-dark">ALL ADMIN</h5>
+                        <h5 class="m-0 text-dark">ALL Client</h5>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -28,7 +28,7 @@
                     <div class="col-12 col-sm-6 col-md-12">
                         <div class="card">
                             <div class="card-header bg-cyan">
-                                <h3 class="card-title"> <i class="fa fa-users"></i> All Admins</h3>
+                                <h3 class="card-title"> <i class="fa fa-users"></i> All Client</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -39,9 +39,9 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Status</th>
-                                            <th>Type</th>
+
                                             <th>Join</th>
-                                            <th>Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,12 +61,9 @@
                                                         onchange="userActiveInactive({{ $value->id }})">
 
                                                 </td>
-                                                <td>{{ $value->type }}</td>
+
                                                 <td>{{ $value->created_at }}</td>
-                                                <td>
-                                                    <a href="" class="btn btn-xs btn-info"><i
-                                                            class="fas fa-edit"></i></a>
-                                                </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>

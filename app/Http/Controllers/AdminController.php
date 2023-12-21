@@ -76,9 +76,16 @@ class AdminController extends Controller
      */
     public function userlist(Admin $admin)
     {
-        $users = DB::table('users')->get();
-        return view('admin.pages.userList', get_defined_vars());
+        $users = DB::table('users')->where('type', 'Admin')->get();
+        return view('admin.pages.user.userList', get_defined_vars());
     }
+    public function myClientList(Admin $admin)
+    {
+        $users = DB::table('users')->where('type', 'User')->get();
+        return view('admin.pages.clients.myClientList', get_defined_vars());
+    }
+
+
 
 
     public function userchangeStatus(Request $request)
@@ -104,9 +111,10 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(Admin $admin, $id)
     {
-        //
+        $userinfo = User::find($id);
+        return view('admin.pages.user.edit', get_defined_vars());
     }
 
     /**
@@ -116,9 +124,19 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $userinfo = User::find($id);
+        $userinfo->name = $request->name;
+        $userinfo->email = $request->email;
+        $userinfo->save();
+        session()->flash('success', 'User Info updated Successfully.');
+        return redirect()->route('user-list');
     }
 
     /**
@@ -138,7 +156,7 @@ class AdminController extends Controller
 
     public function changepass()
     {
-        return view('admin.pages.changepapss', get_defined_vars());
+        return view('admin.pages.user.changepapss', get_defined_vars());
     }
 
     public function passstore(Request $request)
