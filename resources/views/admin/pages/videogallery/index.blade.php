@@ -49,8 +49,9 @@
                                             <th>Category</th>
                                             <th>Title</th>
                                             <th>Description</th>
-                                            <th>Create</th>
-                                            <th>Status</th>
+                                            <th>Link</th>
+
+
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -62,18 +63,12 @@
                                                 <td>{{ $value->cname }}</td>
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ $value->description }}</td>
+                                                <td>{{ $value->link }}</td>
 
-                                                <td>{{ $value->created_at }}</td>
+
                                                 <td>
-                                                    @if ($value->status == 1)
-                                                        <button style="width: 50px"
-                                                            class="btn btn-success btn-xs">Active</button>
-                                                    @elseif($value->status == 0)
-                                                        <button style="color: white"
-                                                            class="btn btn-warning btn-xs">Inactive</button>
-                                                    @endif
-                                                </td>
-                                                <td>
+                                                    <a href="edit-video/{{ $value->id }} " class="btn btn-xs btn-info"><i
+                                                            class="fas fa-pencil-alt"></i></a>
                                                     <a onclick="return confirm('Are you sure you want to Delete This Record ?')"
                                                         href="delete-video/{{ $value->id }} "
                                                         class="btn btn-xs btn-danger"><i class="fas fa-trash-alt"></i></a>

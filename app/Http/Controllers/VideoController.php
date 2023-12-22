@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class VideoController extends Controller
             ->join('categories', 'categories.id', '=', 'videos.category_id')
             ->get();
 
-        return view('admin.pages.videogallery.vallgallery', get_defined_vars());
+        return view('admin.pages.videogallery.index', get_defined_vars());
     }
 
     public function deletevideo(Request $request, $id)
@@ -38,7 +39,7 @@ class VideoController extends Controller
     public function create()
     {
         $categorys = DB::table('categories')->get();
-        return view('admin.pages.videogallery.vgallery', get_defined_vars());
+        return view('admin.pages.videogallery.create', get_defined_vars());
     }
 
     /**
@@ -52,35 +53,20 @@ class VideoController extends Controller
         // dd($req->all());
         $req->validate([
             'category_id' => 'required',
-            'video' => 'required|file|mimetypes:video/mp4',
-            //'image' => 'required|image|mimes:jpeg,png,jpg|max:500',
+            // 'video' => 'required|file|mimetypes:video/mp4',
+            'link' => 'required',
         ]);
 
-        if ($req->hasfile('video')) {
-            $fileName = $req->video->getClientOriginalName();
-            $filePath = 'videos/' . $fileName;
 
-            $isFileUploaded = Storage::disk('public')->put($filePath, file_get_contents($req->video));
+        $video = new Video();
+        $video->title = $req->title;
+        $video->category_id = $req->category_id;
+        $video->description = $req->description;
+        $video->link = $req->link;
+        $video->save();
 
-            // File URL to access the video in frontend
-            $url = Storage::disk('public')->url($fileName);
-            // $url = Storage::disk('public')->url($filePath);
-
-            if ($isFileUploaded) {
-                $video = new Video();
-                $video->title = $req->title;
-                $video->category_id = $req->category_id;
-                $video->description = $req->description;
-                $video->video = $filePath;
-                $video->save();
-
-                return back()
-                    ->with('success', 'Video has been successfully uploaded.');
-            }
-        } else {
-            return back()->with('error', 'video Can not be empty!');
-        }
-        return back()->with('success', 'File has successfully uploaded!');
+        return back()
+            ->with('success', 'Video link has been successfully.');
     }
 
     /**
@@ -100,9 +86,11 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function edit(Video $video, $id)
     {
-        //
+        $videodata = Video::findOrFail($id);
+        $categorys = DB::table('categories')->get();
+        return view('admin.pages.videogallery.edit', get_defined_vars());
     }
 
     /**
@@ -112,9 +100,23 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Video $video)
+    public function update(Request $req, $id)
     {
-        //
+        $req->validate([
+            'category_id' => 'required',
+            'link' => 'required',
+        ]);
+
+
+        $video = Video::find($id);
+        $video->title = $req->title;
+        $video->category_id = $req->category_id;
+        $video->description = $req->description;
+        $video->link = $req->link;
+        $video->save();
+
+        return back()
+            ->with('success', 'Video link has been Updated successfully.');
     }
 
     /**

@@ -50,7 +50,7 @@
                                                 @endforeach
                                             </select>
                                             @error('category_id')
-                                                <div class="alert alert-danger">
+                                                <div class="alert alert-danger mt-1">
                                                     <strong>
                                                         {{ $message }}
                                                     </strong>
@@ -68,6 +68,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Link</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="link" class="form-control"
+                                                placeholder="YouTube embedded link">
+                                            @error('link')
+                                                <div class="alert alert-danger mt-1">
+                                                    <strong>
+                                                        {{ $message }}
+                                                    </strong>
+                                                    <br>
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="inputName" class="col-sm-3 col-form-label">Description</label>
                                         <div class="col-sm-9">
                                             <textarea type="text" name="description" class="form-control" placeholder="Video Description"></textarea>
@@ -75,20 +90,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="inputName" class="col-sm-3 col-form-label"> Video (mp4)</label>
-                                        <div class="col-sm-9">
-                                            <input type="file" name="video" class="form-control">
-                                            @error('video')
-                                                <div class="alert alert-danger">
-                                                    <strong>
-                                                        {{ 'Video can not be empty' }}
-                                                    </strong>
-                                                    <br>
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
+
                                     <div class="form-group row">
                                         <div class="offset-sm-3 col-sm-9">
                                             <button type="submit" class="btn btn-info">SAVE</button>
