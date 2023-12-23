@@ -63,7 +63,21 @@
                                                 <td>{{ $value->cname }}</td>
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ $value->description }}</td>
-                                                <td>{{ $value->link }}</td>
+                                                <td>
+                                                    <div class="media">
+                                                        <div class="media-body">
+                                                            <iframe width="560" height="315"
+                                                                src="https://www.youtube.com/v/hziYzzAvGn8" frameborder="0"
+                                                                allowfullscreen>
+                                                            </iframe>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                </td>
 
 
                                                 <td>
