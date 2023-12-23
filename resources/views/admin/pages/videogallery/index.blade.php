@@ -64,19 +64,10 @@
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ $value->description }}</td>
                                                 <td>
-                                                    <div class="media">
-                                                        <div class="media-body">
-                                                            <iframe width="560" height="315"
-                                                                src="https://www.youtube.com/v/hziYzzAvGn8" frameborder="0"
-                                                                allowfullscreen>
-                                                            </iframe>
-                                                        </div>
-                                                    </div>
-
-
-
-
-
+                                                    <a href="{{ $value->link }}" target="_blank" rel="noopener noreferrer">
+                                                        <img width="60px" src="{{ asset('logos/yt.png') }}" alt=""
+                                                            srcset="">
+                                                    </a>
                                                 </td>
 
 

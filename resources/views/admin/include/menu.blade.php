@@ -1,9 +1,23 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('dashboard') }}" class="brand-link">
-        <img class="brand-image  elevation-3" style="opacity: .8" style="width: 50%" src="{{ asset('logos/2.png') }}">
-        <span class="brand-text font-weight-light">{{ isset(Auth::user()->name) ? Auth::user()->name : '' }}</span>
-    </a>
+
+    @php
+        $sitelogo = DB::table('web_setups')
+            ->pluck('logo_black')
+            ->first();
+    @endphp
+    @if ($sitelogo)
+        <a href="{{ route('dashboard') }}" class="brand-link text-center">
+            <img class="" style="width: 50%; " src="{{ asset('/site_logo/' . $sitelogo) }}">
+        </a>
+        <br>
+    @else
+        <div class="ml-2 mt-2 text-center">
+            <h5 style="color: white">Web logo (Black)</h5>
+            <hr style="color: white">
+        </div>
+    @endif
+
 
     <!-- Sidebar -->
     <div class="sidebar">
