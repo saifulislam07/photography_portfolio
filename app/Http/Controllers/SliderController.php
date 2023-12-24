@@ -22,6 +22,13 @@ class SliderController extends Controller
         return view('admin.pages.slider.addslider', get_defined_vars());
     }
 
+    public function delete_slide(Request $request, $id)
+    {
+        Slider::where('id', $id)->delete();
+        session()->flash('success', 'Slider Deleted Successfully.');
+        return redirect('/sliders');
+    }
+
     public function storesliders(Request $request)
     {
         $this->validate($request, [

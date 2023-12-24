@@ -80,9 +80,11 @@ class StoryController extends Controller
      * @param  \App\Models\story  $story
      * @return \Illuminate\Http\Response
      */
-    public function edit(story $story)
+    public function edit(story $story, $id)
     {
-        //
+        $category = Category::get();
+        $storydata = story::find($id);
+        return view('admin.pages.story.edit', get_defined_vars());
     }
 
     /**
@@ -92,9 +94,35 @@ class StoryController extends Controller
      * @param  \App\Models\story  $story
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, story $story)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $this->validate($request, [
+            'title' => 'required',
+            'details' => 'required',
+            'tages' => 'required',
+            'category' => 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('storycover'), $image);
+        } else {
+            $image = $request->oldimage;
+        }
+
+
+        $story = story::find($id);
+        $story->title = $request->title;
+        $story->details = $request->details;
+        $story->category_id = $request->category;
+        $story->tages = $request->tages;
+        $story->image = $image;
+        $story->status = 1;
+        $story->save();
+
+        session()->flash('success', 'New updated Successfully.');
+        return redirect('/story');
     }
 
     /**

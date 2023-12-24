@@ -43,10 +43,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('userchangeStatus', [AdminController::class, 'userchangeStatus'])->name('userchangeStatus');
 
-    Route::get('/contactsmail', [AdminController::class, 'contactsmail'])->name('contactsmail');
-    Route::get('/createmedia', [MedialinkController::class, 'create'])->name('createmedia');
-    Route::get('/medialinks', [MedialinkController::class, 'index'])->name('medialinks');
-    Route::post('/storemedia', [MedialinkController::class, 'store'])->name('storemedia');
+    Route::get('/contacts-mail', [AdminController::class, 'contactsmail'])->name('contactsmail');
+    Route::get('/create-media', [MedialinkController::class, 'create'])->name('createmedia');
+    Route::get('/media-links', [MedialinkController::class, 'index'])->name('medialinks');
+    Route::post('/store-media', [MedialinkController::class, 'store'])->name('storemedia');
 
 
     //tearsheet
@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth']], function () {
     //story
     Route::get('/story', [StoryController::class, 'index'])->name('story');
     Route::get('/addstory', [StoryController::class, 'create'])->name('addstory');
+    Route::get('/edit-story/{id}', [StoryController::class, 'edit'])->name('edit-story');
+    Route::post('/storyupdate/{id}', [StoryController::class, 'update'])->name('storyupdate');
     Route::post('/storestory', [StoryController::class, 'store'])->name('storestory');
 
     //achievement
@@ -82,6 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/addslider', [SliderController::class, 'addslider'])->name('addslider');
     Route::post('/storesliders', [SliderController::class, 'storesliders'])->name('storesliders');
     Route::post('/sliderStatusChange', [SliderController::class, 'sliderStatusChange'])->name('sliderStatusChange');
+    Route::get('/delete_slide/{id}', [SliderController::class, 'delete_slide'])->name('delete_slide');
 
     Route::get('/createclient', [ClientController::class, 'create'])->name('createclient');
     Route::post('/storeclient', [ClientController::class, 'store'])->name('storeclient');
@@ -127,7 +130,7 @@ Route::group(['middleware' => ['auth']], function () {
     //rabbi // Work on zone
 
     //rabbi  // Social Media
-    Route::get('Social-media', [SocialmediaController::class, 'index'])->name('social_media');
+    Route::get('social-media', [SocialmediaController::class, 'index'])->name('social_media');
     Route::post('Social-update', [SocialmediaController::class, 'update'])->name('socialupdate');
     //rabbi// Journal And Publications
 

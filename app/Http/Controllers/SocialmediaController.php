@@ -14,8 +14,8 @@ class SocialmediaController extends Controller
      */
     public function index()
     {
-        $social=Socialmedia::all()->first();
-    return view('admin/pages/social/socialmedia',get_defined_vars());
+        $social = Socialmedia::all()->first();
+        return view('admin/pages/social/socialmedia', get_defined_vars());
     }
 
     /**
@@ -70,14 +70,28 @@ class SocialmediaController extends Controller
      */
     public function update(Request $request)
     {
-        $update=Socialmedia::find('1');
-        $update->facebook=$request->facebook;
-        $update->google=$request->google;
-        $update->twitter=$request->twitter;
-        $update->instagram=$request->instagram;
-        $update->linkedin=$request->linkedin;
-        $update->save();
-        return back();
+        $update = Socialmedia::find('1');
+
+        if ($update) {
+            $update->facebook = $request->facebook;
+            $update->google = $request->google;
+            $update->twitter = $request->twitter;
+            $update->instagram = $request->instagram;
+            $update->linkedin = $request->linkedin;
+            $update->save();
+            session()->flash('success', 'Social Media Created Successfully.');
+            return back();
+        } else {
+            $update = new Socialmedia();
+            $update->facebook = $request->facebook;
+            $update->google = $request->google;
+            $update->twitter = $request->twitter;
+            $update->instagram = $request->instagram;
+            $update->linkedin = $request->linkedin;
+            $update->save();
+            session()->flash('success', 'Social Media Updated Successfully.');
+            return back();
+        }
     }
 
     /**
