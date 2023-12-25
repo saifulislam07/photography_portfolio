@@ -53,19 +53,21 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $value->type }}</td>
                                                 <td>{{ $value->title }}</td>
-                                                <td>{{ $value->image }}</td>
+                                                <td> <img width="75px" class="zoom"
+                                                        src="{{ asset('achievements/' . $value->image) }}" alt="">
+                                                </td>
                                                 <td>{{ $value->url }}</td>
                                                 <td>{!! $value->details !!}</td>
                                                 <td> <?php if ($value->status == 1) {
-    echo 'Active';
-} else {
-    echo 'Inactive';
-} ?></td>
+                                                    echo 'Active';
+                                                } else {
+                                                    echo 'Inactive';
+                                                } ?></td>
                                                 <td>
-                                                    <a href="" class="btn btn-xs btn-info"><i
-                                                            class="fas fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-danger"><i
-                                                            class="fas fa-trash"></i></a>
+                                                    <a href="{{ route('editachievement', $value->id) }}"
+                                                        class="btn btn-xs btn-info"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('delete-achievement', $value->id) }}"
+                                                        class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

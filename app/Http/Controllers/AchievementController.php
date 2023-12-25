@@ -76,9 +76,10 @@ class AchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Achievement $achievement)
+    public function edit(Achievement $achievement, $id)
     {
-        //
+        $achievementdata = Achievement::findOrFail($id);
+        return view('admin.pages.achievement.edit', get_defined_vars());
     }
 
     /**
@@ -88,9 +89,33 @@ class AchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Achievement $achievement)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $this->validate($request, [
+            'type' => 'required',
+            'title' => 'required',
+        ]);
+
+        if ($request->has('image')) {
+            $image = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('achievements'), $image);
+        } else {
+            $image = $request->oldimage;
+        }
+
+
+        $aboutme = Achievement::find($id);
+        $aboutme->type = $request->type;
+        $aboutme->title = $request->title;
+        $aboutme->details = $request->details;
+        $aboutme->url = $request->url;
+        $aboutme->status = 1;
+        $aboutme->image = $image;
+        $aboutme->save();
+        session()->flash('success', 'Achievement details Updated Successfully.');
+
+        return redirect(route('achievement'));
     }
 
     /**
@@ -99,8 +124,10 @@ class AchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Achievement $achievement)
+    public function destroy(Achievement $achievement, $id)
     {
-        //
+        Achievement::where('id', $id)->delete();
+        session()->flash('success', 'Achievement Deleted Successfully.');
+        return redirect()->route('achievement');
     }
 }

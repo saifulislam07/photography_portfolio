@@ -18,7 +18,7 @@
             <hr class="style18">
         </div>
         <!-- /.content-header -->
-        @if (Auth::user()->type == 1)
+        @if (Auth::user()->type == 'Admin')
             <section class="content">
                 <div class="container-fluid">
                     <!-- Info boxes -->

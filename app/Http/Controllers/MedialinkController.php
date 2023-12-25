@@ -56,7 +56,7 @@ class MedialinkController extends Controller
         $story->save();
 
         session()->flash('success', 'New Story save Successfully.');
-        return redirect('/medialinks');
+        return redirect(route('medialinks'));
     }
 
     /**
@@ -76,9 +76,10 @@ class MedialinkController extends Controller
      * @param  \App\Models\medialink  $medialink
      * @return \Illuminate\Http\Response
      */
-    public function edit(medialink $medialink)
+    public function edit(medialink $medialink, $id)
     {
-        //
+        $medialink = medialink::findOrFail($id);
+        return view('admin.pages.media.edit', get_defined_vars());
     }
 
     /**
@@ -88,9 +89,22 @@ class MedialinkController extends Controller
      * @param  \App\Models\medialink  $medialink
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, medialink $medialink)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'url' => 'required',
+        ]);
+
+
+        $story = medialink::find($id);
+        $story->title = $request->title;
+        $story->url = $request->url;
+        $story->status = 1;
+        $story->save();
+
+        session()->flash('success', 'Media link updated Successfully.');
+        return redirect(route('medialinks'));
     }
 
     /**
@@ -99,8 +113,10 @@ class MedialinkController extends Controller
      * @param  \App\Models\medialink  $medialink
      * @return \Illuminate\Http\Response
      */
-    public function destroy(medialink $medialink)
+    public function destroy($id)
     {
-        //
+        medialink::where('id', $id)->delete();
+        session()->flash('success', 'Media link Deleted Successfully.');
+        return redirect(route('medialinks'));
     }
 }

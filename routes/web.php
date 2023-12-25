@@ -46,6 +46,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contacts-mail', [AdminController::class, 'contactsmail'])->name('contactsmail');
     Route::get('/create-media', [MedialinkController::class, 'create'])->name('createmedia');
     Route::get('/media-links', [MedialinkController::class, 'index'])->name('medialinks');
+    Route::get('/edit-media/{id}', [MedialinkController::class, 'edit'])->name('editmedia');
+    Route::get('/delete-media/{id}', [MedialinkController::class, 'destroy'])->name('delete-media');
+    Route::post('/update-media/{id}', [MedialinkController::class, 'update'])->name('update-media');
     Route::post('/store-media', [MedialinkController::class, 'store'])->name('storemedia');
 
 
@@ -77,8 +80,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     //achievement
     Route::get('/achievement', [AchievementController::class, 'index'])->name('achievement');
-    Route::get('/addachievement', [AchievementController::class, 'create'])->name('addachievement');
-    Route::post('/storeachievement', [AchievementController::class, 'store'])->name('storeachievement');
+    Route::get('/add-achievement', [AchievementController::class, 'create'])->name('addachievement');
+    Route::get('/eidt-achievement/{id}', [AchievementController::class, 'edit'])->name('editachievement');
+    Route::get('/delete-achievement/{id}', [AchievementController::class, 'destroy'])->name('delete-achievement');
+    Route::post('/store-achievement', [AchievementController::class, 'store'])->name('storeachievement');
+    Route::post('update-achievment/{id}', [AchievementController::class, 'update'])->name('update-achievment');
 
     Route::get('/sliders', [SliderController::class, 'sliders'])->name('sliders');
     Route::get('/addslider', [SliderController::class, 'addslider'])->name('addslider');

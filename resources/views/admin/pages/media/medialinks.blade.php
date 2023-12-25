@@ -57,10 +57,10 @@
 
 
                                                 <td>
-                                                    <a href="" class="btn btn-xs btn-warning"><i
-                                                            class="fas fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-danger"><i
-                                                            class="fas fa-trash-alt"></i></a>
+                                                    <a href="{{ route('editmedia', $value->id) }}"
+                                                        class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('delete-media', $value->id) }}"
+                                                        class="btn btn-xs btn-danger"><i class="fas fa-trash-alt"></i></a>
 
                                                 </td>
                                             </tr>

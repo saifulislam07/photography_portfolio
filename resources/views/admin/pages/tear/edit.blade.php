@@ -12,7 +12,7 @@
                         <h5 class="m-0 text-dark">Edit Tearsheet</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
-                        <a href="{{ route('aboutme') }}" class="btn btn-sm btn-info float-right"><i
+                        <a href="{{ route('tearsheets.index') }}" class="btn btn-sm btn-info float-right"><i
                                 class="fa fa-plus-square"></i> Tearsheet</a>
                     </div>
                 </div><!-- /.row -->
