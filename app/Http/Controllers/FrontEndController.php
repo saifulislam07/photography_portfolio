@@ -12,9 +12,11 @@ use App\Models\Aboutme;
 use App\Models\Achievement;
 use App\Models\Album;
 use App\Models\medialink;
+use App\Models\Slider;
 use App\Models\Socialmedia;
 use App\Models\Video;
 use App\Models\WebGallery;
+use App\Models\webSetup;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -151,14 +153,18 @@ class FrontEndController extends Controller
 
     public function index()
     {
+
         $aboutme = Aboutme::first();
+        $websetting = webSetup::first();
+        // dd($websetting);
         $socialMedia = Socialmedia::first();
-        $slidersImages = DB::table('sliders')
-            ->select('*')
+        $slidersImages = Slider::select('*')
             ->where('status', 1)->where('type', 1)
             ->get();
         //         dd($slidersImages);
         $recentimages = WebGallery::orderBy('id', 'desc')->take(20)->get();
+
+        $title = 'HOME';
         // dd($recentimages);
         return view('frontend.pages.home', get_defined_vars());
     }

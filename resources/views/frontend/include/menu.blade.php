@@ -1,48 +1,70 @@
-<nav class="navbar wide transparent absolute inverse-text navbar-expand-lg"
-    style="background: rgb(0 0 0  / 80%) !important;">
-    <div class="container-fluid flex-row justify-content-center">
-        <div class="navbar-header">
-            <div class="navbar-brand">
-                <a href="/">
-                    <img src="/" srcset="{{ asset('/logos/2.png') }}, {{ asset('/logos/2.png') }}2x"
-                        alt="" />
-                </a>
-            </div>
-            <div class="navbar-hamburger ml-auto d-lg-none d-xl-none">
-                <button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span>
-                    </span>
-                </button>
-            </div>
-        </div>
-        <!-- /.navbar-header -->
-        <div class="navbar-collapse collapse justify-content-between align-items-center">
-            <ul class="navbar-nav plain mx-auto text-center">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/aboutsme">About Me</a></li>
-                {{-- <li class="nav-item"><a class="nav-link" href="/myachievement">Achievement</a></li> --}}
-                <li class="nav-item "><a class="nav-link " href="/mygallery">Photo Gallery</a></li>
-                <li class="nav-item "><a class="nav-link " href="/myvideogallery">Video Gallery</a></li>
-                <li class="nav-item "><a class="nav-link " href="/photostory">Story</a></li>
-                {{-- <li class="nav-item "><a class="nav-link " href="/portfolio">Portfolio</a></li> --}}
-                {{-- <li class="nav-item "><a class="nav-link " href="/buyphoto">Buy</a></li> --}}
-                <li class="nav-item "><a class="nav-link " href="/contacts">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <div class="social-wrapper text-right">
-            <ul class="social social-color" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="5000">
-                <li><a target="_blank" href="@if ($socialMedia) echo $socialMedia->facebook; @endif"><i
-                            class="fa fa-facebook"></i></a></li>
-                <li><a target="_blank" href="@if ($socialMedia) echo $socialMedia->instagram; @endif"><i
-                            class="fa fa-instagram"></i></a>
-                </li>
-                <li><a target="_blank" href="@if ($socialMedia) $socialMedia->twitter; @endif"><i
-                            class="fa fa-twitter"></i></a></li>
-                <li><a target="_blank" href="@if ($socialMedia) $socialMedia->linkedin; @endif"><i
-                            class="fa fa-linkedin"></i></a></li>
-            </ul>
-        </div>
-        <!--/.social-wrapper -->
-    </div>
-</nav>
+ <!-- header begin -->
+ <header class="transparent">
+     <div class="info">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="column">Working Hours Monday - Friday <span
+                             class="id-color"><strong>08:00-16:00</strong></span></div>
+                     <div class="column">Toll Free <span class="id-color"><strong>1800.899.900</strong></span></div>
+                     <!-- social icons -->
+                     <div class="column social">
+                         <a href="#"><i class="fa fa-facebook"></i></a>
+                         <a href="#"><i class="fa fa-twitter"></i></a>
+                         <a href="#"><i class="fa fa-rss"></i></a>
+                         <a href="#"><i class="fa fa-google-plus"></i></a>
+                         <a href="#"><i class="fa fa-envelope-o"></i></a>
+                     </div>
+                     <!-- social icons close -->
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <!-- logo begin -->
+                 <div id="logo">
+                     <a href="/">
+                         <img class="logo" src="{{ URL::to('/frontend_assets') }}/images/logo.png" alt="">
+                     </a>
+                 </div>
+                 <!-- logo close -->
+
+                 <!-- small button begin -->
+                 <span id="menu-btn"></span>
+                 <!-- small button close -->
+
+                 <!-- mainmenu begin -->
+                 <nav class="md-flex">
+                     <ul id="mainmenu">
+                         <li><a href="/">Home<span></span></a></li>
+                         <li><a href="#">Profile</a></li>
+                         <li><a href="project-wide-4-cols.html">story</a></li>
+                         <li><a href="project-wide-4-cols.html">Gallery</a></li>
+                         <li><a href="project-wide-4-cols.html">Video</a></li>
+                         <li><a href="project-wide-4-cols.html">Buy</a></li>
+                         <li><a href="#">Media</a>
+                             <ul>
+                                 <li><a href="service-1.html">Publication</a></li>
+                                 <li><a href="service-1.html">Portfolio</a></li>
+                                 <li><a href="service-3.html">Commercial</a></li>
+                                 <li><a href="service-4.html">tear sheed</a></li>
+                                 <li><a href="service-4.html">achievement</a></li>
+                                 <li><a href="service-4.html">client</a></li>
+                             </ul>
+                         </li>
+                         <li><a href="project-wide-4-cols.html">Contact</a></li>
+
+                     </ul>
+                 </nav>
+
+                 <!-- mainmenu close -->
+
+             </div>
+
+         </div>
+     </div>
+ </header>
+ <!-- header close -->
