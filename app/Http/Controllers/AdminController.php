@@ -53,7 +53,7 @@ class AdminController extends Controller
     public function contactsmail(Request $request)
     {
         $allcontactme = contactme::all();
-        return view('admin.pages.allmessage', get_defined_vars());
+        return view('admin.pages.user_message.all-messages', get_defined_vars());
     }
     /**
      * Store a newly created resource in storage.

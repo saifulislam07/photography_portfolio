@@ -81,7 +81,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('vgallery') }}"
-                        class="nav-link @if ($current_route == 'vgallery' || $current_route == 'v-gallery') {{ 'active' }} @endif"
+                        class="nav-link @if ($current_route == 'vgallery' || $current_route == 'v-gallery' || $current_route == 'edit-video') {{ 'active' }} @endif"
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fa fa-camera-retro"></i>
                         <p>Video Gallery </p>
@@ -89,7 +89,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('story') }}"
-                        class="nav-link @if ($current_route == 'story' || $current_route == 'addstory') {{ 'active' }} @endif"
+                        class="nav-link @if ($current_route == 'story' || $current_route == 'addstory' || $current_route == 'edit-story') {{ 'active' }} @endif"
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Story </p>
@@ -105,7 +105,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('tearsheets.create') }}"
-                        class="nav-link @if ($current_route == 'tearsheets.create' || $current_route == 'tearsheets.index') {{ 'active' }} @endif"
+                        class="nav-link @if (
+                            $current_route == 'tearsheets.create' ||
+                                $current_route == 'tearsheets.index' ||
+                                $current_route == 'tearsheets.edit') {{ 'active' }} @endif"
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Tear Sheet </p>
@@ -113,7 +116,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('public.create') }}"
-                        class="nav-link @if ($current_route == 'public.create' || $current_route == 'public.index') {{ 'active' }} @endif"
+                        class="nav-link @if ($current_route == 'public.create' || $current_route == 'public.index' || $current_route == 'public.edit') {{ 'active' }} @endif"
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Publication</p>
@@ -121,7 +124,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('commerc.create') }}"
-                        class="nav-link @if ($current_route == 'commerc.create' || $current_route == 'commerc.index') {{ 'active' }} @endif"
+                        class="nav-link @if ($current_route == 'commerc.create' || $current_route == 'commerc.index' || $current_route == 'commerc.edit') {{ 'active' }} @endif"
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Commercial</p>
@@ -165,7 +168,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('medialinks') }}"
-                        class="nav-link @if ($current_route == 'medialinks') {{ 'active' }} @endif"
+                        class="nav-link @if ($current_route == 'medialinks' || $current_route == 'editmedia') {{ 'active' }} @endif"
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fa fa-search"></i>
                         <p>Media</p>
@@ -177,6 +180,14 @@
                         style="color: rgb(255, 255, 255)">
                         <i class="nav-icon fa fa-cog"></i>
                         <p>Website Setup</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('contactsmail') }}"
+                        class="nav-link @if ($current_route == 'contactsmail') {{ 'active' }} @endif"
+                        style="color: rgb(255, 255, 255)">
+                        <i class="nav-icon fa fa-cog"></i>
+                        <p>User Query</p>
                     </a>
                 </li>
             </ul>
