@@ -40,10 +40,10 @@
                  <nav class="md-flex">
                      <ul id="mainmenu">
                          <li><a href="/">Home<span></span></a></li>
-                         <li><a href="#">Profile</a></li>
+                         <li><a href="{{ route('aboutsme') }}">Profile</a></li>
                          <li><a href="project-wide-4-cols.html">story</a></li>
                          <li><a href="project-wide-4-cols.html">Gallery</a></li>
-                         <li><a href="project-wide-4-cols.html">Video</a></li>
+                         <li><a href="{{ route('myvideogallery') }}">Video</a></li>
                          <li><a href="project-wide-4-cols.html">Buy</a></li>
                          <li><a href="#">Media</a>
                              <ul>

@@ -149,7 +149,7 @@ Route::get('/jobView/{media}', [FrontEndController::class, 'jobView'])->name('jo
 Route::post('seekerlogin', [FrontEndController::class, 'seekerlogin'])->name('seekerlogin');
 
 
-Route::get('/aboutsme', [FrontEndController::class, 'aboutsme'])->name('aboutsme');
+Route::get('/my-profile-details', [FrontEndController::class, 'aboutsme'])->name('aboutsme');
 Route::get('/portfolio', [FrontEndController::class, 'portfolio'])->name('portfolio');
 Route::get('/myachievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
 Route::get('/mygallery', [FrontEndController::class, 'mygallery'])->name('mygallery');

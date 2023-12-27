@@ -4,68 +4,177 @@
 @endsection
 
 @section('front-main-content')
-    <br>
-    <div class="content-wrapper">
-        <div class="wrapper light-wrapper">
-            <div class="space20"></div>
-            <div class="space20"></div>
+    <div id="content" class="no-bottom no-top">
 
-            <div class="container inner pt-60">
-                <div class="boxed">
-                    <div class="bg-white shadow rounded">
-                        <div class="image-block-wrapper">
 
-                            <div class="image-block col-lg-6">
-
-                                <div class="image-block-bg bg-image ">
-                                    <img width="100%" style="margin-left: 10px; margin-top: 10px"
-                                        src="{{ asset('./aboutmes/' . $aboutme->aboutppageimage) }}" alt="">
-                                </div>
-                            </div>
-                            <!--/.image-block -->
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6 offset-lg-6">
-                                        <div class="box d-flex">
-                                            <div class="align-self-center">
-                                                <h3 data-aos="fade-up">About Me</h3>
-                                                <h5 data-aos="fade-down " style="color:rgb(24, 138, 138)">
-                                                    {{ $aboutme->title }}</h5>
-                                                <p style="text-align: justify;"> {!! $aboutme->details !!} </p>
-
-                                                <div class="card">
-                                                    <div class="card-body text-center hover">
-                                                        <ul class="social social-color" data-aos="fade-up"
-                                                            data-aos-easing="linear" data-aos-duration="5000">
-                                                            <li><a target="_blank" href="{{ $socialMedia->facebook }}"><i
-                                                                        class="fa fa-facebook"></i></a></li>
-                                                            <li><a target="_blank" href="{{ $socialMedia->instagram }}"><i
-                                                                        class="fa fa-instagram"></i></a></li>
-                                                            <li><a target="_blank" href="{{ $socialMedia->twitter }}"><i
-                                                                        class="fa fa-twitter"></i></a></li>
-                                                            <li><a target="_blank" href="{{ $socialMedia->linkedin }}"><i
-                                                                        class="fa fa-linkedin"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!-- /.box -->
-                                    </div>
-                                    <!--/column -->
-                                </div>
-                                <!--/.row -->
-                            </div>
-                            <!--/.container-fluid -->
+        <div id="wrapper">
+            <section id="subheader" data-speed="8" data-type="background">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Profile</h1>
+                            <ul class="crumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="sep">/</li>
+                                <li>Profile</li>
+                            </ul>
                         </div>
-                        <!--/.image-block-wrapper -->
                     </div>
-                    <!-- /.bg -->
                 </div>
-                <!-- /.boxed -->
+            </section>
+            <!-- subheader close -->
+
+            <!-- content begin -->
+            <div id="content" class="no-top no-bottom">
+                <section id="section-about-us-2" class="side-bg no-padding">
+                    <div class="row mt-4 pb-4">
+                        <div class="col-lg-3 col-md-6 offset-lg-2">
+                            <!-- team member -->
+                            <div class="de-team-list">
+                                <div class="team-pic">
+                                    <img src="{{ URL::to('/frontend_assets') }}/images/team/team_pic_2.jpg"
+                                        class="img-responsive" alt="" />
+                                </div>
+                                <div class="team-desc">
+                                    <h3>Michael Dennis</h3>
+                                    <p class="lead">Creative Director</p>
+                                    <div class="small-border"></div>
+                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat
+                                        nulla pariatur.</p>
+
+                                    <div class="social">
+                                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-skype fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- team close -->
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 ">
+                            <!-- team member -->
+
+
+                            <div class="team-desc">
+
+                                <h2>Award Winning Interior Design</h2>
+
+                                <p class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                    eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum
+                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                sunt in
+                                culpa qui officia deserunt mollit anim id est laborum.
+
+                            </div>
+
+                            <!-- team close -->
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+
+                <section id="section-testimonial" class="text-light">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
+                                <h1>Clients</h1>
+                                <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+                                <div class="spacer-single"></div>
+                            </div>
+                        </div>
+                        <div id="testimonial-carousel" class="owl-carousel owl-theme de_carousel wow fadeInUp"
+                            data-wow-delay=".3s">
+
+                            <div class="item">
+                                <div class="de_testi">
+                                    <blockquote>
+                                        <p>I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur
+                                            adipisicing
+                                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="de_testi_by">
+                                            John, Customer
+                                        </div>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="de_testi">
+                                    <blockquote>
+                                        <p>I have very much enjoyed with your services. Lorem ipsum dolor sit amet,
+                                            consectetur
+                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                            aliquip.</p>
+                                        <div class="de_testi_by">
+                                            Michael, Customer
+                                        </div>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="de_testi">
+                                    <blockquote>
+                                        <p>I totally recommend your services. Lorem ipsum dolor sit amet, consectetur
+                                            adipisicing
+                                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                        <div class="de_testi_by">
+                                            Patrick, Customer
+                                        </div>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="de_testi">
+                                    <blockquote>
+                                        <p>I have very much enjoyed with your services. Lorem ipsum dolor sit amet,
+                                            consectetur
+                                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                            aliquip.</p>
+                                        <div class="de_testi_by">
+                                            James, Customer
+                                        </div>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- section begin -->
+                <section id="view-all-projects" class="call-to-action bg-color dark text-center" data-speed="5"
+                    data-type="background" aria-label="view-all-projects">
+                    <a href="contact.html" class="btn btn-line black btn-big">Talk With Us</a>
+                </section>
+                <!-- logo carousel section close -->
+
+
+
             </div>
-            <!-- /.container -->
         </div>
-    </div>
-@endsection
+    @endsection

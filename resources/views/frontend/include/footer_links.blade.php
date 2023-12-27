@@ -9,9 +9,7 @@
  <!-- SLIDER REVOLUTION SCRIPTS  -->
  <script src="{{ asset('frontend_assets/rs-plugin/js/jquery.themepunch.plugins.min.js') }}"></script>
  <script src="{{ asset('frontend_assets/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
-
-
-
+ @yield('extra_js')
  </body>
 
  </html>

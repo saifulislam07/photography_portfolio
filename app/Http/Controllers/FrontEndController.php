@@ -53,8 +53,10 @@ class FrontEndController extends Controller
 
     public function aboutsme()
     {
+        $websetting = websetup();
         $socialMedia = Socialmedia::first();
         $aboutme = Aboutme::first();
+        $title = 'About Me';
         return view('frontend.pages.aboutsme', get_defined_vars());
     }
 
@@ -104,20 +106,9 @@ class FrontEndController extends Controller
 
     public function myvideogallery()
     {
-        $aboutme = Aboutme::first();
-        $socialMedia = Socialmedia::first();
-        $allcategorycount = Video::select("videos.*", "categories.title as catname", DB::raw('count("category_id") as total'))
-            ->join("categories", "categories.id", "=", "videos.category_id")
-            ->groupBy("category_id")
-            ->get();
-
-        //  dd($allcategorycount);
-        $allrecentimages = Video::orderBy('videos.id', 'desc')
-            ->select('videos.*', 'categories.title as catname')
-            ->join("categories", "categories.id", "=", "videos.category_id")
-            ->where('videos.status', '1')
-            ->get();
-        //  dd($allrecentimages);
+        $websetting = websetup();
+        $myvideos = Video::orderBy('id', 'desc')->paginate(12);
+        $title = 'Video Gallery';
         return view('frontend.pages.myvideogallery', get_defined_vars());
     }
 
@@ -155,8 +146,7 @@ class FrontEndController extends Controller
     {
 
         $aboutme = Aboutme::first();
-        $websetting = webSetup::first();
-        // dd($websetting);
+        $websetting = websetup();
         $socialMedia = Socialmedia::first();
         $slidersImages = Slider::select('*')
             ->where('status', 1)->where('type', 1)
@@ -206,32 +196,7 @@ class FrontEndController extends Controller
         return view('frontend.pages.OurRules', get_defined_vars());
     }
 
-    // public function alljob()
-    // {
-    //     $allJobs = DB::table('jobs')
-    //         ->select('jobs.*', 'users.image', 'users.url', 'users.address')
-    //         ->join('users', 'users.id', '=', 'jobs.user_id')
-    //         ->where('jobs.status', 1)
-    //         ->get();
-    //     return view('frontend.pages.job', get_defined_vars());
-    // }
 
-    // public function jobView(Request $request, $id)
-    // {
-    //     $userid = auth()->user()->id;
-
-    //     $JobDetails = DB::table('jobs')
-    //         ->select('jobs.*', 'users.image', 'users.url', 'users.address', 'users.name as comName', 'users.id as comId')
-    //         ->join('users', 'users.id', '=', 'jobs.user_id')
-    //         ->where('jobs.id', $id)
-    //         ->first();
-    //     $applicationinfo = Apply::where([
-    //         'user_id' => $userid,
-    //         'id' => $id,
-    //     ])->first();
-    //     $urlid = $id;
-    //     return view('frontend.pages.jobView', get_defined_vars());
-    // }
 
     public function create()
     {

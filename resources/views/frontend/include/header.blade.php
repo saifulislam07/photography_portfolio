@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <link rel="icon" href="{{ URL::to('/frontend_assets') }}/images/icon.png" type="image/gif" sizes="16x16">
     <title>{{ $websetting->site_name }} - {{ $title }}</title>

@@ -66,7 +66,7 @@
                              class="id-color">{{ $websetting->site_name }}</span>
                      </div>
                      <div class="col-md-4 text-center">
-                         <span><a href="https://facebook.com/a.chobi7" style="color : #00ff68" target="_blank"
+                         <span><a href="https://facebook.com/a.chobi7" style="color : #ffffff" target="_blank"
                                  rel="noopener noreferrer"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
                                  DEVELOPED BY SAIFUL ISLAM </a> </span>
                      </div>
