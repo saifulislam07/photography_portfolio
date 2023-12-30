@@ -11,7 +11,9 @@ use App\Models\story;
 use App\Models\Aboutme;
 use App\Models\Achievement;
 use App\Models\Album;
+use App\Models\Commercial;
 use App\Models\medialink;
+use App\Models\Publication;
 use App\Models\Slider;
 use App\Models\Socialmedia;
 use App\Models\Video;
@@ -86,16 +88,54 @@ class FrontEndController extends Controller
         return view('frontend.pages.myachievement', get_defined_vars());
     }
 
+    public function mypublications()
+    {
+        $title = 'My Publications';
+        $websetting = websetup();
+        $socialMedia = Socialmedia::first();
+
+        $mypublication = Publication::get();
+
+        return view('frontend.pages.mypublications', get_defined_vars());
+    }
+
+    public function mycommercials()
+    {
+        $title = 'My Commercials';
+        $websetting = websetup();
+        $socialMedia = Socialmedia::first();
+
+        $mycommercials = Commercial::get();
+
+        return view('frontend.pages.mycommercials', get_defined_vars());
+    }
+
+    public function mycommercialsDetails($id)
+    {
+        $title = 'My Commercials Details';
+        $websetting = websetup();
+        $socialMedia = Socialmedia::first();
+
+        $mycommercials = Commercial::find($id);
+
+        return view('frontend.pages.mycommercials-details', get_defined_vars());
+    }
+
     public function mygallery()
     {
+        $title = 'Photo Gallery';
+        $websetting = websetup();
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
-        $allcategorycount = WebGallery::select("web_galleries.*", "categories.title as catname", DB::raw('count("category") as total'))
+
+        $allcategorycount = WebGallery::select("categories.title as catname", DB::raw('COUNT(web_galleries.category) as total'))
             ->join("categories", "categories.id", "=", "web_galleries.category")
-            ->groupBy("category")
+            ->where('web_galleries.status', '1')
+            ->groupBy("web_galleries.category")
             ->get();
 
-        //  dd($allcategorycount);
+
+        // dd($allcategorycount);
         $allrecentimages = WebGallery::orderBy('web_galleries.id', 'desc')
             ->join("categories", "categories.id", "=", "web_galleries.category")
             ->where('web_galleries.status', 1)

@@ -152,9 +152,14 @@ Route::post('seekerlogin', [FrontEndController::class, 'seekerlogin'])->name('se
 Route::get('/my-profile-details', [FrontEndController::class, 'aboutsme'])->name('aboutsme');
 Route::get('/portfolio', [FrontEndController::class, 'portfolio'])->name('portfolio');
 Route::get('/myachievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
-Route::get('/mygallery', [FrontEndController::class, 'mygallery'])->name('mygallery');
+Route::get('/my-photo-gallery', [FrontEndController::class, 'mygallery'])->name('mygallery');
 Route::get('/my-video-gallery', [FrontEndController::class, 'myvideogallery'])->name('myvideogallery');
 Route::get('/photostory', [FrontEndController::class, 'photostory'])->name('photostory');
+
+Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->name('mypublications');
+Route::get('/my-commercial-work', [FrontEndController::class, 'mycommercials'])->name('mycommercials');
+Route::get('/my-commercial-work-details/{id}', [FrontEndController::class, 'mycommercialsDetails'])->name('mycommercials-details');
+
 
 Route::get('/buyphoto', [FrontEndController::class, 'buyphoto'])->name('buyphoto');
 Route::get('/contacts', [FrontEndController::class, 'contacts'])->name('contacts');

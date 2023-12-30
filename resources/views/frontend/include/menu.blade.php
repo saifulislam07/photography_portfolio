@@ -26,8 +26,10 @@
              <div class="col-md-12">
                  <!-- logo begin -->
                  <div id="logo">
+
                      <a href="/">
-                         <img class="logo" src="{{ URL::to('/frontend_assets') }}/images/logo.png" alt="">
+                         <img width="300px" src="{{ URL::to('/site_logo/' . $websetting->logo_white) }}"
+                             class="logo-small" alt="">
                      </a>
                  </div>
                  <!-- logo close -->
@@ -42,14 +44,14 @@
                          <li><a href="/">Home<span></span></a></li>
                          <li><a href="{{ route('aboutsme') }}">Profile</a></li>
                          <li><a href="project-wide-4-cols.html">story</a></li>
-                         <li><a href="project-wide-4-cols.html">Gallery</a></li>
+                         <li><a href="{{ route('mygallery') }}">Gallery</a></li>
                          <li><a href="{{ route('myvideogallery') }}">Video</a></li>
                          <li><a href="project-wide-4-cols.html">Buy</a></li>
                          <li><a href="#">Media</a>
                              <ul>
-                                 <li><a href="service-1.html">Publication</a></li>
+                                 <li><a href="{{ route('mypublications') }}">Publication</a></li>
                                  <li><a href="service-1.html">Portfolio</a></li>
-                                 <li><a href="service-3.html">Commercial</a></li>
+                                 <li><a href="{{ route('mycommercials') }}">Commercial</a></li>
                                  <li><a href="service-4.html">tear sheed</a></li>
                                  <li><a href="service-4.html">achievement</a></li>
                                  <li><a href="service-4.html">client</a></li>
