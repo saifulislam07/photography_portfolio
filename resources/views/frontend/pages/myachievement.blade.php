@@ -4,64 +4,81 @@
 @endsection
 @section('front-main-content')
     <div class="content-wrapper">
-        <div class="wrapper gray-wrapper">
-            <div class="space20"></div>
-
-
-            <div class="container inner">
-                <h2 class="section-title mb-40 text-center">My National Achievement</h2>
-                <div class="row text-center">
-                    @foreach ($nationalaward as $eachnational)
-                        <div class="col-md-12 pb-5">
-                            <div class="box bg-white shadow">
-                                <div class="icon fs-50 icon-color color-rose mb-20">
-                                    <img data-aos="fade-up" width="100px"
-                                        src="{{ asset('public/achievements/' . $eachnational->image) }}" alt="">
-                                </div>
-                                <h5>{{ $eachnational->title }}</h5>
-                                <p> {!! $eachnational->details !!}</p>
-                            </div>
-                            <!--/.box -->
+        <div id="wrapper">
+            <section id="subheader" data-speed="8" data-type="background">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1> My Achievement </h1>
+                            <ul class="crumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="sep">/</li>
+                                <li>Achievement</li>
+                            </ul>
                         </div>
-                    @endforeach
-
-
+                    </div>
                 </div>
-                <!--/.row -->
-            </div>
-            <!-- /.container -->
-        </div>
-        <div class="wrapper gray-wrapper">
-            <div class="container inner">
-                <h2 class="section-title mb-40 text-center">My International Achievement</h2>
-
-                <div class="row text-center">
-                    @foreach ($internationalaward as $eachinternational)
-                        <div class="col-md-12 pb-5">
-                            <div class="box bg-white shadow">
-                                <div class="icon fs-50 icon-color color-rose mb-20">
-                                    <img data-aos="fade-up" width="100px"
-                                        src="{{ asset('public/achievements/' . $eachinternational->image) }}"
-                                        alt="">
-
-                                </div>
-                                <h5>{{ $eachinternational->title }}</h5>
-                                <p>
-                                    {!! $eachinternational->details !!}
-                                </p>
-                                @if ($eachinternational->url)
-                                    <a class="btn btn-info btn-xs" target="_blank"
-                                        href="{{ $eachinternational->url }}">Video</a>
-                                @endif
-
+            </section>
+            <div id="content" class="no-top no-bottom mt70 sm-mt0">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center fadeInUp">
+                                <h2>National Achievement</h2>
                             </div>
-                            <!--/.box -->
+                            <hr>
+                            @foreach ($nationalaward as $national)
+                                <div class="col-md-4 wow fadeInUp pb-3" data-wow-delay=".25s">
+                                    <div class="box-icon">
+                                        <span class="icon wow fadeIn" data-wow-delay=".75s">
+                                            <i class="id-color icon-trophy"></i>
+                                        </span>
+                                        <div class="text ">
+                                            <h3 class="id-color">{{ $national->title }}</h3>
+                                            <p>{{ $national->details }}</p>
+                                            {{-- @if ($national->url)
+                                                <h4 class="id-color"> <a class="btn btn-outline-warning btn-xs"
+                                                        href="http://" target="_blank" rel="noopener noreferrer">CLICK HERE
+                                                        FOR
+                                                        DETAILS</a> </h4>
+                                            @endif --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
-                <!--/.row -->
+                    </div>
+                </section>
+
+                <section class="de_light bg-white">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h2>International Achievement</h2>
+                            </div>
+                            <hr>
+                            @foreach ($internationalaward as $national)
+                                <div class="col-md-4 wow fadeInUp pb-3" data-wow-delay=".25s">
+                                    <div class="box-icon">
+                                        <span class="icon wow fadeIn" data-wow-delay=".75s"><i
+                                                class="id-color icon-trophy"></i></span>
+                                        <div class="text ">
+                                            <h3 class="id-color">{{ $national->title }}</h3>
+                                            <p>{{ $national->details }}</p>
+                                            {{-- @if ($national->url)
+                                                <h4 class="id-color"> <a class="btn btn-outline-warning btn-xs"
+                                                        href="http://" target="_blank" rel="noopener noreferrer">CLICK HERE
+                                                        FOR
+                                                        DETAILS</a> </h4>
+                                            @endif --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
             </div>
-            <!-- /.container -->
         </div>
     </div>
 @endsection

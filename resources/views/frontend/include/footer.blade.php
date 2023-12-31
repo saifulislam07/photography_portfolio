@@ -4,8 +4,6 @@
                  <div class="col-lg-3">
                      <img width="300px" src="{{ URL::to('/site_logo/' . $websetting->logo_white) }}" class="logo-small"
                          alt="">
-
-
                      We
                      are team based on Los Angeles.
                      Our expertise
@@ -59,7 +57,7 @@
          </div>
 
          <div class="subfooter">
-             <div class="container">
+             <div class="container text-center">
                  <div class="row">
                      <div class="col-md-4">
                          &copy; {{ $websetting->copyright }} - {{ $websetting->copyright_note }} <span
@@ -70,14 +68,16 @@
                                  rel="noopener noreferrer"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
                                  DEVELOPED BY SAIFUL ISLAM </a> </span>
                      </div>
-                     <div class="col-md-4 text-right">
+                     <div class="col-md-4 text-center">
                          <div class="social-icons">
-                             <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                             <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                             <a href="#"><i class="fa fa-rss fa-lg"></i></a>
-                             <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
-                             <a href="#"><i class="fa fa-skype fa-lg"></i></a>
-                             <a href="#"><i class="fa fa-dribbble fa-lg"></i></a>
+                             <a target="_blank" href="{{ $socialMedia->facebook }}"><i
+                                     class="fa fa-facebook fa-lg"></i></a>
+                             <a target="_blank" href="{{ $socialMedia->twitter }}"><i
+                                     class="fa fa-twitter fa-lg"></i></a>
+                             <a target="_blank" href="{{ $socialMedia->instagram }}"><i
+                                     class="fa fa-instagram fa-lg"></i></a>
+                             <a target="_blank" href="{{ $socialMedia->linkedin }}"><i
+                                     class="fa fa-linkedin fa-lg"></i></a>
                          </div>
                      </div>
                  </div>

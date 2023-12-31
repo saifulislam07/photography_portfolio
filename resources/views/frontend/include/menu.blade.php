@@ -53,8 +53,8 @@
                                  <li><a href="{{ route('myPortfolioLinks') }}">Portfolio Links</a></li>
                                  <li><a href="{{ route('mycommercials') }}">Commercial</a></li>
                                  <li><a href="{{ route('tear-sheet') }}">tear sheet</a></li>
-                                 <li><a href="service-4.html">achievement</a></li>
-                                 <li><a href="service-4.html">client</a></li>
+                                 <li><a href="{{ route('myachievement') }}">achievement</a></li>
+                                 <li><a href="{{ route('myclients') }}">client</a></li>
                              </ul>
                          </li>
                          <li><a href="project-wide-4-cols.html">Contact</a></li>

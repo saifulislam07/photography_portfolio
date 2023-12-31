@@ -160,6 +160,8 @@ Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->n
 Route::get('/tear-sheet', [FrontEndController::class, 'tearSheet'])->name('tear-sheet');
 Route::get('/my-portfolio-links', [FrontEndController::class, 'myPortfolioLinks'])->name('myPortfolioLinks');
 
+Route::get('/my-achievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
+
 Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->name('mypublications');
 Route::get('/my-commercial-work', [FrontEndController::class, 'mycommercials'])->name('mycommercials');
 Route::get('/my-commercial-work-details/{id}', [FrontEndController::class, 'mycommercialsDetails'])->name('mycommercials-details');
@@ -168,6 +170,7 @@ Route::get('/my-commercial-work-details/{id}', [FrontEndController::class, 'myco
 Route::get('/buyphoto', [FrontEndController::class, 'buyphoto'])->name('buyphoto');
 Route::get('/contacts', [FrontEndController::class, 'contacts'])->name('contacts');
 Route::get('viewstory/{id}', [FrontEndController::class, 'viewstory']);
+Route::get('/my-clients', [FrontEndController::class, 'myclients'])->name('myclients');
 
 Route::post('/storestorymessage', [ContactmeController::class, 'storestorymessage'])->name('storestorymessage');
 Route::post('/storestorycontact', [ContactmeController::class, 'storestorycontact'])->name('storestorycontact');

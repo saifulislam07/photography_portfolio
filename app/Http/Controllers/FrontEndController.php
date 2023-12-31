@@ -11,6 +11,7 @@ use App\Models\story;
 use App\Models\Aboutme;
 use App\Models\Achievement;
 use App\Models\Album;
+use App\Models\Client;
 use App\Models\Commercial;
 use App\Models\medialink;
 use App\Models\Publication;
@@ -71,10 +72,20 @@ class FrontEndController extends Controller
     }
 
 
-
+    public function myclients()
+    {
+        $title = 'My Clients';
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+        $socialMedia = Socialmedia::first();
+        $clients = Client::get();
+        return view('frontend.pages.clients', get_defined_vars());
+    }
 
     public function myachievement()
     {
+        $title = 'My Achievement';
+        $websetting = websetup();
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
         $internationalaward = Achievement::where('type', 'International')->get();
