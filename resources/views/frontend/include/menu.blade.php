@@ -50,9 +50,9 @@
                          <li><a href="#">Media</a>
                              <ul>
                                  <li><a href="{{ route('mypublications') }}">Publication</a></li>
-                                 <li><a href="service-1.html">Portfolio</a></li>
+                                 <li><a href="{{ route('myPortfolioLinks') }}">Portfolio Links</a></li>
                                  <li><a href="{{ route('mycommercials') }}">Commercial</a></li>
-                                 <li><a href="service-4.html">tear sheed</a></li>
+                                 <li><a href="{{ route('tear-sheet') }}">tear sheet</a></li>
                                  <li><a href="service-4.html">achievement</a></li>
                                  <li><a href="service-4.html">client</a></li>
                              </ul>

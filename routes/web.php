@@ -157,6 +157,10 @@ Route::get('/my-video-gallery', [FrontEndController::class, 'myvideogallery'])->
 Route::get('/photostory', [FrontEndController::class, 'photostory'])->name('photostory');
 
 Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->name('mypublications');
+Route::get('/tear-sheet', [FrontEndController::class, 'tearSheet'])->name('tear-sheet');
+Route::get('/my-portfolio-links', [FrontEndController::class, 'myPortfolioLinks'])->name('myPortfolioLinks');
+
+Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->name('mypublications');
 Route::get('/my-commercial-work', [FrontEndController::class, 'mycommercials'])->name('mycommercials');
 Route::get('/my-commercial-work-details/{id}', [FrontEndController::class, 'mycommercialsDetails'])->name('mycommercials-details');
 

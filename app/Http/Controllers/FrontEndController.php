@@ -16,6 +16,7 @@ use App\Models\medialink;
 use App\Models\Publication;
 use App\Models\Slider;
 use App\Models\Socialmedia;
+use App\Models\TearSheet;
 use App\Models\Video;
 use App\Models\WebGallery;
 use App\Models\webSetup;
@@ -69,13 +70,7 @@ class FrontEndController extends Controller
         return view('frontend.pages.buyphoto', get_defined_vars());
     }
 
-    public function portfolio()
-    {
-        $socialMedia = Socialmedia::first();
-        $aboutme = Aboutme::first();
-        $allmedialink = medialink::where('status', 1)->get();
-        return view('frontend.pages.portfolio', get_defined_vars());
-    }
+
 
 
     public function myachievement()
@@ -98,6 +93,26 @@ class FrontEndController extends Controller
 
         return view('frontend.pages.mypublications', get_defined_vars());
     }
+
+    public function tearSheet()
+    {
+        $title = 'Tear Sheet';
+        $websetting = websetup();
+        $socialMedia = Socialmedia::first();
+        $tearSheet = TearSheet::get();
+        return view('frontend.pages.tear-sheet', get_defined_vars());
+    }
+
+    public function myPortfolioLinks()
+    {
+        $title = 'Portfolio';
+        $websetting = websetup();
+        $socialMedia = Socialmedia::first();
+        $medialink =  medialink::where('status', 1)->get();
+        return view('frontend.pages.portfolio', get_defined_vars());
+    }
+
+
 
     public function mycommercials()
     {

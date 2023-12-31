@@ -22,19 +22,13 @@
             <div id="content">
                 <div class="container">
                     <div class="row g-2">
-                        @foreach ($mypublication as $pub)
-                            <div class="col-lg-4 col-md-6">
+                        @foreach ($tearSheet as $tear)
+                            <div class="col-lg-3 col-md-6">
                                 <div class="de-post-poster">
-                                    <a class="d-overlay" target="_blank" href="{{ $pub->url }}">
-                                        <div class="d-content">
-                                            <span class="d-tag text-dark">{{ $pub->title }}</span>
-                                            {{-- <h3>5 Things That Take a Room from Good to Great</h3> --}}
-                                            <br>
-                                            <span class="d-date">{{ $pub->created_at }}</span>
-                                        </div>
+                                    <a class="d-overlay" target="_blank" href="{{ $tear->url }}">
                                     </a>
                                     <div class="d-image"
-                                        style="background-image: url('{{ asset('/publication/' . $pub->image) }}');"></div>
+                                        style="background-image: url('{{ asset('/TearSheet/' . $tear->image) }}');"></div>
                                 </div>
                             </div>
                         @endforeach
