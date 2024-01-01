@@ -33,7 +33,22 @@
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
-                                        <div class=" col-sm-12">
+                                        <div class=" col-sm-6">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" placeholder="Your Name" class="form-control"
+                                                    value="{{ $aboutme->your_name }}" name="your_name">
+                                                @error('your_name')
+                                                    <div style="color: red; padding: 0;">
+                                                        <strong>
+                                                            {{ $message }}
+                                                        </strong>
+
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-6">
                                             <div class="form-group">
                                                 <label>Title</label>
                                                 <input type="text"
@@ -160,7 +175,7 @@
                                         </div>
 
                                         <div class=" col-sm-6 ">
-                                            <button type="submit" class="btn btn-info">SAVE</button>
+                                            <button type="submit" class="btn btn-info">UPDATE</button>
                                         </div>
 
                                     </div>

@@ -35,8 +35,7 @@ class SliderController extends Controller
             'title' => 'required|max:50',
             'type' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg',
-            //'image' => 'required|image|mimes:jpeg,png,jpg|max:500|',
-            //'image' => 'dimensions:width=1920,height=1076'
+
         ]);
 
         $image = time() . '.' . $request->image->extension();

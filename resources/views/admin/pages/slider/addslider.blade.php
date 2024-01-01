@@ -33,6 +33,12 @@
                             <div class="card-header bg-blue text-center">-: ADD NEW SLIDER :-</div>
                             <div class="card-body">
                                 <div class="tab-content">
+
+                                    @if ($errors->any())
+                                        @foreach ($errors->all() as $error)
+                                            <div>{{ $error }}</div>
+                                        @endforeach
+                                    @endif
                                     <div class="active tab-pane">
                                         <form class="form-horizontal" method="POST" action="{{ route('storesliders') }}"
                                             enctype="multipart/form-data">

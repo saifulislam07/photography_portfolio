@@ -42,6 +42,7 @@ class AboutmeController extends Controller
     {
         // dd($request->all());
         $this->validate($request, [
+            'your_name' => 'required',
             'details' => 'required',
             'title' => 'required',
         ]);
@@ -75,11 +76,9 @@ class AboutmeController extends Controller
         }
 
 
-
-
-
         $aboutme = Aboutme::find($id);
 
+        $aboutme->your_name = $request->your_name;
         $aboutme->title = $request->title;
         $aboutme->details = $request->details;
         $aboutme->status = 1;
@@ -127,6 +126,7 @@ class AboutmeController extends Controller
     {
         // dd($request->all());
         $this->validate($request, [
+            'your_name' => 'required',
             'contact' => 'required',
             'details' => 'required',
             'title' => 'required',
@@ -171,6 +171,7 @@ class AboutmeController extends Controller
 
         $aboutme = Aboutme::find($request->oid);
         $aboutme->contact = $request->contact;
+        $aboutme->your_name = $request->your_name;
         $aboutme->email = $request->email;
         $aboutme->title = $request->title;
         $aboutme->details = $request->details;

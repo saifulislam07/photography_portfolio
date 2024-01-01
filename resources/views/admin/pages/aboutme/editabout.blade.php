@@ -36,7 +36,7 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
-                                        <div class=" col-sm-12">
+                                        <div class=" col-sm-6">
                                             <div class="form-group">
                                                 <label>Title</label>
                                                 <input type="text"

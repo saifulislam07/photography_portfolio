@@ -172,6 +172,7 @@ class FrontEndController extends Controller
 
     public function myvideogallery()
     {
+        $socialMedia = Socialmedia::first();
         $websetting = websetup();
         $myvideos = Video::orderBy('id', 'desc')->paginate(12);
         $title = 'Video Gallery';
@@ -214,10 +215,8 @@ class FrontEndController extends Controller
         $aboutme = Aboutme::first();
         $websetting = websetup();
         $socialMedia = Socialmedia::first();
-        $slidersImages = Slider::select('*')
-            ->where('status', 1)->where('type', 1)
-            ->get();
-        //         dd($slidersImages);
+
+        // dd($slidersImages);
         $recentimages = WebGallery::orderBy('id', 'desc')->take(20)->get();
 
         $title = 'HOME';

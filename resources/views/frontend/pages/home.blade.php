@@ -8,64 +8,108 @@
 
 
         <div id="wrapper">
-            <!-- section begin -->
-            <section id="section-about">
+            <section id="section-text">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                            <h1>What We Do</h1>
-                            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-                            <div class="spacer-single"></div>
+                        <div class="col-md-12">
+                            <div class="de_large-portfolio no-bottom">
+                                <div class="d_inner">
+                                    <h2 class="ultra-big wow fadeInUp" data-wow-delay=".1s">{{ $aboutme->your_name }}
+                                    </h2>
+                                    <div class="d_image jarallax">
+                                        <img style="width: 467px" src="{{ asset('aboutmes/' . $aboutme->homeimage) }}"
+                                            alt="{{ $aboutme->homeimage }}" class="img-fluid wow fadeInUp">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-                        <div class="col-md-4 wow fadeInLeft">
-                            <h3><span class="id-color">Residential</span> Design</h3>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                            <div class="spacer-single"></div>
-                            <a class="image-popup-no-margins"
-                                href="{{ URL::to('/frontend_assets') }}/images/misc/pic_1.jpg">
-                                <img src="{{ URL::to('/frontend_assets') }}/images/misc/pic_1.jpg" class="img-responsive"
-                                    alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 wow fadeInUp" data-wow-delay=".2s">
-                            <h3><span class="id-color">Office</span> Design</h3>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                            <div class="spacer-single"></div>
-                            <a class="image-popup-no-margins"
-                                href="{{ URL::to('/frontend_assets') }}/images/misc/pic_2.jpg">
-                                <img src="{{ URL::to('/frontend_assets') }}/images/misc/pic_2.jpg" class="img-responsive"
-                                    alt="">
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 wow fadeInRight">
-                            <h3><span class="id-color">Commercial</span> Design</h3>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                            <div class="spacer-single"></div>
-                            <a class="image-popup-no-margins"
-                                href="{{ URL::to('/frontend_assets') }}/images/misc/pic_3.jpg">
-                                <img src="{{ URL::to('/frontend_assets') }}/images/misc/pic_3.jpg" class="img-responsive"
-                                    alt="">
-                            </a>
-                        </div>
-
                     </div>
+
+                    <div class="spacer-triple"></div>
+
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="text-center">
+                                <h2 class="wow fadeInUp">About Me</h2>
+                                <div class="separator" style="background-size: cover;"><span><i
+                                            class="fa fa-circle"></i></span></div>
+                                <p class="wow fadeInUp text-white">{!! $aboutme->details !!}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-triple"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="wow fadeInUp">My Skills</h2>
+                        </div>
+                        <div class="col-md-4 wow fadeInUp">
+                            <div class="skill-bar style-2">
+                                <h5>Design</h5>
+                                <div class="de-progress">
+                                    <div class="value"></div>
+                                    <div class="progress-bar" data-value="80%">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="skill-bar style-2">
+                                <h5>Branding</h5>
+                                <div class="de-progress">
+                                    <div class="value"></div>
+                                    <div class="progress-bar" data-value="70%">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 wow fadeInUp">
+                            <div class="skill-bar style-2">
+                                <h5>Marketing</h5>
+                                <div class="de-progress">
+                                    <div class="value"></div>
+                                    <div class="progress-bar" data-value="70%">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="skill-bar style-2">
+                                <h5>Development</h5>
+                                <div class="de-progress">
+                                    <div class="value"></div>
+                                    <div class="progress-bar" data-value="90%">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 wow fadeInUp">
+                            <div class="skill-bar style-2">
+                                <h5>Photography</h5>
+                                <div class="de-progress">
+                                    <div class="value"></div>
+                                    <div class="progress-bar" data-value="90%">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="skill-bar style-2">
+                                <h5>SEO</h5>
+                                <div class="de-progress">
+                                    <div class="value"></div>
+                                    <div class="progress-bar" data-value="75%">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </section>
-            <!-- section close -->
-
 
             <!-- section begin -->
             <section id="section-steps" class="text-light">
@@ -189,7 +233,8 @@
 
                 </div>
 
-                <div id="gallery" class="gallery full-gallery de-gallery pf_full_width wow fadeInUp" data-wow-delay=".3s">
+                <div id="gallery" class="gallery full-gallery de-gallery pf_full_width wow fadeInUp"
+                    data-wow-delay=".3s">
 
                     <!-- gallery item -->
                     <div class="item residential">
