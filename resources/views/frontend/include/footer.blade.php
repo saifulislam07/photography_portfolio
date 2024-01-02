@@ -12,10 +12,7 @@
                  <div class="col-lg-4">
                      <div class="widget widget_recent_post">
                          <h3>Copyright Note</h3>
-
                          <p> {{ $websetting->copyright_note }}</p>
-
-
                      </div>
                  </div>
 

@@ -142,8 +142,9 @@ class ContactmeController extends Controller
     {
         //
     }
-    
-      public function contactsemail(Request $request){
+
+    public function contactsemail(Request $request)
+    {
         $contactmes = contactme::get();
         return view('admin.pages.contactsmail.contact', get_defined_vars());
     }

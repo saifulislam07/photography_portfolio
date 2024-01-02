@@ -217,28 +217,25 @@ class FrontEndController extends Controller
         $socialMedia = Socialmedia::first();
 
         // dd($slidersImages);
-        $recentimages = WebGallery::orderBy('id', 'desc')->take(20)->get();
+        $recentimages = WebGallery::orderBy('id', 'desc')->where('status', '1')->take(12)->get();
 
         $title = 'HOME';
         // dd($recentimages);
         return view('frontend.pages.home', get_defined_vars());
     }
 
-    public function principle()
-    {
-        return view('frontend.pages.principles', get_defined_vars());
-    }
+
     public function contacts()
     {
+        $title = 'CONTACT ME';
+        $websetting = websetup();
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
+
+        return view('frontend.pages.contact-me', get_defined_vars());
         return view('frontend.pages.contacts', get_defined_vars());
     }
 
-    public function constitution()
-    {
-        return view('frontend.pages.constitution', get_defined_vars());
-    }
 
     public function contact()
     {
@@ -255,11 +252,6 @@ class FrontEndController extends Controller
         return view('frontend.pages.gallery', get_defined_vars());
     }
 
-    public function OurRules()
-    {
-        $rulesdetails = DB::table('rules')->first();
-        return view('frontend.pages.OurRules', get_defined_vars());
-    }
 
 
 

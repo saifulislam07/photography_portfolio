@@ -168,7 +168,7 @@ Route::get('/my-commercial-work-details/{id}', [FrontEndController::class, 'myco
 
 
 Route::get('/buyphoto', [FrontEndController::class, 'buyphoto'])->name('buyphoto');
-Route::get('/contacts', [FrontEndController::class, 'contacts'])->name('contacts');
+Route::get('/contact-me', [FrontEndController::class, 'contacts'])->name('contacts');
 Route::get('viewstory/{id}', [FrontEndController::class, 'viewstory']);
 Route::get('/my-clients', [FrontEndController::class, 'myclients'])->name('myclients');
 

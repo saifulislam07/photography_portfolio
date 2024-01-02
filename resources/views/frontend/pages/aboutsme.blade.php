@@ -4,9 +4,22 @@
 @endsection
 
 @section('front-main-content')
+    <style>
+        div.transbox {
+
+            background-color: #ffffff;
+            border: 1px solid rgb(255, 217, 0);
+            opacity: 0.1;
+            filter: grayscale(100%);
+        }
+
+        div.transbox p {
+            margin: 5%;
+            font-weight: bold;
+            color: #ffa600;
+        }
+    </style>
     <div id="content" class="no-bottom no-top">
-
-
         <div id="wrapper">
             <section id="subheader" data-speed="8" data-type="background">
                 <div class="container">
@@ -32,60 +45,49 @@
                             <!-- team member -->
                             <div class="de-team-list">
                                 <div class="team-pic">
-                                    <img src="{{ URL::to('/frontend_assets') }}/images/team/team_pic_2.jpg"
-                                        class="img-responsive" alt="" />
+                                    <img style="width: 467px" src="{{ asset('aboutmes/' . $aboutme->aboutppageimage) }}"
+                                        alt="{{ $aboutme->aboutppageimage }}" class="img-responsive img-fluid wow fadeInUp">
                                 </div>
-                                <div class="team-desc">
-                                    <h3>Michael Dennis</h3>
-                                    <p class="lead">Creative Director</p>
-                                    <div class="small-border"></div>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat
-                                        nulla pariatur.</p>
+                                <div class="team-desc text-center">
+                                    <h3>{{ $aboutme->your_name }}</h3>
+                                    <p class="lead">{{ $aboutme->title }}</p>
 
-                                    <div class="social">
-                                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                                        <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
-                                        <a href="#"><i class="fa fa-skype fa-lg"></i></a>
+
+                                    <div class="social text-center">
+
+                                        <div class="social-icons">
+                                            <a target="_blank" href="{{ $socialMedia->facebook }}"><i
+                                                    class="fa fa-facebook fa-lg"></i></a>
+                                            <a target="_blank" href="{{ $socialMedia->twitter }}"><i
+                                                    class="fa fa-twitter fa-lg"></i></a>
+                                            <a target="_blank" href="{{ $socialMedia->instagram }}"><i
+                                                    class="fa fa-instagram fa-lg"></i></a>
+                                            <a target="_blank" href="{{ $socialMedia->linkedin }}"><i
+                                                    class="fa fa-linkedin fa-lg"></i></a>
+                                        </div>
+
+                                        <div class="transbox mt-2">
+                                            <img style="width: 450px"
+                                                src="{{ asset('aboutmes/' . $aboutme->aboutppageimage) }}"
+                                                alt="{{ $aboutme->aboutppageimage }}"
+                                                class="img-responsive img-fluid wow fadeInUp">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- team close -->
                         </div>
 
                         <div class="col-lg-6 col-md-6 ">
                             <!-- team member -->
-
-
                             <div class="team-desc">
-
-                                <h2>Award Winning Interior Design</h2>
-
-                                <p class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                    eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                ex ea
-                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-
+                                <h2>{{ $aboutme->title }}</h2>
+                                <p class="intro">
+                                    {!! $aboutme->details !!}
+                                </p>
                             </div>
-
                             <!-- team close -->
                         </div>
-
                     </div>
-
-
                 </section>
 
 
@@ -169,7 +171,7 @@
                 <!-- section begin -->
                 <section id="view-all-projects" class="call-to-action bg-color dark text-center" data-speed="5"
                     data-type="background" aria-label="view-all-projects">
-                    <a href="contact.html" class="btn btn-line black btn-big">Talk With Us</a>
+                    <a href="{{ route('contacts') }}" class="btn btn-line black btn-big">Talk With Me</a>
                 </section>
                 <!-- logo carousel section close -->
 

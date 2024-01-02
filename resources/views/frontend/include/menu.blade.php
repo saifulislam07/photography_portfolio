@@ -57,7 +57,7 @@
                                  <li><a href="{{ route('myclients') }}">client</a></li>
                              </ul>
                          </li>
-                         <li><a href="project-wide-4-cols.html">Contact</a></li>
+                         <li><a href="{{ route('contacts') }}">Contact</a></li>
 
                      </ul>
                  </nav>
