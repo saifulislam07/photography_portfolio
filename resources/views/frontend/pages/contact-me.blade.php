@@ -30,7 +30,8 @@
                                 <div class="card-body alert-black">
                                     @foreach ($errors->all() as $error)
                                         <h4 style="color: #fab702; border: 1px solid #ffffff; padding: 5px 5px">
-                                            {{ $error }}
+                                            <i style="color: #ff0000;" class="fa fa-exclamation-triangle"
+                                                aria-hidden="true"></i> {{ $error }}
                                         </h4>
                                     @endforeach
                                 </div>
@@ -47,13 +48,13 @@
                                 <div id='name_error' class='error'>Please enter your name.</div>
                                 <div>
                                     <input type='text' name='name' id='name' class="form-control"
-                                        placeholder="Your Name">
+                                        placeholder="Your Name *">
                                 </div>
 
                                 <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                 <div>
                                     <input type='email' name='email' id='email' class="form-control"
-                                        placeholder="Your Email">
+                                        placeholder="Your Email *">
                                 </div>
 
                                 <div id='phone_error' class='error'>Please enter your phone number.</div>
@@ -65,7 +66,7 @@
                             <div class="col-md-6">
                                 <div id='message_error' class='error'>Please enter your message.</div>
                                 <div>
-                                    <textarea name='message' id='message' class="form-control" placeholder="Your Message"></textarea>
+                                    <textarea name='message' id='message' class="form-control" placeholder="Your Message *"></textarea>
                                 </div>
                             </div>
 

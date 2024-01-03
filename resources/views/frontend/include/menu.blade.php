@@ -43,10 +43,10 @@
                      <ul id="mainmenu">
                          <li><a href="/">Home<span></span></a></li>
                          <li><a href="{{ route('aboutsme') }}">Profile</a></li>
-                         <li><a href="project-wide-4-cols.html">story</a></li>
+                         <li><a href="{{ route('photostory') }}">story</a></li>
                          <li><a href="{{ route('mygallery') }}">Gallery</a></li>
                          <li><a href="{{ route('myvideogallery') }}">Video</a></li>
-                         <li><a href="project-wide-4-cols.html">Buy</a></li>
+                         <li><a href="{{ route('buyphoto') }}">Buy</a></li>
                          <li><a href="#">Media</a>
                              <ul>
                                  <li><a href="{{ route('mypublications') }}">Publication</a></li>

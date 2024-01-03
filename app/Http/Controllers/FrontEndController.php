@@ -3,27 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\FrontEnd;
-use App\Models\Rules;
-use App\Models\Job;
-use App\Models\User;
-use App\Models\Apply;
 use App\Models\story;
 use App\Models\Aboutme;
 use App\Models\Achievement;
-use App\Models\Album;
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Commercial;
 use App\Models\medialink;
 use App\Models\Publication;
-use App\Models\Slider;
 use App\Models\Socialmedia;
 use App\Models\TearSheet;
 use App\Models\Video;
 use App\Models\WebGallery;
-use App\Models\webSetup;
 use Illuminate\Http\Request;
-use Session;
-use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
 
@@ -66,11 +58,28 @@ class FrontEndController extends Controller
 
     public function buyphoto()
     {
+        $websetting = websetup();
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
+        $title = 'Buy Photo';
+        $forsale = WebGallery::orderBy('id', 'desc')->where('status', '1')->paginate(12);
+
+        $categorys = Category::orderBy('title', 'asc')->get();
         return view('frontend.pages.buyphoto', get_defined_vars());
     }
 
+    public function buyPhotoDetails($id)
+    {
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+        $socialMedia = Socialmedia::first();
+        $title = 'Buy Photo Details';
+
+        $forsale = WebGallery::find($id);
+
+        $categorys = Category::orderBy('title', 'asc')->get();
+        return view('frontend.pages.buyphotodetails', get_defined_vars());
+    }
 
     public function myclients()
     {
@@ -172,6 +181,7 @@ class FrontEndController extends Controller
 
     public function myvideogallery()
     {
+        $title = 'Video Gallery';
         $socialMedia = Socialmedia::first();
         $websetting = websetup();
         $myvideos = Video::orderBy('id', 'desc')->paginate(12);
@@ -181,18 +191,33 @@ class FrontEndController extends Controller
 
     public function photostory()
     {
-        $LastStory = story::where('status', 1)->orderBy('id', 'DESC')->first();
-        $aboutme = Aboutme::first();
+        $lastStory = story::where('status', 1)->orderBy('id', 'DESC')->paginate(3);
+        $title = 'Photo Story';
         $socialMedia = Socialmedia::first();
-        $allstory = story::where('status', 1)->get();
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+        // $allstory = story::where('status', 1)->get();
 
-        $allcategorycount = story::select("stories.*", "categories.title as catname", DB::raw('count("category_id") as total'))
+        $allcategorycount = story::select("stories.id", "stories.title", "categories.title as catname", DB::raw('count(stories.category_id) as total'))
             ->join("categories", "categories.id", "=", "stories.category_id")
-            ->groupBy("category_id")
+            ->groupBy("stories.id", "stories.title", "categories.title")
             ->get();
-        // dd($allcategorycount->all());
+
         return view('frontend.pages.photostory', get_defined_vars());
     }
+
+
+    public function photostoryDetails($id)
+    {
+        $lastStory = story::find($id);
+        $title = 'Photo Story Details';
+        $socialMedia = Socialmedia::first();
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+
+        return view('frontend.pages.photostorydetails', get_defined_vars());
+    }
+
     public function viewstory($id)
     {
         $LastStory = story::where('status', 1)->where('id', $id)->first();

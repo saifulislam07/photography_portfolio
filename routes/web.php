@@ -154,7 +154,8 @@ Route::get('/portfolio', [FrontEndController::class, 'portfolio'])->name('portfo
 Route::get('/myachievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
 Route::get('/my-photo-gallery', [FrontEndController::class, 'mygallery'])->name('mygallery');
 Route::get('/my-video-gallery', [FrontEndController::class, 'myvideogallery'])->name('myvideogallery');
-Route::get('/photostory', [FrontEndController::class, 'photostory'])->name('photostory');
+Route::get('/photo-story', [FrontEndController::class, 'photostory'])->name('photostory');
+Route::get('/story-details/{id}', [FrontEndController::class, 'photostoryDetails'])->name('storyDetails');
 
 Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->name('mypublications');
 Route::get('/tear-sheet', [FrontEndController::class, 'tearSheet'])->name('tear-sheet');
@@ -167,7 +168,8 @@ Route::get('/my-commercial-work', [FrontEndController::class, 'mycommercials'])-
 Route::get('/my-commercial-work-details/{id}', [FrontEndController::class, 'mycommercialsDetails'])->name('mycommercials-details');
 
 
-Route::get('/buyphoto', [FrontEndController::class, 'buyphoto'])->name('buyphoto');
+Route::get('/buy-photos', [FrontEndController::class, 'buyphoto'])->name('buyphoto');
+Route::get('/buy-photos-details/{id}', [FrontEndController::class, 'buyPhotoDetails'])->name('buyPhotoDetails');
 Route::get('/contact-me', [FrontEndController::class, 'contacts'])->name('contacts');
 Route::get('viewstory/{id}', [FrontEndController::class, 'viewstory']);
 Route::get('/my-clients', [FrontEndController::class, 'myclients'])->name('myclients');

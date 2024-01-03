@@ -1,72 +1,86 @@
 @extends('frontend.masterTemp')
 @section('fmenuname')
-Contact Me
+    BUY PHOTO
 @endsection
-
-
-
 @section('front-main-content')
-<div class="wrapper light-wrapper">
-    <div class="container inner pt-70">
-        <div class="row">
-            <div class="space20"></div>
-            <div class="space20"></div>
-            <div class="space20"></div>
-            <div class="space20"></div>
-            <div class="row">
+    <div id="content" class="no-bottom no-top">
 
-                <!--/column -->
-                <aside class="col-md-6 sidebar">
-                    <div class="box bg-white shadow p-30 text-center" data-aos="fade-left">
-                        <img data-aos="zoom-in" src="{{ asset('./aboutmes/abc.jpg') }}" alt="frame" width="50%"
-                            style="margin: 0 auto ; padding-bottom: 17px">
-
-                        <p>If you need pictures for office, home, magazine, calendar or any other work,
-                            please contact
-                            me, I will frame your choice and deliver it to your home or office.</p>
-
+        <section id="subheader" data-speed="8" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>BUY photo</h1>
+                        <ul class="crumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="sep">/</li>
+                            <li>BUY photo</li>
+                        </ul>
                     </div>
-                    <!--/.box -->
-                </aside>
-                <aside class="col-md-6 sidebar">
-                    <div class="box bg-white shadow p-30" data-aos="fade-right">
-                        <h4>For Buy Photos</h4>
-                        <p>If you are interested to buy any of my photographs for the calendar, magazine, office, house
-                            or other purposes please contact me to following email address</p>
-                        <ul class="icon-list text-center">
-                            <a class="btn btn-xs btn-info" href="{{ route('contacts')}}">
-                                <li><i class="fa fa-map"></i>Contact</li>
-                            </a>
-                            <li><i class="fa fa-envelope"></i><a href="mailto:{{ $aboutme->email }}"
-                                    class="nocolor">{{ $aboutme->email }}</a></li>
-                            <li><i class="fa fa-phone-square"></i>{{ $aboutme->contact }}</li>
+                </div>
+            </div>
+        </section>
+
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <ul class="products row">
+                            @foreach ($forsale as $photo)
+                                <li class="col-xl-3 col-lg-4 col-md-6 product">
+                                    <div class="p-inner">
+                                        <div class="p-images">
+                                            <a href="{{ route('buyPhotoDetails', $photo->id) }}">
+                                                <img src="{{ asset('galleryImage/' . $photo->images) }}"
+                                                    class="pi-1 img-responsive" alt="{{ $photo->images }}">
+                                            </a>
+                                        </div>
+                                        <a href="{{ route('buyPhotoDetails', $photo->id) }}">
+                                            <h4>{{ $photo->title }}</h4>
+                                        </a>
+                                        <div class="price">$420</div>
+                                        <a href="#" class="btn btn-line">Add To Cart</a>
+                                    </div>
+                                </li>
+                            @endforeach
+
                         </ul>
 
-                        <div class="card">
-                            <div class="card-body text-center hover">
-                                <ul class="social social-color" data-aos="fade-up" data-aos-easing="linear"
-                                    data-aos-duration="5000">
-                                    <li><a target="_blank" href="{{ $socialMedia->facebook }}"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                    <li><a target="_blank" href="{{ $socialMedia->instagram }}"><i
-                                                class="fa fa-instagram"></i></a></li>
-                                    <li><a target="_blank" href="{{ $socialMedia->twitter }}"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li><a target="_blank" href="{{ $socialMedia->linkedin }}"><i
-                                                class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
+                        <div class="text-center">
+                            <ul class="pagination">
+                                <li><a href="#">Prev</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="sidebar" class="col-md-3">
+                        <div class="widget widget_search mb-3 pb-3">
+                            <input type='text' name='search' id='search' class="form-control"
+                                placeholder="search photo">
+                            <button id="btn-search" type='submit'></button>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget widget_category">
+                            <h4 class="pb-2">Photo Category</h4>
+                            <ul>
+                                @foreach ($categorys as $category)
+                                    <li>
+                                        <a href="#" style=" border: 1px solid orange">{{ $category->title }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
-                    <!--/.box -->
-                </aside>
-                <!-- /column .sidebar -->
+
+                </div>
             </div>
-            <!-- /column -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</div>
-</div>
-@endsection
+    @endsection

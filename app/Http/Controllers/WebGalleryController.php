@@ -20,8 +20,6 @@ class WebGalleryController extends Controller
 
     public function viewall()
     {
-        // $categorys = DB::table('gallery_category')->get();
-        // $galleriImages = DB::table('web_galleries')->get();
         $galleriImages = DB::table('web_galleries')
             ->select('web_galleries.*', 'categories.title')
             ->join('categories', 'categories.id', '=', 'web_galleries.category')
@@ -29,6 +27,7 @@ class WebGalleryController extends Controller
 
         return view('admin.pages.galleryImages.viewgallery', get_defined_vars());
     }
+
     public function changeStatus(Request $request)
     {
         $statusid = $request->status;
@@ -45,18 +44,17 @@ class WebGalleryController extends Controller
         // dd($req->all());
         $req->validate([
             'catName' => 'required',
+            'title' => 'required',
             // 'image' => 'required|image|mimes:jpeg,png,jpg|max:800',
             'url' => 'required',
         ]);
         $catName = $req->input('catName');
         $url = $req->input('url');
+        $url = $req->input('title');
         $tags = $req->input('tags');
         $details = $req->input('details');
         $image = $req->input('image');
         foreach ($catName as  $key => $itemData) {
-
-
-
             $details = $req->image->move(public_path('/uploads/gallery/'), $image[$key]);
 
             $galleryItem = new WebGallery();
@@ -69,18 +67,7 @@ class WebGalleryController extends Controller
         }
 
 
-        // foreach ($req->file('image') as $key => $image) {
-        //     $name = $image->getClientOriginalName();
-        //     $image->move(public_path() . '/uploads/gallery/', $name);
-        //     $imgData[] = $name;
-        //     $fileModal = new WebGallery();
-        //     $fileModal->category = $req->category_id[$key];
-        //     $fileModal->url = $req->url[$key];
-        //     $fileModal->tags = $req->tags[$key];
-        //     $fileModal->details = $req->details[$key];
-        //     $fileModal->images = $imgData[$key];
-        //     $fileModal->save();
-        // }
+
 
         return back()->with('success', 'File has successfully uploaded!');
     }
@@ -91,6 +78,7 @@ class WebGalleryController extends Controller
 
         $validatedData = $request->validate([
             'url' => 'required|url',
+            'title' => 'required',
             'category_id' => 'required|integer',
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
@@ -103,6 +91,7 @@ class WebGalleryController extends Controller
         $image = WebGallery::create([
             'details' => $request->details,
             'url' => $request->url,
+            'title' => $request->title,
             'category' => $request->category_id,
             'tags' => $request->tags,
             'images' => $fileName,

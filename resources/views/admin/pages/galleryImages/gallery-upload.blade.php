@@ -50,6 +50,7 @@
                                                     <tr>
 
                                                         <td class="text-center"><strong>Category</strong></td>
+                                                        <td class="text-center"><strong>Title</strong></td>
                                                         <td class="text-center"><strong>Image</strong></td>
                                                         <td class="text-center"><strong>URL</strong></td>
                                                         <td class="text-center"><strong>TAG</strong></td>
@@ -70,6 +71,11 @@
                                                                         {{ $each->title }}</option>
                                                                 @endforeach
                                                             </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="title" step="any"
+                                                                placeholder="Image title" id="title"
+                                                                class="form-control">
                                                         </td>
                                                         <td>
                                                             <input type="file" name="images" step="any"
@@ -114,17 +120,11 @@
                 $(document).ready(function() {
                     $('#addButton').click(function() {
                         var formData = new FormData($('#imageForm')[0]);
-
-
-
-
                         var image = $('#images').val();
                         if (image == '' || image == null) {
                             toastr.error('Image can not be empty');
                             return false;
                         }
-
-
 
                         $.ajax({
                             type: 'POST',
@@ -139,6 +139,7 @@
                                 toastr.success('Image addedd successfully');
                                 $('#details').val('');
                                 $('#url').val('');
+                                $('#title').val('');
                                 $('#tags').val('');
                                 $('#categoryID').val('');
                                 $('#images').val('');
