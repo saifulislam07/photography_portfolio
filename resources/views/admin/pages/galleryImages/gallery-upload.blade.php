@@ -51,6 +51,7 @@
 
                                                         <td class="text-center"><strong>Category</strong></td>
                                                         <td class="text-center"><strong>Title</strong></td>
+                                                        <td class="text-center"><strong>Price</strong></td>
                                                         <td class="text-center"><strong>Image</strong></td>
                                                         <td class="text-center"><strong>URL</strong></td>
                                                         <td class="text-center"><strong>TAG</strong></td>
@@ -72,10 +73,15 @@
                                                                 @endforeach
                                                             </select>
                                                         </td>
+
                                                         <td>
                                                             <input type="text" name="title" step="any"
                                                                 placeholder="Image title" id="title"
                                                                 class="form-control">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="price" step="any"
+                                                                placeholder="0.00" id="price" class="form-control">
                                                         </td>
                                                         <td>
                                                             <input type="file" name="images" step="any"
@@ -121,8 +127,25 @@
                     $('#addButton').click(function() {
                         var formData = new FormData($('#imageForm')[0]);
                         var image = $('#images').val();
+                        var price = $('#price').val();
+                        var title = $('#title').val();
+                        var url = $('#url').val();
+                        var categoryID = $('#categoryID').val();
+
+                        if (categoryID == '' || categoryID == null) {
+                            toastr.error('Category can not be empty');
+                            return false;
+                        }
+                        if (price == '' || price == null) {
+                            toastr.error('Price can not be empty');
+                            return false;
+                        }
                         if (image == '' || image == null) {
                             toastr.error('Image can not be empty');
+                            return false;
+                        }
+                        if (title == '' || title == null) {
+                            toastr.error('Titel can not be empty');
                             return false;
                         }
 
@@ -143,6 +166,7 @@
                                 $('#tags').val('');
                                 $('#categoryID').val('');
                                 $('#images').val('');
+                                $('#price').val('');
                             },
                             error: function(error) {
 

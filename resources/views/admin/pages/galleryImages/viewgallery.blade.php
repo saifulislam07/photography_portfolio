@@ -47,6 +47,8 @@
                                         <tr>
                                             <th>SL</th>
                                             <th>Category</th>
+                                            <th>Title</th>
+                                            <th>Price</th>
                                             <th>Image</th>
                                             <th>Create Time</th>
                                             <th>Tags</th>
@@ -60,7 +62,9 @@
                                         @foreach ($galleriImages as $key => $value)
                                             <tr>
                                                 <td>{{ $i++ }}</td>
+                                                <td>{{ $value->cat_title }}</td>
                                                 <td>{{ $value->title }}</td>
+                                                <td>{{ $value->price }}</td>
                                                 <td><img width="50px" class="zoom"
                                                         src="{{ asset('galleryImage/' . $value->images) }}">
                                                 </td>
@@ -68,9 +72,11 @@
                                                     {{ \Carbon\Carbon::parse($value->created_at)->format('j F, Y h:i A') }}
                                                 </td>
                                                 <td>
-                                                    {{ Str::of($value->tags)->limit(20) }}</td>
+                                                    {{ Str::of($value->tags)->limit(20) }}
+                                                </td>
                                                 <td>
                                                     {{ Str::of($value->details)->limit(20) }}
+                                                </td>
                                                 <td>
 
                                                     <input id="image_active_inactive_{{ $value->id }}"

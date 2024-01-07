@@ -10,7 +10,7 @@ class WebGallery extends Model
 {
     use HasFactory;
     protected $table = "web_galleries";
-    protected $fillable = ['category', 'images', 'category_id', 'url', 'tags', 'details', 'title'];
+    protected $fillable = ['category', 'images', 'category_id', 'url', 'tags', 'details', 'title', 'price'];
 
     // protected $guarded = [];
 

@@ -21,8 +21,9 @@ class WebGalleryController extends Controller
     public function viewall()
     {
         $galleriImages = DB::table('web_galleries')
-            ->select('web_galleries.*', 'categories.title')
+            ->select('web_galleries.*', 'categories.title as cat_title')
             ->join('categories', 'categories.id', '=', 'web_galleries.category')
+            ->orderBy('web_galleries.id', 'desc')
             ->get();
 
         return view('admin.pages.galleryImages.viewgallery', get_defined_vars());
@@ -45,12 +46,14 @@ class WebGalleryController extends Controller
         $req->validate([
             'catName' => 'required',
             'title' => 'required',
+            'price' => 'required',
             // 'image' => 'required|image|mimes:jpeg,png,jpg|max:800',
             'url' => 'required',
         ]);
         $catName = $req->input('catName');
         $url = $req->input('url');
-        $url = $req->input('title');
+        $title = $req->input('title');
+        $price = $req->input('price');
         $tags = $req->input('tags');
         $details = $req->input('details');
         $image = $req->input('image');
@@ -60,6 +63,8 @@ class WebGalleryController extends Controller
             $galleryItem = new WebGallery();
             $galleryItem->category = $catName[$key];
             $galleryItem->url =   $url[$key];
+            $galleryItem->title =   $title[$key];
+            $galleryItem->price =   $price[$key];
             $galleryItem->tags =  $tags[$key];
             $galleryItem->details = $details[$key];
             $galleryItem->images = $details;
@@ -79,6 +84,7 @@ class WebGalleryController extends Controller
         $validatedData = $request->validate([
             'url' => 'required|url',
             'title' => 'required',
+            'price' => 'required',
             'category_id' => 'required|integer',
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
@@ -91,6 +97,7 @@ class WebGalleryController extends Controller
         $image = WebGallery::create([
             'details' => $request->details,
             'url' => $request->url,
+            'price' => $request->price,
             'title' => $request->title,
             'category' => $request->category_id,
             'tags' => $request->tags,

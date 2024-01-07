@@ -39,7 +39,9 @@
                                             <h4>{{ $photo->title }}</h4>
                                         </a>
                                         <div class="price">$420</div>
-                                        <a href="#" class="btn btn-line">Add To Cart</a>
+                                        <a href="{{ route('add.to.cart', $photo->id) }}" role="button"
+                                            class="btn btn-line">Add To
+                                            Cart</a>
                                     </div>
                                 </li>
                             @endforeach
@@ -57,7 +59,6 @@
                                 <li><a href="#">Next</a></li>
                             </ul>
                         </div>
-
                     </div>
 
                     <div id="sidebar" class="col-md-3">

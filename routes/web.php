@@ -21,6 +21,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommercialController;
 use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TearSheetController;
 use App\Http\Controllers\WebSetupController;
 use Illuminate\Support\Facades\Auth;
@@ -109,10 +110,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/edit-education', [RegistrationController::class, 'edit_education'])->name('edit-education');
     Route::get('/view-member/{media}', [AdminController::class, 'view_member'])->name('view-member');
     Route::get('/gallery-images-upload', [WebGalleryController::class, 'galleryImagesUpload'])->name('gallery');
+    Route::get('/gallery-images-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
     Route::get('/video-add', [VideoController::class, 'create'])->name('vgallery');
     Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('edit-video');
     Route::post('/update/{id}', [VideoController::class, 'update'])->name('update-video');
-    Route::get('/gallery-images-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
 
     Route::post('changeStatus', [WebGalleryController::class, 'changeStatus'])->name('changeStatus');
 
@@ -143,6 +144,14 @@ Route::group(['middleware' => ['auth']], function () {
     //    rabbi //contact
     Route::get('Contactindex', [ContactUsController::class, 'index'])->name('Contactindex');
     Route::post('updatecontact/{id}', [ContactUsController::class, 'update']);
+
+
+
+    // buy routes
+    Route::get('cart', [SaleController::class, 'cart'])->name('cart');
+    Route::get('add-to-cart/{id}', [SaleController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('update-cart', [SaleController::class, 'update'])->name('update.cart');
+    Route::delete('remove-from-cart', [SaleController::class, 'remove'])->name('remove.from.cart');
 });
 
 Route::get('/jobView/{media}', [FrontEndController::class, 'jobView'])->name('jobView');
