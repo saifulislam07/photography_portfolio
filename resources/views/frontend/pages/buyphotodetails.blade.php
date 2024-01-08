@@ -39,7 +39,7 @@
                                     <div class="p-desc">
                                         <h3>{{ $forsale->title }}</h3>
 
-                                        <div class="price">$420</div>
+                                        <div class="price">${{ $forsale->price }}</div>
                                         <p>{{ $forsale->details }}</p>
 
                                         <h6 class="text-light  mb10">Quantity</h6>
@@ -47,7 +47,8 @@
                                             type="text" value="1" min="0" max="10"><span
                                             class="f-input-number-increment">+</span>
                                         <div class="spacer-single"></div>
-                                        <a href="#" class="btn btn-line">Add To Cart</a>
+                                        <a href="{{ route('add.to.cart', $forsale->id) }}" class="btn btn-line">Add To
+                                            Cart</a>
                                     </div>
                                 </div>
 

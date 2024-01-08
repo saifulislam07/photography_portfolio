@@ -24,40 +24,39 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <table id="cart" class="table table-hover table-condensed">
+                    <div class="col-md-9">
+                        <table class="table table-dark table-cart">
                             <thead>
                                 <tr>
-                                    <th style="width:50%">Product</th>
-                                    <th style="width:10%">Price</th>
-                                    <th style="width:8%">Quantity</th>
-                                    <th style="width:22%" class="text-center">Subtotal</th>
-                                    <th style="width:10%"></th>
+                                    <th scope="col">Items</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Final Price</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @php $total = 0 @endphp
                                 @if (session('cart'))
                                     @foreach (session('cart') as $id => $details)
                                         @php $total += $details['price'] * $details['quantity'] @endphp
                                         <tr data-id="{{ $id }}">
-                                            <td data-th="Product">
-                                                <div class="row">
-                                                    <div class="col-sm-3 hidden-xs">
-                                                        image
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <h4 class="nomargin">{{ $details['title'] }}</h4>
+                                            <td>
+                                                <div class="d-cart-item">
+                                                    <img src="" alt="image">
+                                                    <div class="text">
+                                                        {{ $details['title'] }}
+                                                        <div class="price">${{ $details['price'] }}</div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td data-th="Price">${{ $details['price'] }}</td>
                                             <td data-th="Quantity">
-                                                <input type="number" value="{{ $details['quantity'] }}"
-                                                    class="form-control quantity update-cart" />
+
+                                                <input class="text-center quantity update-cart"
+                                                    value="{{ $details['quantity'] }}" type="number" value="1"
+                                                    min="0" max="10">
                                             </td>
-                                            <td data-th="Subtotal" class="text-center">
-                                                ${{ $details['price'] * $details['quantity'] }}</td>
+                                            <td data-th="Subtotal"> ${{ $details['price'] * $details['quantity'] }}</td>
                                             <td class="actions" data-th="">
                                                 <button class="btn btn-danger btn-sm remove-from-cart"><i
                                                         class="fa fa-trash-o"></i></button>
@@ -66,25 +65,25 @@
                                     @endforeach
                                 @endif
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="5" class="text-right">
-                                        <h3><strong>Total ${{ $total }}</strong></h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5" class="text-right">
-                                        <a href="{{ route('buyphoto') }}" class="btn btn-warning"><i
-                                                class="fa fa-angle-left"></i> Continue Shopping</a>
-                                        <button class="btn btn-success">Checkout</button>
-                                    </td>
-                                </tr>
-                            </tfoot>
                         </table>
+                    </div>
+
+                    <div id="sidebar" class="col-md-3">
+                        <div class="d-summary">
+                            <h3>Summary</h3>
+                            <div class="de-flex">
+                                <div>Total</div>
+                                <div class="strong">${{ $total }}</div>
+                            </div>
+                            <div class="spacer-line"></div>
+                            <a href="#" class="btn-custom btn-fullwidth text-center">Checkout</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 
     <script type="text/javascript">

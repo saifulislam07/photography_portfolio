@@ -38,7 +38,7 @@
                                         <a href="{{ route('buyPhotoDetails', $photo->id) }}">
                                             <h4>{{ $photo->title }}</h4>
                                         </a>
-                                        <div class="price">$420</div>
+                                        <div class="price">${{ $photo->price }}</div>
                                         <a href="{{ route('add.to.cart', $photo->id) }}" role="button"
                                             class="btn btn-line">Add To
                                             Cart</a>
