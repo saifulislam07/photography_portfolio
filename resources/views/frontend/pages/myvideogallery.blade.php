@@ -36,7 +36,7 @@
                         @foreach ($myvideos as $each)
                             <div class="col-md-3 col-sm-6 col-xs-12 item mb30 residential">
                                 <div class="picframe">
-                                    <a class="simple-ajax-popup-align-top-custom" href="{{ $each->link }}">
+                                    <a class="simple-ajax-popup-align-top-custom" type="button" src="{{ $each->link }}">
                                         <span class="overlay-1">
                                             <span class="pf_text">
                                                 <span class="project-name">{{ $each->title }}</span>
@@ -50,6 +50,10 @@
                         @endforeach
                         <!-- gallery item -->
                     </div>
+                    <div class="text-center pb-3">
+                        {{ $myvideos->links() }}
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,26 +61,25 @@
 @endsection
 @section('extra_js')
     <script>
-        $('.simple-ajax-popup-align-top-custom').magnificPopup({
+        $(document).ready(function() {
+            $('.pagination li').removeClass('page-item');
+            $('.pagination li').removeClass('disabled');
+            $('.pagination li a').removeClass('page-link');
+            $('.pagination li span').replaceWith(function() {
+                return $("<a />").append($(this).contents());
+            });
 
-            items: {
-                src: 'https://www.youtube.com/watch?v=7eo8XpT4CmM'
-            },
-            type: 'iframe',
-            iframe: {
-                markup: '<div class="mfp-iframe-scaler">' +
-                    '<div class="mfp-close"></div>' +
-                    '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
-                    '</div>',
-                patterns: {
-                    youtube: {
-                        index: 'youtube.com/',
-                        id: 'v=',
-                        src: '//www.youtube.com/embed/%id%?autoplay=1'
-                    }
+        });
+    </script>
+    <script>
+        $('.simple-ajax-popup-align-top-custom').click(function() {
+            console.log($(this).attr('src'));
+            $.magnificPopup.open({
+                items: {
+                    src: $(this).attr('src')
                 },
-                srcAction: 'iframe_src',
-            }
+                type: 'iframe',
+            });
         });
     </script>
 @endsection"

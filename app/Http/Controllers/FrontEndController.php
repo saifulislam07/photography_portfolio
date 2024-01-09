@@ -184,7 +184,7 @@ class FrontEndController extends Controller
         $title = 'Video Gallery';
         $socialMedia = Socialmedia::first();
         $websetting = websetup();
-        $myvideos = Video::orderBy('id', 'desc')->paginate(12);
+        $myvideos = Video::orderBy('id', 'desc')->paginate(8);
         $title = 'Video Gallery';
         return view('frontend.pages.myvideogallery', get_defined_vars());
     }
