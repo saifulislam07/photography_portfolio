@@ -88,7 +88,7 @@
                 <!-- section begin -->
                 <section id="call-to-action" class="call-to-action bg-color dark text-center" data-speed="5"
                     data-type="background" aria-label="call-to-action">
-                    <a href="contact.html" class="btn btn-line black btn-big">Get Quotation</a>
+                    <a href="{{ route('contacts') }}" class="btn btn-line black btn-big">Contact Me</a>
                 </section>
                 <!-- logo carousel section close -->
 

@@ -109,7 +109,7 @@ class FrontEndController extends Controller
         $websetting = websetup();
         $socialMedia = Socialmedia::first();
 
-        $mypublication = Publication::get();
+        $mypublication = Publication::paginate(9);
 
         return view('frontend.pages.mypublications', get_defined_vars());
     }
@@ -119,7 +119,7 @@ class FrontEndController extends Controller
         $title = 'Tear Sheet';
         $websetting = websetup();
         $socialMedia = Socialmedia::first();
-        $tearSheet = TearSheet::get();
+        $tearSheet = TearSheet::paginate(12);
         return view('frontend.pages.tear-sheet', get_defined_vars());
     }
 
@@ -184,7 +184,7 @@ class FrontEndController extends Controller
         $title = 'Video Gallery';
         $socialMedia = Socialmedia::first();
         $websetting = websetup();
-        $myvideos = Video::orderBy('id', 'desc')->paginate(8);
+        $myvideos = Video::orderBy('id', 'desc')->paginate(12);
         $title = 'Video Gallery';
         return view('frontend.pages.myvideogallery', get_defined_vars());
     }
@@ -201,7 +201,7 @@ class FrontEndController extends Controller
         $allcategorycount = story::select("stories.id", "stories.title", "categories.title as catname", DB::raw('count(stories.category_id) as total'))
             ->join("categories", "categories.id", "=", "stories.category_id")
             ->groupBy("stories.id", "stories.title", "categories.title")
-            ->get();
+            ->paginate(4);
 
         return view('frontend.pages.photostory', get_defined_vars());
     }

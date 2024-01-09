@@ -52,7 +52,6 @@
                     </div>
                     <div class="text-center pb-3">
                         {{ $myvideos->links() }}
-
                     </div>
                 </div>
             </div>
@@ -62,24 +61,15 @@
 @section('extra_js')
     <script>
         $(document).ready(function() {
-            $('.pagination li').removeClass('page-item');
-            $('.pagination li').removeClass('disabled');
-            $('.pagination li a').removeClass('page-link');
-            $('.pagination li span').replaceWith(function() {
-                return $("<a />").append($(this).contents());
-            });
-
-        });
-    </script>
-    <script>
-        $('.simple-ajax-popup-align-top-custom').click(function() {
-            console.log($(this).attr('src'));
-            $.magnificPopup.open({
-                items: {
-                    src: $(this).attr('src')
-                },
-                type: 'iframe',
+            $('.simple-ajax-popup-align-top-custom').click(function() {
+                var videoSrc = $(this).attr('src');
+                $.magnificPopup.open({
+                    items: {
+                        src: videoSrc
+                    },
+                    type: 'iframe',
+                });
             });
         });
     </script>
-@endsection"
+@endsection
