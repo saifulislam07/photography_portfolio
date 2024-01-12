@@ -269,13 +269,13 @@ class FrontEndController extends Controller
         return view('frontend.pages.contact', get_defined_vars());
     }
 
-    public function gallery()
-    {
-        $aboutme = Aboutme::first();
-        $socialMedia = Socialmedia::first();
-        $galleryImages = DB::table('rules')->first();
-        return view('frontend.pages.gallery', get_defined_vars());
-    }
+    // public function gallery()
+    // {
+    //     $aboutme = Aboutme::first();
+    //     $socialMedia = Socialmedia::first();
+    //     $galleryImages = DB::table('rules')->first();
+    //     return view('frontend.pages.gallery', get_defined_vars());
+    // }
 
 
 

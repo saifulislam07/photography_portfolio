@@ -149,7 +149,25 @@
                 </div>
                 <!--/. container-fluid -->
             </section>
-        @elseif(Auth::user()->type == 2)
+        @elseif(Auth::user()->type == 'User')
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Info boxes -->
+                    <div class="row">
+                        <div class="info-box">
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <div class="card text-center">
+                                    <div class="card-body bg-warning">
+                                        <h3>Welcome to Dashboard</h3>
+                                        <h2 class="text-white">{{ Auth::user()->name }}</h2>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         @endif
 
 

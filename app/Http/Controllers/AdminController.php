@@ -22,7 +22,6 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         if ($request->session()) {
-
             $story = story::count();
             $contactemail = contactme::count();
             $categorycount = Category::count();
@@ -30,7 +29,6 @@ class AdminController extends Controller
             $galleryvideo = Video::count();
             $international = Achievement::where('type', 'International')->count();
             $national = Achievement::where('type', 'National')->count();
-
             return view('admin/pages/dashboard', get_defined_vars());
         } else {
             $request->session()->flash('error', 'You Can not access this page before login');

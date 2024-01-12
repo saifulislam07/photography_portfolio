@@ -3,22 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registration;
+use App\Models\Socialmedia;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Hash;
-use Auth;
-use DB;
 
-class RegistrationController extends Controller {
+use DB;
+use Illuminate\Support\Facades\Auth;
+
+class RegistrationController extends Controller
+{
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
+        $title = 'CONTACT ME';
+        $websetting = websetup();
+
+        $socialMedia = Socialmedia::first();
+
         return view('frontend.pages.signin', get_defined_vars());
     }
 
@@ -27,7 +36,8 @@ class RegistrationController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
@@ -37,7 +47,8 @@ class RegistrationController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit_profile(Request $request) {
+    public function edit_profile(Request $request)
+    {
         $userid = auth()->user()->id;
         if (!empty($request->image)) {
             $request->validate([
@@ -45,26 +56,26 @@ class RegistrationController extends Controller {
             ]);
             $image = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $image);
-        }else{
+        } else {
             $image = $request->oldImage;
         }
-        
+
         if (!empty($request->cv)) {
             $request->validate([
                 'cv'   => 'mimes:doc,pdf,docx'
             ]);
             $cv = time() . '.' . $request->cv->extension();
             $request->cv->move(public_path('cv'), $cv);
-            
-//            $file = $request->file('cv');
-//            $filename = time() . '.' . $request->file('cv')->extension();
-//            $filePath = public_path() . '/cv/';
-//            $file->move($filePath, $filename);
-        }else{
+
+            //            $file = $request->file('cv');
+            //            $filename = time() . '.' . $request->file('cv')->extension();
+            //            $filePath = public_path() . '/cv/';
+            //            $file->move($filePath, $filename);
+        } else {
             $filePath = $request->oldCv;
         }
-        
-        
+
+
         $data['name'] = $request->input('name');
         $data['email'] = $request->input('email');
         $data['phone'] = $request->input('phone');
@@ -73,9 +84,9 @@ class RegistrationController extends Controller {
         $data['blood'] = $request->input('blood');
         $data['image'] = $image;
         $data['cv'] = $cv;
-        
-        
-        
+
+
+
         User::where('id', $userid)->update($data);
 
         session()->flash('success', 'User Status Updated Successfully.');
@@ -83,7 +94,8 @@ class RegistrationController extends Controller {
         return redirect('/profile');
     }
 
-    public function edit_job(Request $request) {
+    public function edit_job(Request $request)
+    {
         $userid = auth()->user()->id;
         $data['company'] = $request->input('company');
         $data['c_designation'] = $request->input('c_designation');
@@ -92,7 +104,8 @@ class RegistrationController extends Controller {
 
         return redirect('/profile');
     }
-    public function edit_education(Request $request) {
+    public function edit_education(Request $request)
+    {
         $userid = auth()->user()->id;
         $data['education'] = $request->input('education');
         $data['e_uv'] = $request->input('e_uv');
@@ -103,11 +116,11 @@ class RegistrationController extends Controller {
         return redirect('/profile');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'phone' => 'required|numeric|min:8|unique:users,phone',
             'email' => 'unique:users,email|required',
             'password' => 'min:6|required_with:password_confirmation|same:confirm_password',
         ]);
@@ -118,23 +131,18 @@ class RegistrationController extends Controller {
         $registration->name = $request->name;
         $registration->phone = $request->phone;
         $registration->email = $request->email;
-        $registration->designation = "Member";
-        $registration->type = 2;
-
+        $registration->type = "User";
         $registration->password = Hash::make($request->password);
         $registration->save();
 
         $credentials = $request->only('email', 'password');
 
-
-//        echo "<pre>";
-//        print_r($credentials);
-//        die;
-
         if (Auth::attempt($credentials)) {
-            return redirect()->route('admin');
+            session()->flash('success', 'Welcome to Dashboard');
+            return redirect()->route('dashboard');
         } else {
-            die("not login");
+            session()->flash('error', 'Registration fail. Try again');
+            return redirect()->route('signin');
         }
     }
 
@@ -144,17 +152,20 @@ class RegistrationController extends Controller {
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function show(Registration $registration) {
+    public function show(Registration $registration)
+    {
         //
     }
-    public function myCv(Registration $registration) {
-       $userid = auth()->user()->id;
+    public function myCv(Registration $registration)
+    {
+        $userid = auth()->user()->id;
         $userDetails = User::where('id', $userid)->first();
-       
+
         return view('admin.pages.myCv', get_defined_vars());
     }
 
-    public function profile() {
+    public function profile()
+    {
         $userid = auth()->user()->id;
         $userDetails = User::where('id', $userid)->first();
         // dd($userDetails);
@@ -167,8 +178,8 @@ class RegistrationController extends Controller {
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registration $registration) {
-       
+    public function edit(Registration $registration)
+    {
     }
 
     /**
@@ -178,7 +189,8 @@ class RegistrationController extends Controller {
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registration $registration) {
+    public function update(Request $request, Registration $registration)
+    {
         //
     }
 
@@ -188,8 +200,8 @@ class RegistrationController extends Controller {
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registration $registration) {
+    public function destroy(Registration $registration)
+    {
         //
     }
-
 }

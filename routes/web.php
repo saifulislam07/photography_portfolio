@@ -15,6 +15,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutmeController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\ContactmeController;
 use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
@@ -100,6 +101,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/change-password', [AdminController::class, 'changepass'])->name('passwordchange');
     Route::post('/change-password', [AdminController::class, 'passstore'])->name('storepass');
+
+
+
+
+
+    //user profile
+    Route::get('/user-Profile', [BuyerController::class, 'index'])->name('userProfile');
+    Route::post('/user-profile-update/{id}', [BuyerController::class, 'update'])->name('user-profile-update');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -190,13 +199,7 @@ Route::post('/storestorycontact', [ContactmeController::class, 'storestorycontac
 Route::get('/contactsemail', [ContactmeController::class, 'contactsemail'])->name('contactsemail');
 
 Route::get('/', [FrontEndController::class, 'index']);
-//avi code
-Route::get('/principles', [FrontEndController::class, 'principle']);
-Route::get('/constitution', [FrontEndController::class, 'constitution']);
-Route::get('/Contact-Us', [FrontEndController::class, 'contact']);
-Route::get('/All-Gallery', [FrontEndController::class, 'gallery']);
-Route::get('/All-job', [FrontEndController::class, 'alljob']);
-Route::get('/Our-Rules', [FrontEndController::class, 'OurRules']);
-//avi route
-Route::get('/signin', [RegistrationController::class, 'index'])->name('signin');
-Route::post('/regstore', [RegistrationController::class, 'store'])->name('regstore');
+
+
+Route::get('/client-area', [RegistrationController::class, 'index'])->name('signin');
+Route::post('/create-account', [RegistrationController::class, 'store'])->name('createAccount');
