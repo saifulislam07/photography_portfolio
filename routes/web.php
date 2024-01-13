@@ -158,13 +158,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // buy routes
     Route::get('cart', [SaleController::class, 'cart'])->name('cart');
-    Route::get('add-to-cart/{id}', [SaleController::class, 'addToCart'])->name('add.to.cart');
+
     Route::patch('update-cart', [SaleController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [SaleController::class, 'remove'])->name('remove.from.cart');
 });
 
-Route::get('/jobView/{media}', [FrontEndController::class, 'jobView'])->name('jobView');
-Route::post('seekerlogin', [FrontEndController::class, 'seekerlogin'])->name('seekerlogin');
 
 
 Route::get('/my-profile-details', [FrontEndController::class, 'aboutsme'])->name('aboutsme');
@@ -203,3 +201,5 @@ Route::get('/', [FrontEndController::class, 'index']);
 
 Route::get('/client-area', [RegistrationController::class, 'index'])->name('signin');
 Route::post('/create-account', [RegistrationController::class, 'store'])->name('createAccount');
+
+Route::get('add-to-cart/{id}', [SaleController::class, 'addToCart'])->name('add.to.cart');

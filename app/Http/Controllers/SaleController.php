@@ -7,6 +7,7 @@ use App\Models\Sale;
 use App\Models\Socialmedia;
 use App\Models\WebGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
@@ -20,7 +21,7 @@ class SaleController extends Controller
 
     public function cart()
     {
-        $title = 'HOME';
+        $title = 'Cart';
         $aboutme = Aboutme::first();
         $websetting = websetup();
         $socialMedia = Socialmedia::first();
@@ -30,8 +31,12 @@ class SaleController extends Controller
 
     public function addToCart($id)
     {
-        $photo = WebGallery::findOrFail($id);
 
+        if (!Auth::check()) {
+            return redirect('/client-area');
+        }
+
+        $photo = WebGallery::findOrFail($id);
         $cart = session()->get('cart', []);
 
         if (isset($cart[$id])) {

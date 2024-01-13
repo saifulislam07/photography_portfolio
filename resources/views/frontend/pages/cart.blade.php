@@ -43,8 +43,8 @@
                                         <tr data-id="{{ $id }}">
                                             <td>
                                                 <div class="d-cart-item">
-                                                    <img src="" alt="image">
-                                                    <div class="text">
+
+                                                    <div class="text-left" style="margin-left: 10px;">
                                                         {{ $details['title'] }}
                                                         <div class="price">${{ $details['price'] }}</div>
                                                     </div>
