@@ -4,16 +4,23 @@
 @endsection
 @section('front-main-content')
     <div id="content" class="no-bottom no-top">
-
         <section id="subheader" data-speed="8" data-type="background">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <h1>BUY photo</h1>
                         <ul class="crumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html">Go</a></li>
                             <li class="sep">/</li>
-                            <li>BUY photo</li>
+                            <li>
+                                @if (Auth::check())
+                                    <a class="btn btn-line" href="{{ route('dashboard') }}"> <i class="fa fa-user"></i>
+                                        {{ Auth::user()->name }}</a>
+                                @else
+                                    <a class="btn btn-line" href="/client-area"> <i class="fa fa-user"></i>
+                                        Login</a>
+                                @endif
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -26,9 +33,10 @@
                 <div class="row">
                     <div class="col-md-9">
                         <ul class="products row">
-                            @foreach ($forsale as $photo)
-                                <li class="col-xl-3 col-lg-4 col-md-6 product">
-                                    <div class="p-inner">
+
+                            @forelse ($forsale as $photo)
+                                <li class="col-xl-3 col-lg-4 col-md-6 product ">
+                                    <div class="p-inner h-100">
                                         <div class="p-images">
                                             <a href="{{ route('buyPhotoDetails', $photo->id) }}">
                                                 <img src="{{ asset('galleryImage/' . $photo->images) }}"
@@ -44,7 +52,17 @@
                                             Cart</a>
                                     </div>
                                 </li>
-                            @endforeach
+                            @empty
+
+                                <div class="card" style="border: 1px solid orange">
+                                    <div class="card-body text-center">
+                                        <h1>No image yet for sale to this <strong class="text-warning">{{ $category_name}}</strong> category</h1>
+                                        <h1>Contact me for image request</h1>
+                                        <a href="/contact-me" role="button" class="btn btn-line mt-2">Click here</a>
+                                    </div>
+                                </div>
+                            @endforelse
+
 
                         </ul>
 
@@ -63,13 +81,20 @@
 
                         <div class="widget widget_category">
                             <h4 class="pb-2">Photo Category</h4>
+
                             <ul>
+                                <li><a href="{{ route('image-sorting', ['id' => 0, 'title' => 'All Images']) }}"
+                                        style="border: 1px solid orange">All Images</a></li>
                                 @foreach ($categorys as $category)
                                     <li>
-                                        <a href="#" style=" border: 1px solid orange">{{ $category->title }}</a>
+                                        <a href="{{ route('image-sorting', ['id' => $category->id, 'title' => $category->title]) }}"
+                                            style="border: 1px solid orange">{{ $category->title }}</a>
                                     </li>
                                 @endforeach
                             </ul>
+
+
+                          
                         </div>
                     </div>
 

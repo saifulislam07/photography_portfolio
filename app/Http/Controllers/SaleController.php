@@ -19,14 +19,22 @@ class SaleController extends Controller
         //
     }
 
+  
+
     public function cart()
     {
+      
+        if (!Auth::check()) {
+            return redirect('/client-area');
+        }
+
         $title = 'Cart';
         $aboutme = Aboutme::first();
         $websetting = websetup();
         $socialMedia = Socialmedia::first();
         return view('frontend.pages.cart', get_defined_vars());
     }
+
 
 
     public function addToCart($id)

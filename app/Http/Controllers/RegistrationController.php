@@ -23,7 +23,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        $title = 'CONTACT ME';
+        $title = 'CLIENT AREA';
         $websetting = websetup();
 
         $socialMedia = Socialmedia::first();

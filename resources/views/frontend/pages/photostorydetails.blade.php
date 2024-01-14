@@ -3,6 +3,41 @@
     Photo story details
 @endsection
 @section('front-main-content')
+
+<style>
+   .social-icons-inline {
+        display: flex;
+        align-items: center; /* Align items vertically in the center */
+    }
+
+    .social-icons-inline ul {
+        list-style: none; /* Remove default list styles */
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        display: flex;
+    }
+
+    .social-icons-inline ul li {
+        margin-right: 10px; /* Adjust spacing between icons */
+    }
+
+    .social-icons-inline ul li a {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        color: white; /* Default text color */
+        background-color: transparent; /* Default background color */
+        border-radius: 50%; /* 50% border-radius for full round shape */
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+    }
+
+    .social-icons-inline ul li a:hover {
+        background-color: orange; /* Hover background color */
+        color: black; /* Hover text color */
+    }
+</style>
+
+
     <div id="content" class="no-bottom no-top">
 
         <section id="subheader" data-speed="8" data-type="background">
@@ -54,8 +89,22 @@
                                     </p>
 
                                 </div>
+
+                                @php
+                                    $shareButtonss = ShareWidget();
+                                @endphp
+
+                             
+
+
                             </div>
 
+                        </div>
+                        <div class="card">
+                            
+                            <div class="card-body social-icons-inline " style="text-align: center;">
+                                        Social Share: &nbsp; {!! $shareButtonss !!}
+                            </div>
                         </div>
                     </div>
 

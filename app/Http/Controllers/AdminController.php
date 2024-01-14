@@ -13,14 +13,19 @@ use App\Models\story;
 use App\Models\Video;
 use App\Models\WebGallery;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 
 class AdminController extends Controller
 {
 
     public function index(Request $request)
     {
+       
+
+
         if ($request->session()) {
             $story = story::count();
             $contactemail = contactme::count();

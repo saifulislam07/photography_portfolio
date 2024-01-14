@@ -157,7 +157,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     // buy routes
-    Route::get('cart', [SaleController::class, 'cart'])->name('cart');
+
 
     Route::patch('update-cart', [SaleController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [SaleController::class, 'remove'])->name('remove.from.cart');
@@ -202,4 +202,8 @@ Route::get('/', [FrontEndController::class, 'index']);
 Route::get('/client-area', [RegistrationController::class, 'index'])->name('signin');
 Route::post('/create-account', [RegistrationController::class, 'store'])->name('createAccount');
 
+
+Route::get('cart', [SaleController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [SaleController::class, 'addToCart'])->name('add.to.cart');
+
+Route::get('/image-sorting/{id}/{title}', [FrontEndController::class, 'imageSorting'])->name('image-sorting');

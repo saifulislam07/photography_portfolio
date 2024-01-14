@@ -29,6 +29,25 @@ class FrontEndController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function imageSorting($id, $category_name)
+    {
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+        $socialMedia = Socialmedia::first();
+        $title = 'Buy Photo';
+
+        if($id !=0 ){
+            $forsale = WebGallery::orderBy('id', 'desc')->where('category', $id)->where('status', '1')->paginate(12);
+        }else{
+
+            $forsale = WebGallery::orderBy('id', 'desc')->where('status', '1')->paginate(12);
+        }
+
+        $categorys = Category::orderBy('title', 'asc')->get();
+        return view('frontend.pages.buyphoto', get_defined_vars());
+    }
+
     function seekerlogin(Request $request)
     {
 
@@ -268,15 +287,6 @@ class FrontEndController extends Controller
         $socialMedia = Socialmedia::first();
         return view('frontend.pages.contact', get_defined_vars());
     }
-
-    // public function gallery()
-    // {
-    //     $aboutme = Aboutme::first();
-    //     $socialMedia = Socialmedia::first();
-    //     $galleryImages = DB::table('rules')->first();
-    //     return view('frontend.pages.gallery', get_defined_vars());
-    // }
-
 
 
 

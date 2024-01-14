@@ -95,7 +95,10 @@
                         <address>
                             <span><strong>Address </strong>&nbsp;&nbsp; {{ $websetting->address }}</span>
                             <span><strong>Phone </strong> &nbsp;&nbsp;{{ $websetting->number }}</span>
-                            <span><strong>WhatsApp </strong> &nbsp;&nbsp;{{ $websetting->whatsapp }}</span>
+                            <span><strong>WhatsApp </strong> &nbsp;&nbsp;
+                                <a href="https://wa.me/{{ $websetting->whatsapp }}" target="_blank"> {{$websetting->whatsapp}} <i style="color: green" class="fa fa-whatsapp" aria-hidden="true"></i></a> 
+
+                              </span>
                             <span><strong>Email </strong><a
                                     href="mailto:{{ $websetting->email }}">&nbsp;&nbsp;&nbsp;{{ $websetting->email }}</a></span>
                             <span><strong>Open</strong>&nbsp;&nbsp;24*7</span>
