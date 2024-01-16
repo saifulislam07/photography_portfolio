@@ -1,6 +1,6 @@
 @extends('frontend.masterTemp')
 @section('fmenuname')
-    Publication
+    Tear Sheet
 @endsection
 @section('front-main-content')
     <div class="content-wrapper">
@@ -9,11 +9,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>My Publications</h1>
+                            <h1> Tear Sheet</h1>
                             <ul class="crumb">
                                 <li><a href="index.html">Home</a></li>
                                 <li class="sep">/</li>
-                                <li>Publications</li>
+                                <li> Tear Sheet</li>
                             </ul>
                         </div>
                     </div>

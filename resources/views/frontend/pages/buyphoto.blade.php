@@ -56,7 +56,8 @@
 
                                 <div class="card" style="border: 1px solid orange">
                                     <div class="card-body text-center">
-                                        <h1>No image yet for sale to this <strong class="text-warning">{{ $category_name}}</strong> category</h1>
+                                        <h1>No image yet for sale to this <strong
+                                                class="text-warning">{{ $category_name ?? '' }}</strong> category</h1>
                                         <h1>Contact me for image request</h1>
                                         <a href="/contact-me" role="button" class="btn btn-line mt-2">Click here</a>
                                     </div>
@@ -94,7 +95,7 @@
                             </ul>
 
 
-                          
+
                         </div>
                     </div>
 

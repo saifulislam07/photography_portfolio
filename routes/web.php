@@ -28,7 +28,7 @@ use App\Http\Controllers\WebSetupController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes([
-    'register' => true
+    'register' => false
 ]);
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
