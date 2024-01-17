@@ -35,7 +35,7 @@
                                         </span>
                                         <div class="text ">
                                             <h3 class="id-color">{{ $national->title }}</h3>
-                                            <p>{{ $national->details }}</p>
+                                            <p>{!! $national->details !!}</p>
                                             {{-- @if ($national->url)
                                                 <h4 class="id-color"> <a class="btn btn-outline-warning btn-xs"
                                                         href="http://" target="_blank" rel="noopener noreferrer">CLICK HERE
@@ -57,15 +57,15 @@
                                 <h2>International Achievement</h2>
                             </div>
                             <hr>
-                            @foreach ($internationalaward as $national)
+                            @foreach ($internationalaward as $international)
                                 <div class="col-md-4 wow fadeInUp pb-3" data-wow-delay=".25s">
                                     <div class="box-icon">
                                         <span class="icon wow fadeIn" data-wow-delay=".75s"><i
                                                 class="id-color icon-trophy"></i></span>
                                         <div class="text ">
-                                            <h3 class="id-color">{{ $national->title }}</h3>
-                                            <p>{{ $national->details }}</p>
-                                            {{-- @if ($national->url)
+                                            <h3 class="id-color">{{ $international->title }}</h3>
+                                            <p>{!! $international->details !!}</p>
+                                            {{-- @if ($international->url)
                                                 <h4 class="id-color"> <a class="btn btn-outline-warning btn-xs"
                                                         href="http://" target="_blank" rel="noopener noreferrer">CLICK HERE
                                                         FOR

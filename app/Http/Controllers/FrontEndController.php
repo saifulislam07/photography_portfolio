@@ -37,9 +37,9 @@ class FrontEndController extends Controller
         $socialMedia = Socialmedia::first();
         $title = 'Buy Photo';
 
-        if($id !=0 ){
+        if ($id != 0) {
             $forsale = WebGallery::orderBy('id', 'desc')->where('category', $id)->where('status', '1')->paginate(12);
-        }else{
+        } else {
 
             $forsale = WebGallery::orderBy('id', 'desc')->where('status', '1')->paginate(12);
         }
@@ -182,11 +182,19 @@ class FrontEndController extends Controller
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
 
+        // $allcategorycount = WebGallery::select("categories.title as catname", DB::raw('COUNT(web_galleries.category) as total'))
+        //     ->join("categories", "categories.id", "=", "web_galleries.category")
+        //     ->where('web_galleries.status', '1')
+        //     ->groupBy("web_galleries.category")
+        //     ->get();
+
+
         $allcategorycount = WebGallery::select("categories.title as catname", DB::raw('COUNT(web_galleries.category) as total'))
             ->join("categories", "categories.id", "=", "web_galleries.category")
             ->where('web_galleries.status', '1')
-            ->groupBy("web_galleries.category")
+            ->groupBy("web_galleries.category", "categories.title") // Include categories.title in GROUP BY
             ->get();
+
 
 
         // dd($allcategorycount);

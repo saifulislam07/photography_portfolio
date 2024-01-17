@@ -16,7 +16,24 @@
                         <div class="col-md-12">
                             <div class="de_large-portfolio no-bottom">
                                 <div class="d_inner">
-                                    <h2 class="ultra-big wow fadeInUp" data-wow-delay=".1s">{{ $aboutme->your_name }}
+                                    @php
+
+                                        $name_slice = explode(' ', $aboutme->your_name);
+                                        $fade_classes = ['fadeInUp', 'fadeInRight', 'fadeInUp']; // Add more classes as needed
+                                        $delay = 0.9; // Initial delay value
+                                    @endphp
+
+                                    <h2 class="ultra-big">
+                                        @foreach ($name_slice as $namePart)
+                                            @php
+                                                $fade_class = $fade_classes[array_rand($fade_classes)]; // Randomly select a fade class
+                                            @endphp
+                                            <span class="wow {{ $fade_class }}" style="color: orange"
+                                                data-wow-delay="{{ $delay }}s">{{ $namePart }}</span> <br>
+                                            @php
+                                                $delay += 0.9; // Increment the delay for the next element
+                                            @endphp
+                                        @endforeach
                                     </h2>
 
                                     <div class="d_image jarallax">
