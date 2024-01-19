@@ -21,6 +21,7 @@ use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommercialController;
+use App\Http\Controllers\MailsettingController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TearSheetController;
@@ -161,6 +162,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::patch('update-cart', [SaleController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [SaleController::class, 'remove'])->name('remove.from.cart');
+
+
+    Route::get('/mail', [MailsettingController::class, 'index'])->name('mail.index');
+    Route::put('/mail-update/{mailsetting}', [MailSettingController::class, 'update'])->name('mail.update');
 });
 
 

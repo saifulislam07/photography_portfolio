@@ -193,6 +193,14 @@
                             <p>User Query</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('mail.index') }}"
+                            class="nav-link @if ($current_route == 'mail.index') {{ 'active' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fa fa-cog"></i>
+                            <p>SMTP</p>
+                        </a>
+                    </li>
                 </ul>
             @elseif(Auth::user()->type == 'User')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
