@@ -212,3 +212,18 @@ Route::get('cart', [SaleController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [SaleController::class, 'addToCart'])->name('add.to.cart');
 
 Route::get('/image-sorting/{id}/{title}', [FrontEndController::class, 'imageSorting'])->name('image-sorting');
+
+
+
+Route::get('/test-mail',function(){
+
+    $message = "Testing mail";
+
+    \Mail::raw('Hi, welcome!', function ($message) {
+      $message->to('saiful.rana@gmail.com')
+        ->subject('Testing mail');
+    });
+
+    dd('sent');
+
+});

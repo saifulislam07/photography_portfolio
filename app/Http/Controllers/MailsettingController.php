@@ -54,6 +54,8 @@ class MailsettingController extends Controller
      */
     public function update(Request $request, Mailsetting $mailsetting)
     {
+
+
         $data = $request->validate([
             'mail_transport'  => 'required',
             'mail_host'       => 'required',
@@ -65,7 +67,7 @@ class MailsettingController extends Controller
         ]);
 
         $mailsetting->update($data);
-        return redirect()->back()->withSuccess('Mail updated !!!');
+        return redirect()->back()->withSuccess('SMTP  updated !!!');
     }
 
     /**
