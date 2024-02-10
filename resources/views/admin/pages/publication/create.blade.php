@@ -12,7 +12,7 @@
                         <h5 class="m-0 text-dark">Create Publication</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
-                        <a href="{{ route('public.index') }}" class="btn btn-sm btn-info float-right"><i
+                        <a href="{{ route('publicationindex') }}" class="btn btn-sm btn-info float-right"><i
                                 class="fa fa-plus-square"></i> All Publication</a>
                     </div>
                 </div><!-- /.row -->
@@ -32,7 +32,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form class="form-horizontal" action="{{ route('public.store') }}" method="POST"
+                                <form class="form-horizontal" action="{{ route('publicationstore') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">

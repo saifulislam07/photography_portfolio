@@ -44,7 +44,7 @@ class PublicationController extends Controller
         $publication->save();
 
         session()->flash('success', 'Publication added Successfully.');
-        return redirect()->route('public.index');
+        return redirect()->route('publicationindex');
     }
 
     /**
@@ -86,10 +86,10 @@ class PublicationController extends Controller
             $publication->details = $request->details;
             $publication->save();
             session()->flash('success', 'Publication Deleted Successfully.');
-            return redirect()->route('public.index');
+            return redirect()->route('publicationindex');
         } else {
             session()->flash('error', 'Publication Deleted erro.');
-            return redirect()->route('public.index');
+            return redirect()->route('publicationindex');
         }
     }
 
@@ -100,6 +100,6 @@ class PublicationController extends Controller
     {
         Publication::where('id', $id)->delete();
         session()->flash('success', 'Publication Deleted Successfully.');
-        return redirect()->route('public.index');
+        return redirect()->route('publicationindex');
     }
 }

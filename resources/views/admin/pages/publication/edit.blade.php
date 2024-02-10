@@ -12,7 +12,7 @@
                         <h5 class="m-0 text-dark">Edit Publication</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
-                        <a href="{{ route('public.index') }}" class="btn btn-sm btn-info float-right"><i
+                        <a href="{{ route('publicationindex') }}" class="btn btn-sm btn-info float-right"><i
                                 class="fa fa-plus-square"></i> All Publication</a>
                     </div>
                 </div><!-- /.row -->
@@ -32,10 +32,10 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form class="form-horizontal" action="{{ route('public.update', $editinfo->id) }}"
+                                <form class="form-horizontal" action="{{ route('publicationdupdate', $editinfo->id) }}"
                                     method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
+                                    {{-- @method('PUT') --}}
                                     <div class="form-group row">
                                         <div class=" col-sm-6">
                                             <div class="form-group">

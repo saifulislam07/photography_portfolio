@@ -76,13 +76,85 @@
                                 <div class="strong">${{ $total }}</div>
                             </div>
                             <div class="spacer-line"></div>
-                            <a href="#" class="btn-custom btn-fullwidth text-center">Checkout</a>
+                            <div class="d-flex justify-content-between">
+                                <form action="{{ route('paypal.payment') }}" method="POST">
+                                    @csrf
+
+                                    <input type="hidden" name="total" value="{{ $total }}">
+                                    <!-- Button to submit the form -->
+                                    <button type="subnmit" class="btn btn-custom bg-warning">
+                                        <img width="50px" src="{{ asset('paymentgetway/PayPal.png') }}" alt="">
+                                    </button>
+                                </form>
+
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#bkashmodal">
+                                    <img width="50px" src="{{ asset('paymentgetway/bkash.png') }}" alt="">
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="bkashmodal" tabindex="-1" role="dialog" aria-labelledby="bkashmodaltitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Bkash Payment Details</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id='contact_form' method="post" action=''>
+                            <div class="row ">
+                                <div class="col-md-12" style="color: black!important">
+                                    <div class="form-group">
+                                        <label for="pwd">Total Amount :</label>
+                                        <input type="text" style="color: black" value="<?php echo $total . '$'; ?>"
+                                            class="form-control" readonly name="total_amount">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">To Number :</label>
+                                        <input type="text" style="color: black" class="form-control" readonly
+                                            placeholder="01916665832 Send Money" name="to_number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">From Number :</label>
+                                        <input type="text" style="color: black" class="form-control"
+                                            placeholder="From Number" name="from_number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Amount :</label>
+                                        <input type="text" style="color: black" class="form-control"
+                                            placeholder="From Number" name="amount">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Trnx Number :</label>
+                                        <input type="text" style="color: black" class="form-control"
+                                            placeholder="Transection ID" name="trnx_number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Note :</label>
+                                        <input type="text" style="color: black" class="form-control"
+                                            placeholder="Your note" name="note">
+                                    </div>
 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     </div>
 

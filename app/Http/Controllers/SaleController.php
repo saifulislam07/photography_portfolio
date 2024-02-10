@@ -19,11 +19,11 @@ class SaleController extends Controller
         //
     }
 
-  
+
 
     public function cart()
     {
-      
+
         if (!Auth::check()) {
             return redirect('/client-area');
         }
@@ -51,6 +51,7 @@ class SaleController extends Controller
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
+                "id" => $photo->id,
                 "title" => $photo->title,
                 "quantity" => 1,
                 "price" => $photo->price,

@@ -13,7 +13,7 @@
                         <h5 class="m-0 text-dark">Publication</h5>
                     </div><!-- /.col -->
                     <div class="col-sm-6 ">
-                        <a href="{{ route('public.create') }}" class="btn btn-sm btn-info float-right"><i
+                        <a href="{{ route('publicationcreate') }}" class="btn btn-sm btn-info float-right"><i
                                 class="fa fa-plus-square"></i> Add Publication</a>
                     </div>
                 </div><!-- /.row -->
@@ -59,12 +59,13 @@
                                                 <td>
 
 
-                                                    <a href="{{ route('public.edit', $value->id) }}"
+                                                    <a href="{{ route('publicationedit', $value->id) }}"
                                                         class="btn btn-xs btn-info"><i class="fas fa-edit"></i></a>
 
-                                                    <form action="{{ route('public.destroy', $value->id) }}" method="POST">
+                                                    <form action="{{ route('publicationdestroy', $value->id) }}"
+                                                        method="POST">
                                                         @csrf
-                                                        @method('DELETE')
+                                                        {{-- @method('DELETE') --}}
                                                         <button type="submit" class="btn btn-danger btn-xs"><i
                                                                 class="fas fa-trash"></i></button>
                                                     </form>

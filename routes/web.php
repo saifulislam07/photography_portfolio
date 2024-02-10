@@ -21,12 +21,14 @@ use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommercialController;
-use App\Http\Controllers\MailsettingController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TearSheetController;
+use App\Http\Controllers\MailsettingController;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\WebSetupController;
 use Illuminate\Support\Facades\Auth;
+
 
 Auth::routes([
     'register' => false
@@ -62,7 +64,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('web', WebSetupController::class);
 
     //publication
-    Route::resource('public', PublicationController::class);
+    // Route::resource('publication', PublicationController::class);
+
+    Route::get('/publicationcreate', [PublicationController::class, 'create'])->name('publicationcreate');
+    Route::get('/publicationindex', [PublicationController::class, 'index'])->name('publicationindex');
+    Route::post('/publicationstore', [PublicationController::class, 'store'])->name('publicationstore');
+    Route::get('/publicationedit/{id}', [PublicationController::class, 'edit'])->name('publicationedit');
+    Route::post('/publicationdestroy/{id}', [PublicationController::class, 'destroy'])->name('publicationdestroy');
+    Route::post('/publicationdupdate/{id}', [PublicationController::class, 'update'])->name('publicationdupdate');
 
     //commercials
     Route::resource('commerc', CommercialController::class);
@@ -166,7 +175,17 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/mail', [MailsettingController::class, 'index'])->name('mail.index');
     Route::put('/mail-update/{mailsetting}', [MailSettingController::class, 'update'])->name('mail.update');
+
+    //paypal
+    Route::get('paypal', [PayPalController::class, 'index'])->name('paypal');
+    Route::post('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
+    Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
+    Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
+
+
+    // Route::get('checkout', [PayPalController::class, 'payWithpaypal'])->name('checkout');
 });
+
 
 
 
@@ -212,18 +231,3 @@ Route::get('cart', [SaleController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [SaleController::class, 'addToCart'])->name('add.to.cart');
 
 Route::get('/image-sorting/{id}/{title}', [FrontEndController::class, 'imageSorting'])->name('image-sorting');
-
-
-
-Route::get('/test-mail',function(){
-
-    $message = "Testing mail";
-
-    \Mail::raw('Hi, welcome!', function ($message) {
-      $message->to('saiful.rana@gmail.com')
-        ->subject('Testing mail');
-    });
-
-    dd('sent');
-
-});

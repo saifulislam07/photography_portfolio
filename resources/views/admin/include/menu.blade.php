@@ -2,9 +2,7 @@
     <!-- Brand Logo -->
 
     @php
-        $sitelogo = DB::table('web_setups')
-            ->pluck('logo_black')
-            ->first();
+        $sitelogo = DB::table('web_setups')->pluck('logo_black')->first();
     @endphp
     @if ($sitelogo)
         <a href="{{ route('dashboard') }}" class="brand-link text-center">
@@ -120,9 +118,13 @@
                             <p>Tear Sheet </p>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a href="{{ route('public.create') }}"
-                            class="nav-link @if ($current_route == 'public.create' || $current_route == 'public.index' || $current_route == 'public.edit') {{ 'active' }} @endif"
+                        <a href="{{ route('publicationcreate') }}"
+                            class="nav-link @if (
+                                $current_route == 'publicationcreate' ||
+                                    $current_route == 'publicationindex' ||
+                                    $current_route == 'publicationedit') {{ 'active' }} @endif"
                             style="color: rgb(255, 255, 255)">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Publication</p>
@@ -193,6 +195,7 @@
                             <p>User Query</p>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{ route('mail.index') }}"
                             class="nav-link @if ($current_route == 'mail.index') {{ 'active' }} @endif"
