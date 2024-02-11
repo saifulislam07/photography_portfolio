@@ -15,6 +15,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutmeController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\BkashPayment;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\ContactmeController;
 use App\Http\Controllers\MedialinkController;
@@ -182,8 +183,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
     Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
 
+    Route::post('bkash/payment', [BkashPayment::class, 'bkashPayment'])->name('bkash.payment');
 
-    // Route::get('checkout', [PayPalController::class, 'payWithpaypal'])->name('checkout');
+
+    Route::get('payment/list', [BuyerController::class, 'paymentList'])->name('payment.list');
+    Route::get('payment/view/{id}', [BuyerController::class, 'paymentView'])->name('payment.view');
+
+
+    // Route::get('payment/list', [PayPalController::class, 'payWithpaypal'])->name('checkout');
 });
 
 

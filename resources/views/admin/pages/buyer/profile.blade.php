@@ -64,6 +64,7 @@
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('user-profile-update', $userInfos->id) }}" method="post">
+                                    @csrf
                                     <div class="form-group row">
                                         <div class="col-sm-6">
                                             <label for="inputName" class="col-sm-3 col-form-label">Name</label>
@@ -113,31 +114,9 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label for="inputName" class="col-sm-6 col-form-label">Password</label>
-                                            <input type="password" name="password" value="" class="form-control"
-                                                id="" placeholder="Password">
-                                            @error('password')
-                                                <div style="color: red; padding: 0;">
-                                                    <strong>
-                                                        {{ $message }}
-                                                    </strong>
-                                                </div>
-                                            @enderror
-                                        </div>
 
-                                        <div class="col-sm-6">
-                                            <label for="inputName" class="col-sm-6 col-form-label">Confirm Password</label>
-                                            <input type="text" name="confirm_password" value=""
-                                                class="form-control" id="" placeholder="Confirm password">
-                                            @error('confirm_password')
-                                                <div style="color: red; padding: 0;">
-                                                    <strong>
-                                                        {{ $message }}
-                                                    </strong>
-                                                </div>
-                                            @enderror
-                                        </div>
+
+
                                         <div class="col-sm-6 mt-4 ">
 
                                             <button type="submit"

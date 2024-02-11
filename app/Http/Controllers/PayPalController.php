@@ -28,6 +28,9 @@ class PayPalController extends Controller
      *
      * @return response()
      */
+
+
+
     public function payment(Request $request)
     {
 
@@ -137,6 +140,8 @@ class PayPalController extends Controller
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
 
             $invoice = new Invoice();
+            $invoice->order_id = $order->id;
+            $invoice->payment_type = 'PayPal';
             $invoice->price =  $totalPrice;
             $invoice->currency = 'USD'; // should be dynamic
             $invoice->customer_email = Auth::user()->email;

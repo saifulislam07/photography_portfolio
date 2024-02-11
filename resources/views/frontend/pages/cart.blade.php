@@ -24,8 +24,8 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
-                        <table class="table table-dark table-cart">
+                    <div class="col-md-9 col-sm-12">
+                        <table class="table table-dark table-cart ">
                             <thead>
                                 <tr>
                                     <th scope="col">Items</th>
@@ -68,7 +68,7 @@
                         </table>
                     </div>
 
-                    <div id="sidebar" class="col-md-3">
+                    <div id="" class="col-md-3 col-sm-12">
                         <div class="d-summary">
                             <h3>Summary</h3>
                             <div class="de-flex">
@@ -107,55 +107,49 @@
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id='contact_form' method="post" action=''>
+                        <form id='contact_form' method="post" action="{{ route('bkash.payment') }}">
+                            @csrf
                             <div class="row ">
                                 <div class="col-md-12" style="color: black!important">
                                     <div class="form-group">
-                                        <label for="pwd">Total Amount :</label>
+                                        <label for="pwd">Total Amount </label>
                                         <input type="text" style="color: black" value="<?php echo $total . '$'; ?>"
                                             class="form-control" readonly name="total_amount">
                                     </div>
                                     <div class="form-group">
-                                        <label for="pwd">To Number :</label>
+                                        <label for="pwd">Bkash Number (Personal) </label>
                                         <input type="text" style="color: black" class="form-control" readonly
                                             placeholder="01916665832 Send Money" name="to_number">
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="pwd">From Number :</label>
+                                        <label for="pwd">Amount <span style="font-size: 10px; color : red">You will
+                                                Pay
+                                                ({{ $total }} *
+                                                105 =
+                                                {{ $total * 105 }}), No need to pay extra charge </span> </label>
                                         <input type="text" style="color: black" class="form-control"
-                                            placeholder="From Number" name="from_number">
+                                            placeholder="Amount" value="{{ $total * 105 }}" name="amount">
+
                                     </div>
                                     <div class="form-group">
-                                        <label for="pwd">Amount :</label>
+                                        <label for="pwd">Trxid *</label>
                                         <input type="text" style="color: black" class="form-control"
-                                            placeholder="From Number" name="amount">
+                                            placeholder="bKash Transaction ID" name="trnx_number">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="pwd">Trnx Number :</label>
-                                        <input type="text" style="color: black" class="form-control"
-                                            placeholder="Transection ID" name="trnx_number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pwd">Note :</label>
-                                        <input type="text" style="color: black" class="form-control"
-                                            placeholder="Your note" name="note">
-                                    </div>
+
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
-
-
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 
     <script type="text/javascript">

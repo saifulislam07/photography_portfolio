@@ -230,14 +230,18 @@
                         </a>
                     </li>
 
-
+                    <li class="nav-item">
+                        <a href="{{ route('payment.list') }}"
+                            class="nav-link @if ($current_route == 'payment.list' || $current_route == 'payment.view') {{ 'bg-warning' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Payment list</p>
+                        </a>
+                    </li>
                 </ul>
             @endif
 
-            <br>
-            <br>
-            <br>
-            <br>
+
         </nav>
 
 
