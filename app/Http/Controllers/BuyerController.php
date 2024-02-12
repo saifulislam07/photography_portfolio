@@ -16,18 +16,10 @@ class BuyerController extends Controller
 
     public function paymentView($id)
     {
-        // $invoice_details = Invoice::where('invoices.customer_id', Auth::user()->id)
-        //     ->where('invoices.id', $id)
-        //     ->join('orders', 'orders.invoice_id', '=', 'invoices.id')
-        //     ->join('suborders', 'suborders.order_id', '=', 'orders.id')
-        //     ->get();
-
 
         $invoice_details = Invoice::where('customer_id', auth()->id())
             ->with('orders.suborders')
             ->find($id);
-
-
 
         // dd($invoice_details->toArray());
         return view('admin.pages.buyer.paymentView', get_defined_vars());

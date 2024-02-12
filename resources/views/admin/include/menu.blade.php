@@ -66,6 +66,28 @@
                         </ul>
                     </li>
 
+
+                    <li class="nav-item @if ($current_route == 'admin.payment.list') {{ 'menu-open ' }} @endif ">
+                        <a href="#"
+                            class="nav-link @if ($current_route == 'admin.payment.list') {{ 'active' }} @endif ">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Sale
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item ">
+                                <a href="{{ route('admin.payment.list') }}" class="nav-link  "
+                                    style="color: rgb(255, 255, 255)">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>All Payments </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('category') }}"
                             class="nav-link @if ($current_route == 'category' || $current_route == 'addnewcat' || $current_route == 'editcat') {{ 'active' }} @endif"
@@ -185,6 +207,14 @@
                             style="color: rgb(255, 255, 255)">
                             <i class="nav-icon fa fa-cog"></i>
                             <p>Website Setup</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.menu.list') }}"
+                            class="nav-link @if ($current_route == 'admin.menu.list') {{ 'active' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fa fa-bars"></i>
+                            <p>Menu Setup</p>
                         </a>
                     </li>
                     <li class="nav-item">

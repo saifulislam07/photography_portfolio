@@ -113,9 +113,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/change-password', [AdminController::class, 'changepass'])->name('passwordchange');
     Route::post('/change-password', [AdminController::class, 'passstore'])->name('storepass');
 
+    //admin payment details
+    Route::get('admin/payment/list', [AdminController::class, 'paymentList'])->name('admin.payment.list');
+    Route::get('admin/payment/view/{id}', [AdminController::class, 'paymentView'])->name('admin.payment.view');
+    Route::get('admin/payment/accept/{id}', [AdminController::class, 'paymentAccept'])->name('admin.payment.accept');
 
 
-
+    Route::get('admin/menu/list', [AdminController::class, 'menuList'])->name('admin.menu.list');
+    Route::post('admin/menu/update', [AdminController::class, 'updateMenuList'])->name('admin.menu.update');
+    Route::post('menuchangeStatus', [AdminController::class, 'menuchangeStatus'])->name('menuchangeStatus');
 
     //user profile
     Route::get('/user-Profile', [BuyerController::class, 'index'])->name('userProfile');

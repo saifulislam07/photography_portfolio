@@ -56,18 +56,34 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>
                                                     <a class="btn btn-warning btn-xs"
-                                                        href="{{ route('payment.view', $each->id) }}">
+                                                        href="{{ route('admin.payment.view', $each->id) }}">
                                                         {{ $each->payment_id }}
                                                     </a>
-
                                                 </td>
                                                 <td>{{ $each->payment_type }}</td>
                                                 <td>{{ $each->payment_id }}</td>
                                                 <td>{{ $each->price }}</td>
-                                                <td>{{ $each->payment_status }}</td>
+                                                <td class="text-center">
+
+                                                    @if ($each->payment_status == 'PENDING')
+                                                        <a class="btn btn-warning btn-xs text-white" style="font-size: 14px"
+                                                            href="{{ route('admin.payment.accept', $each->id) }}">
+                                                            {{ $each->payment_status }}
+                                                        </a>
+                                                    @elseif ($each->payment_status == 'COMPLETED')
+                                                        <a class=" bg-success  text-white p-1 rounded"
+                                                            style="font-size: 14px">
+                                                            {{ $each->payment_status }}
+                                                        </a>
+                                                    @else
+                                                        <a class="btn btn-warning btn-xs" href="#">
+                                                            {{ $each->payment_status }}
+                                                        </a>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-warning btn-xs"
-                                                        href="{{ route('payment.view', $each->id) }}">
+                                                        href="{{ route('admin.payment.view', $each->id) }}">
                                                         <i class="fa fa-desktop"></i>
                                                     </a>
                                                 </td>

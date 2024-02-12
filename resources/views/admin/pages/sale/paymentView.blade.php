@@ -76,7 +76,27 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>Payment Status </td>
-                                                                                <td>{{ $invoice_details->payment_status }}
+                                                                                <td>
+                                                                                    @if ($invoice_details->payment_status == 'PENDING')
+                                                                                        <a class="btn btn-warning btn-xs text-white"
+                                                                                            style="font-size: 14px"
+                                                                                            href="{{ route('admin.payment.accept', $invoice_details->id) }}">
+                                                                                            {{ $invoice_details->payment_status }}
+                                                                                        </a>
+                                                                                    @elseif($invoice_details->payment_status == 'COMPLETED')
+                                                                                        <a class=" bg-success  text-white p-1 rounded"
+                                                                                            style="font-size: 14px">
+                                                                                            {{ $invoice_details->payment_status }}
+                                                                                        </a>
+                                                                                    @else
+                                                                                        <a class="btn btn-warning btn-xs"
+                                                                                            href="#">
+                                                                                            {{ $invoice_details->payment_status }}
+                                                                                        </a>
+                                                                                    @endif
+
+
+
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
