@@ -84,7 +84,7 @@ class AdminController extends Controller
     public function menuList()
     {
         $menulist = menu::where('status', 'Active')->get();
-        dd($menulist->toArray());
+        // dd($menulist->toArray());
         $menus = menu::get();
         return view('admin.pages.menu.menuList', get_defined_vars());
     }

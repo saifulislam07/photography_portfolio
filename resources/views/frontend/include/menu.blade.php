@@ -35,8 +35,7 @@
                      <span id="menu-btn"></span>
                      @php
                          $current_route = Route::current()->getName();
-                         $menuItems = App\Models\menu::where('status', 'Active')->get();
-
+                         $menuItems = App\Models\menu::where('status', 'Active')->whereNull('parent_id')->get();
                      @endphp
                      <style>
                          .submenu {
@@ -52,24 +51,27 @@
                      </style>
                      <nav class="md-flex">
                          <ul id="mainmenu">
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="menu route">menu title</a></li>
-                             <li><a href="#">menu title</a>
-                                 <ul>
-                                     <li><a href="menu route">menu title</a></li>
-                                     <li><a href="menu route"> menu title</a></li>
-                                     <li><a href="menu route"> menu title</a></li>
-                                     <li><a href="menu route"> menu title</a></li>
-                                     <li><a href="menu route"> menu title</a></li>
-                                     <li><a href="menu route"> menu title</a></li>
-                                 </ul>
-                             </li>
-                             <li><a href="menu route">Contact</a></li>
+                             @foreach ($menuItems as $menuItem)
+                                 @php
+                                     $submenuItems = App\Models\menu::where('status', 'Active')
+                                         ->where('parent_id', $menuItem->id)
+                                         ->get();
+                                 @endphp
+                                 @if (count($submenuItems) > 0)
+                                     <li><a href="#">{{ $menuItem->name }}</a>
+                                         <ul>
+                                             @foreach ($submenuItems as $submenuItem)
+                                                 <li><a
+                                                         href="{{ route($submenuItem->route) }}">{{ $submenuItem->name }}</a>
+                                                 </li>
+                                             @endforeach
+                                         </ul>
+                                     </li>
+                                 @else
+                                     <li><a href="{{ route($menuItem->route) }}">{{ $menuItem->name }}</a></li>
+                                 @endif
+                             @endforeach
+
                          </ul>
                      </nav>
                      <div id='de-extra-menu'>

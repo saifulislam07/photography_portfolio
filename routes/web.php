@@ -233,7 +233,7 @@ Route::post('/storestorycontact', [ContactmeController::class, 'storestorycontac
 
 Route::get('/contactsemail', [ContactmeController::class, 'contactsemail'])->name('contactsemail');
 
-Route::get('/', [FrontEndController::class, 'index']);
+Route::get('/', [FrontEndController::class, 'index'])->name('home');
 
 
 Route::get('/client-area', [RegistrationController::class, 'index'])->name('signin');
