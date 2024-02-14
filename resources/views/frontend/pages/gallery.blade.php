@@ -26,7 +26,6 @@
             -webkit-box-shadow: 0 0 10px 0 rgba(88, 96, 109, .14);
             -moz-box-shadow: 0 0 10px 0 rgba(88, 96, 109, .14);
         }
-
     </style>
     <div class="clearfix"></div>
 

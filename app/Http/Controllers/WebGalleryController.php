@@ -11,6 +11,47 @@ use Illuminate\Support\Facades\DB;
 class WebGalleryController extends Controller
 {
 
+
+
+    public function updateImage(Request $request, $id)
+    {
+
+        $request->validate([
+            'category' => 'required',
+            'title' => 'required',
+            // 'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
+
+        if ($request->hasFile('images')) {
+            $extension = $request->file('images')->getClientOriginalExtension();
+            $fileName = 'images_' . time() . '.' . $extension;
+            $request->file('images')->move(public_path('galleryImage'), $fileName);
+        } else {
+            $fileName = $request->old_image;
+        }
+
+
+        $image = WebGallery::find($id);
+        $image->update([
+            'details' => $request->details,
+            'url' => $request->url,
+            'price' => $request->price,
+            'title' => $request->title,
+            'category' => $request->category,
+            'tags' => $request->tags,
+            'images' => $fileName,
+        ]);
+
+        return redirect('gallery-images-List')->with('success', 'Image Deleted successfully !');
+    }
+
+    public function edit($id)
+    {
+        $categorys = DB::table('categories')->get();
+        $image_data = DB::table('web_galleries')->where('id', $id)->first();
+        return view('admin.pages.galleryImages.edit-image', get_defined_vars());
+    }
+
     public function galleryImagesUpload()
     {
 
@@ -46,7 +87,7 @@ class WebGalleryController extends Controller
         $req->validate([
             'catName' => 'required',
             'title' => 'required',
-            'price' => 'required',
+            // 'price' => 'required',
             // 'image' => 'required|image|mimes:jpeg,png,jpg|max:800',
             'url' => 'required',
         ]);
@@ -82,9 +123,9 @@ class WebGalleryController extends Controller
     {
 
         $validatedData = $request->validate([
-            'url' => 'required|url',
+            // 'url' => 'required|url',
             'title' => 'required',
-            'price' => 'required',
+            // 'price' => 'required',
             'category_id' => 'required|integer',
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);

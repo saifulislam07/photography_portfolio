@@ -35,7 +35,7 @@
                      <span id="menu-btn"></span>
                      @php
                          $current_route = Route::current()->getName();
-                         $menuItems = App\Models\menu::where('status', 'Active')->whereNull('parent_id')->get();
+                         $menuItems = App\Models\menu::where('status', 'Active')->whereNull('parent_id')->orderBy('serial', 'asc')->get();
                      @endphp
                      <style>
                          .submenu {
@@ -75,9 +75,9 @@
                          </ul>
                      </nav>
                      <div id='de-extra-menu'>
-                         <a class="d-cart-icon" href="shop-cart.html">
+                         <a class="d-cart-icon" href="{{ route('cart') }}">
                              <i class="fa fa-shopping-basket"></i>
-                             <span class="d-cart-icon-count">5</span>
+                             <span class="d-cart-icon-count">{{ count((array) session('cart')) }}</span>
                          </a>
                      </div>
                  </div>

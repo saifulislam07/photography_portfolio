@@ -127,19 +127,16 @@
                     $('#addButton').click(function() {
                         var formData = new FormData($('#imageForm')[0]);
                         var image = $('#images').val();
-                        var price = $('#price').val();
+
                         var title = $('#title').val();
-                        var url = $('#url').val();
+
                         var categoryID = $('#categoryID').val();
 
                         if (categoryID == '' || categoryID == null) {
                             toastr.error('Category can not be empty');
                             return false;
                         }
-                        if (price == '' || price == null) {
-                            toastr.error('Price can not be empty');
-                            return false;
-                        }
+
                         if (image == '' || image == null) {
                             toastr.error('Image can not be empty');
                             return false;

@@ -81,7 +81,7 @@ class FrontEndController extends Controller
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
         $title = 'Buy Photo';
-        $forsale = WebGallery::orderBy('id', 'desc')->where('status', '1')->paginate(12);
+        $forsale = WebGallery::orderBy('id', 'desc')->whereNotNull('price')->where('status', '1')->paginate(12);
 
         $categorys = Category::orderBy('title', 'asc')->get();
         return view('frontend.pages.buyphoto', get_defined_vars());
@@ -182,11 +182,6 @@ class FrontEndController extends Controller
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
 
-        // $allcategorycount = WebGallery::select("categories.title as catname", DB::raw('COUNT(web_galleries.category) as total'))
-        //     ->join("categories", "categories.id", "=", "web_galleries.category")
-        //     ->where('web_galleries.status', '1')
-        //     ->groupBy("web_galleries.category")
-        //     ->get();
 
 
         $allcategorycount = WebGallery::select("categories.title as catname", DB::raw('COUNT(web_galleries.category) as total'))
@@ -199,10 +194,11 @@ class FrontEndController extends Controller
 
         // dd($allcategorycount);
         $allrecentimages = WebGallery::orderBy('web_galleries.id', 'desc')
+            ->select('web_galleries.*', 'categories.title')
             ->join("categories", "categories.id", "=", "web_galleries.category")
             ->where('web_galleries.status', 1)
             ->get();
-        //  dd($allrecentimages);
+        // dd($allrecentimages->toArray());
         return view('frontend.pages.mygallery', get_defined_vars());
     }
 
@@ -253,9 +249,15 @@ class FrontEndController extends Controller
         $socialMedia = Socialmedia::first();
         $allstory = story::where('status', 1)->get();
 
-        $allcategorycount = story::select("stories.*", "categories.title as catname", DB::raw('count("category_id") as total'))
-            ->join("categories", "categories.id", "=", "stories.category_id")
-            ->groupBy("category_id")
+        // $allcategorycount = story::select("stories.*", "categories.title as catname", DB::raw('count("category_id") as total'))
+        //     ->join("categories", "categories.id", "=", "stories.category_id")
+        //     ->groupBy("category_id")
+        //     ->get();
+
+        $allcategorycount = WebGallery::orderBy('web_galleries.id', 'desc')
+            ->select('web_galleries.*', 'categories.title')
+            ->join("categories", "categories.id", "=", "web_galleries.category")
+            ->where('web_galleries.status', 1)
             ->get();
         // dd($allcategorycount->all());
         return view('frontend.pages.photostory', get_defined_vars());

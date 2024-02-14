@@ -137,6 +137,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/view-member/{media}', [AdminController::class, 'view_member'])->name('view-member');
     Route::get('/gallery-images-upload', [WebGalleryController::class, 'galleryImagesUpload'])->name('gallery');
     Route::get('/gallery-images-List', [WebGalleryController::class, 'viewall'])->name('list-gallery');
+    Route::post('/update-image/{id}', [WebGalleryController::class, 'updateImage'])->name('updateImage');
+    Route::get('/edit-Image/{id}', [WebGalleryController::class, 'edit'])->name('edit-image');
     Route::get('/video-add', [VideoController::class, 'create'])->name('vgallery');
     Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('edit-video');
     Route::post('/update/{id}', [VideoController::class, 'update'])->name('update-video');

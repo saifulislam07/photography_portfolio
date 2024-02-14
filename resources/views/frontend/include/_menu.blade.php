@@ -48,27 +48,6 @@
 
 
 
-                                         @foreach ($menus as $menu)
-                                             @if ($menu['parent_id'] === null)
-                                                 <li>
-                                                     <a href="{{ $menu['route'] }}">{{ $menu['name'] }}</a>
-                                                     @if (isset($menu['children']))
-                                                         <ul class="submenu">
-                                                             @foreach ($menu['children'] as $child)
-                                                                 <li><a
-                                                                         href="{{ $child['route'] }}">{{ $child['name'] }}</a>
-                                                                 </li>
-                                                             @endforeach
-                                                         </ul>
-                                                     @endif
-                                                 </li>
-                                             @endif
-                                         @endforeach
-
-
-
-
-
 
 
                                          {{-- <li><a href="/">Home<span></span></a></li>

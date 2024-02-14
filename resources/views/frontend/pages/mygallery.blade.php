@@ -50,6 +50,7 @@
 
                         <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
 
+
                             @foreach ($allrecentimages as $eachimage)
                                 @php
                                     $imagecatid = str_replace(' ', '', $eachimage->title);
@@ -68,6 +69,24 @@
                                         <img src="{{ asset('/galleryImage/' . $eachimage->images) }}"
                                             alt="{{ $eachimage->images }}" />
                                     </div>
+
+                                    @if ($eachimage->price)
+                                        <div style="background: rgb(230, 227, 227)" class="mt-1">
+                                            <a href="{{ route('add.to.cart', $eachimage->id) }}">
+                                                <i style="font-size: 20px; color: orange" class="fa fa-fw"
+                                                    aria-hidden="true" title="Copy to use cart-plus"></i>
+                                            </a>
+                                            <b style="color: orange; margin-right: 2px"
+                                                class="float-end">{{ $eachimage->price }}$</b>
+                                        </div>
+                                    @else
+                                        <div style="background: rgb(230, 227, 227)">
+                                            <a style="color: orange; margin-left: 2px">Contact
+                                                Me for price</a>
+                                        </div>
+                                    @endif
+
+
                                 </div>
                             @endforeach
                             <!-- gallery item -->

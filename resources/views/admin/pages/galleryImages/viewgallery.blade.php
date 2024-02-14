@@ -92,6 +92,8 @@
                                                     <a onclick="return confirm('Are you sure you want to Delete This Record ?')"
                                                         href="delete-Image/{{ $value->id }} "
                                                         class="btn btn-xs btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                    <a href="edit-Image/{{ $value->id }} "
+                                                        class="btn btn-xs btn-info"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
