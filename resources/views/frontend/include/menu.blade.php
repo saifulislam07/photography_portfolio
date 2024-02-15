@@ -75,10 +75,23 @@
                          </ul>
                      </nav>
                      <div id='de-extra-menu'>
+
                          <a class="d-cart-icon" href="{{ route('cart') }}">
                              <i class="fa fa-shopping-basket"></i>
                              <span class="d-cart-icon-count">{{ count((array) session('cart')) }}</span>
                          </a>
+                         &nbsp;
+                         @if (Auth::check())
+                             <div class="md-flex-col col-extra" style="background-size: cover;">
+                                 <a href="{{ route('dashboard') }}"
+                                     class="btn-on-header btn-line">{{ auth()->user()->name }}</a>
+                             </div>
+                         @else
+                             <div class="md-flex-col col-extra" style="background-size: cover;">
+                                 <a href="{{ route('signin') }}" class="btn-on-header btn-line">Login</a>
+                             </div>
+                         @endif
+
                      </div>
                  </div>
              </div>

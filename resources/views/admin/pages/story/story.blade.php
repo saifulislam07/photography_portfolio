@@ -38,7 +38,6 @@
                                         <tr>
                                             <th>SL</th>
                                             <th>Title</th>
-                                            {{-- <th>Details</th> --}}
                                             <th>Cover</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -50,7 +49,7 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $value->title }}</td>
-                                                {{-- <td>{!! $value->details !!}</td> --}}
+
                                                 <td><img width="70px" class="zoom"
                                                         src="{{ asset('/storycover/' . $value->image) }}" alt="">
                                                 </td>
@@ -62,8 +61,8 @@
                                                 <td>
                                                     <a href="{{ route('edit-story', $value->id) }}"
                                                         class="btn btn-xs btn-info"><i class="fas fa-edit"></i></a>
-                                                    <a href="" class="btn btn-xs btn-success"><i
-                                                            class="fas fa-desktop"></i></a>
+                                                    <a target="_blank" href="{{ route('storyDetails', $value->id) }}"
+                                                        class="btn btn-xs btn-success"><i class="fas fa-desktop"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -22,16 +22,32 @@
             <div id="content">
                 <div class="container">
                     <div class="row g-2">
-                        @foreach ($tearSheet as $tear)
-                            <div class="col-lg-3 col-md-6">
-                                <div class="de-post-poster">
-                                    <a class="d-overlay" target="_blank" href="{{ $tear->url }}">
-                                    </a>
-                                    <div class="d-image"
-                                        style="background-image: url('{{ asset('/TearSheet/' . $tear->image) }}');"></div>
-                                </div>
+                        <div class="col-md-12">
+
+
+                            <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp"
+                                data-wow-delay=".3s">
+                                @foreach ($tearSheet as $tear)
+                                    <!-- gallery item -->
+                                    <div class="col-md-3 item ">
+                                        <div class="picframe">
+                                            <a href="{{ $tear->url }}" target="_blank">
+                                                <span class="overlay">
+                                                    <span class="pf_text">
+                                                        <span class="project-name">{{ $tear->title }}</span>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                            <img src="{{ asset('/TearSheet/' . $tear->image) }}"
+                                                alt="{{ $tear->image }}" />
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
+
+                        </div>
+
+
 
                         <div class="spacer-single"></div>
 

@@ -37,6 +37,7 @@
                                     <thead>
                                         <tr>
                                             <th>SL</th>
+                                            <th>Title</th>
                                             <th>URL</th>
                                             <th>Image</th>
                                             <th>Edit</th>
@@ -48,6 +49,7 @@
                                         @foreach ($allclient as $key => $value)
                                             <tr>
                                                 <td>{{ $i++ }}</td>
+                                                <td>{{ $value->title }}</td>
                                                 <td>{{ $value->url }}</td>
                                                 <td><img width="50px" class=" zoom"
                                                         src="{{ asset('/TearSheet/' . $value->image) }}">

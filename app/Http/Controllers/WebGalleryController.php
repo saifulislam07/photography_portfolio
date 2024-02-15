@@ -30,8 +30,8 @@ class WebGalleryController extends Controller
             $fileName = $request->old_image;
         }
 
-
         $image = WebGallery::find($id);
+
         $image->update([
             'details' => $request->details,
             'url' => $request->url,

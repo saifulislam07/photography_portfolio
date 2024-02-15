@@ -41,6 +41,13 @@
                                     <div class="form-group row">
                                         <div class=" col-sm-4">
                                             <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" placeholder="title Here" class="form-control"
+                                                    name="title" value="{{ $editdata->title }}">
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-4">
+                                            <div class="form-group">
                                                 <label>URL</label>
                                                 <input type="text" placeholder="URL Here" class="form-control"
                                                     name="url" value="{{ $editdata->url }}">
@@ -48,7 +55,7 @@
                                         </div>
 
 
-                                        <div class=" col-sm-4 ">
+                                        <div class=" col-sm-3">
                                             <div class="form-group">
                                                 <label> Image <span style="color: red">*</span></label>
                                                 <input type="file" class="form-control" name="image">
@@ -63,9 +70,13 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div style="margin-top: 33px">
-                                            <img width="40px" src="{{ asset('TearSheet/' . $editdata->image) }}"
-                                                alt="">
+                                        <div class=" col-sm-1 ">
+                                            <div class="form-group">
+                                                <div style="margin-top: 33px">
+                                                    <img width="40px" src="{{ asset('TearSheet/' . $editdata->image) }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
                                         </div>
 
 

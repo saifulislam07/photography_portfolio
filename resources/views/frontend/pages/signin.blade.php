@@ -23,8 +23,6 @@
 
             <section id="section-text " style="padding-bottom: 5px!important">
                 <div class="container">
-
-
                     <div class="row">
                         <div class="col-md-6">
 
@@ -193,17 +191,9 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
-
                 </div>
-
+            </section>
+            <div class="p-4"></div>
         </div>
-        </section>
-    </div>
     </div>
 @endsection

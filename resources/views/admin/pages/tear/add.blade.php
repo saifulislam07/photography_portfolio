@@ -39,6 +39,21 @@
 
                                         <div class=" col-sm-4 ">
                                             <div class="form-group">
+                                                <label>Title </label>
+                                                <input type="text" class="form-control" name="title">
+
+                                                @error('title')
+                                                    <div style="color: red; padding: 0;">
+                                                        <strong>
+                                                            {{ $message }}
+                                                        </strong>
+
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-4 ">
+                                            <div class="form-group">
                                                 <label>URL </label>
                                                 <input type="text" class="form-control" name="url">
 
@@ -66,8 +81,10 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class=" col-sm-4" style="margin-top: 33px">
-                                            <button type="submit" class="btn btn-info">SAVE</button>
+                                        <div class=" col-sm-4">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-info">SAVE</button>
+                                            </div>
                                         </div>
 
                                     </div>

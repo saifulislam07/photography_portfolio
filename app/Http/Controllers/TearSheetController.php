@@ -33,12 +33,14 @@ class TearSheetController extends Controller
 
         $this->validate($request, [
             'image' => 'required',
+            'title' => 'required',
         ]);
 
         $image = time() . '.' . 'TearSheet' . '.' . $request->image->extension();
         $request->image->move(public_path('TearSheet'), $image);
         $category = new TearSheet();
         $category->url = $request->url;
+        $category->title = $request->title;
         $category->image = $image;
         $category->save();
 
@@ -82,6 +84,7 @@ class TearSheetController extends Controller
                 $tearSheet->image = $request->oldimage;
             }
             $tearSheet->url = $request->url;
+            $tearSheet->title = $request->title;
             $tearSheet->save();
             session()->flash('success', 'Tear Sheet Deleted Successfully.');
             return redirect()->route('tearsheets.index');

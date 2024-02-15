@@ -25,7 +25,6 @@ class RegistrationController extends Controller
     {
         $title = 'CLIENT AREA';
         $websetting = websetup();
-
         $socialMedia = Socialmedia::first();
 
         return view('frontend.pages.signin', get_defined_vars());
