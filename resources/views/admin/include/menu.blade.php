@@ -235,6 +235,9 @@
                         </a>
                     </li>
                 </ul>
+                <br>
+                <br>
+                <br>
             @elseif(Auth::user()->type == 'User')
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">

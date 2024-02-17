@@ -122,6 +122,18 @@ class FrontEndController extends Controller
         return view('frontend.pages.myachievement', get_defined_vars());
     }
 
+    public function showachievement($id)
+    {
+        $title = 'Achievement Details';
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+        $socialMedia = Socialmedia::first();
+        $showachievement = Achievement::find($id);
+
+        return view('frontend.pages.showachievement', get_defined_vars());
+    }
+
+
     public function mypublications()
     {
         $title = 'My Publications';

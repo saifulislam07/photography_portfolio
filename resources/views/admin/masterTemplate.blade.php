@@ -252,6 +252,23 @@
     </script>
     <script>
         $(function() {
+            $("#example3").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example4').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+    <script>
+        $(function() {
             // Summernote
             $('.textarea').summernote()
         })

@@ -33,16 +33,16 @@
     <!-- revolution slider -->
     <link rel="stylesheet" href="{{ asset('frontend_assets/rs-plugin/css/settings.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/rev-settings.css') }}" type="text/css">
-</head>
-
-<body id="homepage">
     @php
         $bg_image = DB::table('web_setups')->first();
         $imagePath = $bg_image->background_image;
+
     @endphp
     <style>
         #subheader {
-            background: url('<?php echo 'site_logo/' . $imagePath; ?>') top fixed;
-            /* Other CSS styles for your subheader */
+            background: url('<?php echo 'site_logo/' . $imagePath; ?>') 0% 0px / cover;
         }
     </style>
+</head>
+
+<body id="homepage">

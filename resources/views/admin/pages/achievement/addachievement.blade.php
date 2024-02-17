@@ -68,7 +68,8 @@
                                         </div>
                                         <div class=" col-sm-4 ">
                                             <div class="form-group">
-                                                <label>Logo <span style="color: red">*</span></label>
+                                                <label>Logo <span style="color: red">*</span> <b
+                                                        style="color: orange">(H:250 * W:333)</b></label>
                                                 <input type="file" class="form-control" name="image"
                                                     placeholder="Type story title">
                                                 @error('image')

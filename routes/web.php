@@ -46,8 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/approvePayment/{media}', [AdminController::class, 'approvePayment'])->name('approvePayment');
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
+    Route::get('/delete-email/{id}', [AdminController::class, 'deleteEmail'])->name('delete-email');
 
     Route::post('userchangeStatus', [AdminController::class, 'userchangeStatus'])->name('userchangeStatus');
+
+    Route::get('admin/inquery/accept/{id}', [AdminController::class, 'readMessage'])->name('admin.inquery.accept');
 
     Route::get('/contacts-mail', [AdminController::class, 'contactsmail'])->name('contactsmail');
     Route::get('/create-media', [MedialinkController::class, 'create'])->name('createmedia');
@@ -94,6 +97,7 @@ Route::group(['middleware' => ['auth']], function () {
     //achievement
     Route::get('/achievement', [AchievementController::class, 'index'])->name('achievement');
     Route::get('/add-achievement', [AchievementController::class, 'create'])->name('addachievement');
+
     Route::get('/eidt-achievement/{id}', [AchievementController::class, 'edit'])->name('editachievement');
     Route::get('/delete-achievement/{id}', [AchievementController::class, 'destroy'])->name('delete-achievement');
     Route::post('/store-achievement', [AchievementController::class, 'store'])->name('storeachievement');
@@ -117,6 +121,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/payment/list', [AdminController::class, 'paymentList'])->name('admin.payment.list');
     Route::get('admin/payment/view/{id}', [AdminController::class, 'paymentView'])->name('admin.payment.view');
     Route::get('admin/payment/accept/{id}', [AdminController::class, 'paymentAccept'])->name('admin.payment.accept');
+
+
 
 
     Route::get('admin/menu/list', [AdminController::class, 'menuList'])->name('admin.menu.list');
@@ -217,6 +223,7 @@ Route::get('/tear-sheet', [FrontEndController::class, 'tearSheet'])->name('tear-
 Route::get('/my-portfolio-links', [FrontEndController::class, 'myPortfolioLinks'])->name('myPortfolioLinks');
 
 Route::get('/my-achievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
+Route::get('/show-achievement/{id}', [FrontEndController::class, 'showachievement'])->name('showachievement');
 
 Route::get('/my-publications', [FrontEndController::class, 'mypublications'])->name('mypublications');
 Route::get('/my-commercial-work', [FrontEndController::class, 'mycommercials'])->name('mycommercials');

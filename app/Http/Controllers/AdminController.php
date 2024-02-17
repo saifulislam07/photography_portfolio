@@ -129,6 +129,16 @@ class AdminController extends Controller
             $categorycount = Category::count();
             $galleryimage = WebGallery::count();
             $galleryvideo = Video::count();
+            $invoice = Invoice::count();
+            $allcontactme = contactme::orderByRaw("CASE WHEN status = 'Unread' THEN 0 ELSE 1 END")
+                ->orderBy('status')
+                ->get();;
+
+
+            $invoiceList = Invoice::orderByRaw("CASE WHEN payment_status = 'PENDING' THEN 0 ELSE 1 END")
+                ->orderBy('payment_status')
+                ->get();
+
             $international = Achievement::where('type', 'International')->count();
             $national = Achievement::where('type', 'National')->count();
             return view('admin/pages/dashboard', get_defined_vars());
@@ -149,11 +159,31 @@ class AdminController extends Controller
         //
     }
 
+    public function deleteEmail($id)
+    {
+
+        contactme::find($id)->delete();
+        return redirect()->back()->with('success', 'Contact message deleted !!');
+    }
 
     public function contactsmail(Request $request)
     {
         $allcontactme = contactme::all();
         return view('admin.pages.user_message.all-messages', get_defined_vars());
+    }
+
+    public function readMessage($id)
+    {
+        $inquery = contactme::find($id);
+
+        if ($inquery) {
+            $inquery->status = 'Read';
+            $inquery->save();
+
+            return redirect()->back()->with('success', 'This message readed');
+        } else {
+            return redirect()->back()->with('error', 'This message no readed');
+        }
     }
     /**
      * Store a newly created resource in storage.

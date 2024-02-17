@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Feb 17, 2024 at 05:27 AM
+-- Generation Time: Feb 17, 2024 at 12:59 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -70,6 +70,23 @@ CREATE TABLE `achievements` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `achievements`
+--
+
+INSERT INTO `achievements` (`id`, `type`, `title`, `image`, `url`, `details`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'National', 'porjoton corporation 2023', '1708154606.png', 'http://hashigoru.com', 'hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world&nbsp;', 1, '2024-02-17 01:05:48', '2024-02-17 01:23:26'),
+(2, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(3, 'National', 'porjoton corporation 2023', '1708154606.png', 'http://hashigoru.com', 'hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world&nbsp;', 1, '2024-02-17 01:05:48', '2024-02-17 01:23:26'),
+(4, 'National', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(5, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(6, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(7, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(8, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(9, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(10, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41'),
+(11, 'International', 'shilpokola award 2024', '1708153601.png', NULL, 'sdfasdf sdf asdfdsa fasd asdfasdf asdasdf asdfasd asdf asdasd fasdasd', 1, '2024-02-17 01:06:41', '2024-02-17 01:06:41');
+
 -- --------------------------------------------------------
 
 --
@@ -134,10 +151,17 @@ CREATE TABLE `contactmes` (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `story_id` int DEFAULT NULL,
   `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `status` int DEFAULT NULL,
+  `status` enum('Unread','Read') COLLATE utf8mb4_unicode_ci DEFAULT 'Unread',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contactmes`
+--
+
+INSERT INTO `contactmes` (`id`, `name`, `email`, `story_id`, `message`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'sdfasdf', 'saiful.rana@gmail.com', NULL, 'sdfasdf', 'Read', '2024-02-17 04:40:43', '2024-02-17 04:49:53');
 
 -- --------------------------------------------------------
 
@@ -182,8 +206,9 @@ CREATE TABLE `invoices` (
 
 INSERT INTO `invoices` (`id`, `order_id`, `payment_type`, `customer_email`, `customer_id`, `country_code`, `payment_id`, `currency`, `payment_status`, `price`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Bkash', 'iwb.saiful@gmail.com', '5', 'BDT', '345343545345', 'BDT', 'COMPLETED', 45, '2024-02-10 23:26:48', '2024-02-10 23:26:48'),
-(2, 2, 'PayPal', 'abcd@gmail.com', '6', 'USD', '2AT692402K3097051', 'USD', 'COMPLETED', 30, '2024-02-11 22:22:02', '2024-02-11 22:22:02'),
-(3, 3, 'Bkash', 'abcd@gmail.com', '6', 'BDT', '345rt34ere', 'BDT', 'COMPLETED', 20, '2024-02-11 22:25:30', '2024-02-11 23:01:46');
+(2, 2, 'PayPal', 'abcd@gmail.com', '6', 'USD', '2AT692402K3097051', 'USD', 'PENDING', 30, '2024-02-11 22:22:02', '2024-02-11 22:22:02'),
+(3, 3, 'Bkash', 'abcd@gmail.com', '6', 'BDT', '345rt34ere', 'BDT', 'PENDING', 20, '2024-02-11 22:25:30', '2024-02-17 04:20:53'),
+(4, 3, 'Bkash', 'abcd@gmail.com', '6', 'BDT', '345rt34ere', 'BDT', 'COMPLETED', 20, '2024-02-11 22:25:30', '2024-02-17 04:26:10');
 
 -- --------------------------------------------------------
 
@@ -867,7 +892,7 @@ ALTER TABLE `aboutmes`
 -- AUTO_INCREMENT for table `achievements`
 --
 ALTER TABLE `achievements`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -891,7 +916,7 @@ ALTER TABLE `commercials`
 -- AUTO_INCREMENT for table `contactmes`
 --
 ALTER TABLE `contactmes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -903,7 +928,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mailsettings`
