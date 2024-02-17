@@ -24,10 +24,10 @@
                         <!-- Profile Image -->
                         <div class="card">
                             <div class="card-header bg-cyan">
-                                <h3 class="card-title"> <i class="fas fa-thumbs-up"></i> Social Media</h3>
+                                <h3 class="card-title"> <i class="fas fa-thumbs-up"></i> Media / Portfolio</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('storemedia') }}" method="POST">
+                                <form action="{{ route('storemedia') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
                                         <label for="inputName" class="col-sm-3 col-form-label">Title</label>
@@ -51,6 +51,22 @@
                                             <input type="text" name="url" value="" class="form-control"
                                                 id="" placeholder="Media link">
                                             @error('url')
+                                                <div style="color: red; padding: 0;">
+                                                    <strong>
+                                                        {{ $message }}
+                                                    </strong>
+
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Logo</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="image" value="" class="form-control"
+                                                placeholder="Media link">
+                                            @error('image')
                                                 <div style="color: red; padding: 0;">
                                                     <strong>
                                                         {{ $message }}

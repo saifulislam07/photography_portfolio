@@ -54,10 +54,11 @@ class WebSetupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $request->validate([
             'site_name' => 'required',
+            'background_image' => 'required|dimensions:width=1920,height=600',
         ]);
+
 
         if ($request->has('logo_black')) {
             $logo_black = time() . '.' . 'logo_black' . '.' . $request->logo_black->extension();
@@ -81,6 +82,14 @@ class WebSetupController extends Controller
         }
 
 
+        if ($request->has('background_image')) {
+            $background_image = time() . '.' . 'background_image' . '.' . $request->background_image->extension();
+            $request->background_image->move(public_path('site_logo'), $background_image);
+        } else {
+            $background_image = $request->old_background_image;
+        }
+
+
 
 
 
@@ -97,6 +106,7 @@ class WebSetupController extends Controller
         $webSetup->logo_black = $logo_black;
         $webSetup->logo_white = $logo_white;
         $webSetup->water_mark = $water_mark;
+        $webSetup->background_image = $background_image;
 
 
         $webSetup->save();

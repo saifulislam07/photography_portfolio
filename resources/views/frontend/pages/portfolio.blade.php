@@ -30,23 +30,29 @@
                 <section>
                     <div class="container">
                         <div class="row">
-                            @foreach ($medialink as $media)
-                                <div class="col-md-3 mb-3">
-                                    <a href="{{ $media->url }}" target="_blank" rel="noopener noreferrer">
-                                        <div class="card">
-                                            <div class="card-body" style="border: 1px solid orange">
-                                                <div class="box-icon">
-                                                    <span class="icon"><i class="id-color icon-recycle"></i></span>
-                                                    <div class="text pt-3">
-                                                        <h3 class="style-1">{{ $media->title }}</h3>
+                            <div class="item pricing">
+                                <div class="row">
+                                    @foreach ($medialink as $media)
+                                        <div class="col-md-3 mb-4">
+                                            <a href="{{ $media->url }}" target="_blank" rel="noopener noreferrer"
+                                                class="text-decoration-none">
+                                                <div class="pricing-s1">
+                                                    <div class="ribbon">Saleable</div>
+                                                    <div class="top" style="min-height: 353px;">
+                                                        <h2>{{ $media->title }}</h2>
+                                                        <p class="price mt-1">
+                                                            <img src="{{ asset('media/' . $media->image) }}"
+                                                                alt="{{ $media->title }}" class="img-fluid">
+                                                        </p>
                                                     </div>
                                                 </div>
-
-                                            </div>
+                                            </a>
                                         </div>
-                                    </a>
+                                    @endforeach
                                 </div>
-                            @endforeach
+
+
+                            </div>
                         </div>
                     </div>
                 </section>

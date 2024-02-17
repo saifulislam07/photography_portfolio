@@ -46,16 +46,21 @@ class MedialinkController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'url' => 'required',
+            'image' => 'required',
         ]);
+
+        $image = time() . '.' . 'media' . '.' . $request->image->extension();
+        $request->image->move(public_path('media'), $image);
 
 
         $story = new medialink();
         $story->title = $request->title;
         $story->url = $request->url;
+        $story->image = $image;
         $story->status = 1;
         $story->save();
 
-        session()->flash('success', 'New Story save Successfully.');
+        session()->flash('success', 'New media save Successfully.');
         return redirect(route('medialinks'));
     }
 
@@ -96,10 +101,17 @@ class MedialinkController extends Controller
             'url' => 'required',
         ]);
 
+        if ($request->has('image')) {
+            $image = time() . '.' . 'media' . '.' . $request->image->extension();
+            $request->image->move(public_path('media'), $image);
+        } else {
+            $image = $request->oldimage;
+        }
 
         $story = medialink::find($id);
         $story->title = $request->title;
         $story->url = $request->url;
+        $story->image = $image;
         $story->status = 1;
         $story->save();
 

@@ -163,9 +163,39 @@
                                                 </div>
                                             </div>
 
+                                            <div class=" col-sm-5">
+                                                <div class="form-group">
+                                                    <label>Background Image<span style="color: red">*</span>
+                                                        <b style="color: orange">(1920*600)</b></label>
+                                                    <input type="file" class="form-control" name="background_image">
+                                                    <input type="hidden" type="text" name="old_background_image"
+                                                        value="{{ $info->background_image }}">
+                                                    @error('background_image')
+                                                        <div style="color: red; padding: 0;">
+                                                            <strong>
+                                                                {{ $message }}
+                                                            </strong>
 
-                                            <div class=" col-sm-6 ">
-                                                <button type="submit" class="btn btn-info">SAVE</button>
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-1 ">
+                                                <div class="form-group" style="padding-top: 25px">
+                                                    <img width="60px" class="zoom"
+                                                        src="{{ asset('./site_logo/' . $info->background_image) }} "
+                                                        alt="{{ $info->background_image }}">
+                                                </div>
+                                            </div>
+
+
+                                            <div class=" col-sm-12 ">
+                                                <div class=" col-sm-2 ">
+                                                    <div class="form-group" style="padding-top: 20px">
+                                                        <button type="submit"
+                                                            class="btn btn-info btn-block ">SAVE</button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>

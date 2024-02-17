@@ -198,7 +198,7 @@
                             class="nav-link @if ($current_route == 'medialinks' || $current_route == 'editmedia') {{ 'active' }} @endif"
                             style="color: rgb(255, 255, 255)">
                             <i class="nav-icon fa fa-search"></i>
-                            <p>Media</p>
+                            <p>Media / Portfolio</p>
                         </a>
                     </li>
                     <li class="nav-item">

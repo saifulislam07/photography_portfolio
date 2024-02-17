@@ -43,6 +43,7 @@
                                         <tr>
                                             <th>SL</th>
                                             <th>Title</th>
+                                            <th>Logo</th>
                                             <th>URL</th>
                                             <th>Action</th>
                                         </tr>
@@ -53,6 +54,9 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $value->title }}</td>
+                                                <td><img width="100px" class="zoom"
+                                                        src="{{ asset('media/' . $value->image) }}"
+                                                        alt="{{ $value->image }}"></td>
                                                 <td>{{ $value->url }}</td>
 
 

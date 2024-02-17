@@ -36,3 +36,13 @@
 </head>
 
 <body id="homepage">
+    @php
+        $bg_image = DB::table('web_setups')->first();
+        $imagePath = $bg_image->background_image;
+    @endphp
+    <style>
+        #subheader {
+            background: url('<?php echo 'site_logo/' . $imagePath; ?>') top fixed;
+            /* Other CSS styles for your subheader */
+        }
+    </style>

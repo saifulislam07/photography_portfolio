@@ -27,7 +27,8 @@
                                 <h3 class="card-title"> <i class="fas fa-thumbs-up"></i> Edit Media</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('update-media', $medialink->id) }}" method="POST">
+                                <form action="{{ route('update-media', $medialink->id) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
                                         <label for="inputName" class="col-sm-3 col-form-label">Title</label>
@@ -59,6 +60,29 @@
                                                 </div>
                                             @enderror
                                         </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Logo</label>
+                                        <div class="col-sm-7">
+                                            <input type="file" name="image" value="{{ $medialink->url }}"
+                                                class="form-control">
+                                            @error('image')
+                                                <div style="color: red; padding: 0;">
+                                                    <strong>
+                                                        {{ $message }}
+                                                    </strong>
+
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img width="75px" class="zoom"
+                                                src="{{ asset('media/' . $medialink->image) }}"
+                                                alt="{{ $medialink->image }}">
+
+                                        </div>
+                                        <input type="hidden" name="oldimage" value="{{ $medialink->image }}">
 
                                     </div>
                                     <div class="form-group row">
