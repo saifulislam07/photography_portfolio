@@ -21,6 +21,7 @@ use App\Http\Controllers\ContactmeController;
 use App\Http\Controllers\MedialinkController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClientMessageController;
 use App\Http\Controllers\CommercialController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SaleController;
@@ -48,6 +49,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/rejectPayment/{media}', [AdminController::class, 'rejectPayment'])->name('rejectPayment');
     Route::get('/delete-email/{id}', [AdminController::class, 'deleteEmail'])->name('delete-email');
 
+
+    Route::get('admin/client-message-list', [AdminController::class, 'clientMessages'])->name('clientMessageList');
+    Route::get('admin/message/active/{id}/{value}', [AdminController::class, 'actionMessage'])->name('admin.message.action');
+
     Route::post('userchangeStatus', [AdminController::class, 'userchangeStatus'])->name('userchangeStatus');
 
     Route::get('admin/inquery/accept/{id}', [AdminController::class, 'readMessage'])->name('admin.inquery.accept');
@@ -63,6 +68,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     //tearsheet
     Route::resource('tearsheets', TearSheetController::class);
+
+
+    //tearsheet
+    Route::resource('clientMessage', ClientMessageController::class);
 
     //websetup
     Route::resource('web', WebSetupController::class);
@@ -214,6 +223,11 @@ Route::get('/my-profile-details', [FrontEndController::class, 'aboutsme'])->name
 Route::get('/portfolio', [FrontEndController::class, 'portfolio'])->name('portfolio');
 Route::get('/myachievement', [FrontEndController::class, 'myachievement'])->name('myachievement');
 Route::get('/my-photo-gallery', [FrontEndController::class, 'mygallery'])->name('mygallery');
+
+Route::get('/gallery-images/{id}', [FrontEndController::class, 'getImageList'])->name('getImageList');
+
+
+
 Route::get('/my-video-gallery', [FrontEndController::class, 'myvideogallery'])->name('myvideogallery');
 Route::get('/photo-story', [FrontEndController::class, 'photostory'])->name('photostory');
 Route::get('/story-details/{id}', [FrontEndController::class, 'photostoryDetails'])->name('storyDetails');

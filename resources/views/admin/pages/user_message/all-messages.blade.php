@@ -1,6 +1,6 @@
 @extends('admin.masterTemplate')
 @section('menu-name')
-    Al Message
+    All Message
 @endsection
 @section('main-content')
     <div class="content-wrapper">

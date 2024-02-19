@@ -1,3 +1,37 @@
+        <style>
+            /* Base height for all screen sizes */
+            .fullwidthbanner-container {
+                /* height: 858px; */
+            }
+
+            /* Adjust height for screens up to 575.98px */
+            @media (max-width: 425px) {
+                .fullwidthbanner-container {
+                    height: 210px !important;
+                }
+            }
+
+            @media (max-width: 575.98px) {
+                .fullwidthbanner-container {
+                    height: 210px !important;
+                }
+            }
+
+            /* Adjust height for screens from 576px to 767.98px */
+            @media (min-width: 576px) and (max-width: 767.98px) {
+                .fullwidthbanner-container {
+                    height: 500px !important;
+                }
+            }
+
+            /* Adjust height for screens from 768px to 991.98px */
+            @media (min-width: 768px) and (max-width: 991.98px) {
+                .fullwidthbanner-container {
+                    height: 430px !important;
+                }
+            }
+        </style>
+
         <!-- revolution slider begin -->
         <section id="section-slider" class="fullwidthbanner-container" aria-label="section-slider">
             @php

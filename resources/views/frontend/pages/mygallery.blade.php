@@ -29,15 +29,17 @@
                         <!-- portfolio filter begin -->
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <ul id="filters" class="wow fadeInUp" data-wow-delay="0s">
-                                    <li><a href="#" data-filter="*" class="selected">All Photos</a></li>
+                                <ul id="filters_new" class="wow fadeInUp" data-wow-delay="0s">
+                                    <li><a href="{{ route('getImageList', 'all-images') }}" data-filter="*"
+                                            class="selected">All
+                                            Photos</a></li>
                                     @foreach ($allcategorycount as $each_category)
                                         @php
                                             $string = str_replace(' ', '', $each_category->catname);
                                         @endphp
-                                        <li><a href="#"
-                                                data-filter=".{{ $string }}">{{ $each_category->catname }}
-                                                ({{ $each_category->total }})
+                                        <li><a href="{{ route('getImageList', $each_category->catId) }}"
+                                                data-filter=".{{ $string }}">
+                                                {{ $each_category->catname }} ({{ $each_category->total }})
                                             </a>
                                         </li>
                                     @endforeach
@@ -86,7 +88,6 @@
                                         </div>
                                     @endif
 
-
                                 </div>
                             @endforeach
                             <!-- gallery item -->
@@ -110,8 +111,6 @@
                     <a href="{{ route('contacts') }}" class="btn btn-line black btn-big">Contact Me</a>
                 </section>
                 <!-- logo carousel section close -->
-
-
 
             </div>
         </div>

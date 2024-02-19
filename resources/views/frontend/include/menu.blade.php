@@ -26,12 +26,14 @@
              <div class="col-md-12">
                  <div class="de-header-flex">
                      <!-- logo begin -->
+
                      <div id="logo">
                          <a href="/">
                              <img width="300px" src="{{ URL::to('/site_logo/' . $websetting->logo_white) }}"
                                  class="logo-small" alt="">
                          </a>
                      </div>
+
                      <span id="menu-btn"></span>
                      @php
                          $current_route = Route::current()->getName();

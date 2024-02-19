@@ -217,6 +217,17 @@
                             <p>Menu Setup</p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('clientMessageList') }}"
+                            class="nav-link @if ($current_route == 'clientMessageList') {{ 'active' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Client Comment</p>
+                        </a>
+                    </li>
+
+
                     <li class="nav-item">
                         <a href="{{ route('contactsmail') }}"
                             class="nav-link @if ($current_route == 'contactsmail') {{ 'active' }} @endif"
@@ -234,6 +245,7 @@
                             <p>SMTP</p>
                         </a>
                     </li>
+
                 </ul>
                 <br>
                 <br>
@@ -269,6 +281,17 @@
                             style="color: rgb(255, 255, 255)">
                             <i class="nav-icon fas fa-list"></i>
                             <p>Payment list</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('clientMessage.index') }}"
+                            class="nav-link @if (
+                                $current_route == 'clientMessage.index' ||
+                                    $current_route == 'clientMessage.create' ||
+                                    $current_route == 'clientMessage.edit') {{ 'bg-warning' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Leave Message</p>
                         </a>
                     </li>
                 </ul>

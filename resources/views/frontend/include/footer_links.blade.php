@@ -20,6 +20,8 @@
 
      });
  </script>
+
+
  @yield('extra_js')
  </body>
 

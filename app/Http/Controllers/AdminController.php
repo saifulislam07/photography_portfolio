@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Achievement;
 use App\Models\Admin;
 use App\Models\Category;
+use App\Models\ClientMessage;
 use App\Models\contactme;
 use App\Models\Gallery;
 use App\Models\Invoice;
@@ -170,6 +171,26 @@ class AdminController extends Controller
     {
         $allcontactme = contactme::all();
         return view('admin.pages.user_message.all-messages', get_defined_vars());
+    }
+
+    public function clientMessages()
+    {
+        $allmessages = ClientMessage::all();
+        return view('admin.pages.user_message.client-message', get_defined_vars());
+    }
+
+    public function actionMessage(Request $request, $id, $value)
+    {
+        $clientMessagess = ClientMessage::find($id);
+
+        if ($clientMessagess) {
+            $clientMessagess->status = $value;
+            $clientMessagess->save();
+
+            return redirect()->back()->with('success', 'Status updated');
+        } else {
+            return redirect()->back()->with('error', 'Status not updated');
+        }
     }
 
     public function readMessage($id)

@@ -41,6 +41,7 @@
                     </div>
                 </div>
             </section>
+            @include('frontend.include.clientComments');
         </div>
     </div>
 @endsection

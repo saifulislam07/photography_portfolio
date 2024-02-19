@@ -294,12 +294,8 @@
                                                                         </a>
                                                                     @endif
 
-
-
-
                                                                 </td>
                                                                 <td>{{ $value->created_at }}</td>
-
                                                                 <td>
 
                                                                     <a onclick="return confirm('are you sure? you want to delete this?')"

@@ -13,6 +13,7 @@
         content="architecture,building,business,bootstrap,creative,exterior design,furniture design,gallery,garden design,house,interior design,landscape design,multipurpose,onepage,portfolio,studio">
     <meta name="author" content="">
 
+
     <!-- CSS Files
     ================================================== -->
     <link href="{{ asset('frontend_assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap" />
@@ -41,6 +42,13 @@
     <style>
         #subheader {
             background: url('<?php echo 'site_logo/' . $imagePath; ?>') 0% 0px / cover;
+        }
+    </style>
+    <style>
+        @media (max-width: 575.98px) {
+            #logo {
+                display: none !important;
+            }
         }
     </style>
 </head>
