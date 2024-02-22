@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\story;
 use App\Models\Video;
+use App\Models\Visitor;
 use App\Models\WebGallery;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
+use Sarfraznawaz2005\VisitLog\Models\VisitLog;
 
 class AdminController extends Controller
 {
@@ -124,6 +126,7 @@ class AdminController extends Controller
     public function index(Request $request)
     {
 
+
         if ($request->session()) {
             $story = story::count();
             $contactemail = contactme::count();
@@ -131,6 +134,7 @@ class AdminController extends Controller
             $galleryimage = WebGallery::count();
             $galleryvideo = Video::count();
             $invoice = Invoice::count();
+            $visitor =  VisitLog::all();
             $allcontactme = contactme::orderByRaw("CASE WHEN status = 'Unread' THEN 0 ELSE 1 END")
                 ->orderBy('status')
                 ->get();;

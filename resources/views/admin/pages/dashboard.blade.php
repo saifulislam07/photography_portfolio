@@ -108,6 +108,9 @@
                                     </a>
                                     <!-- /.info-box -->
                                 </div>
+
+
+
                                 <div class="col-12 col-sm-4 col-md-3">
                                     <a href="{{ route('admin.payment.list') }}">
                                         <div class="info-box mb-3">
@@ -125,6 +128,7 @@
 
                                     <!-- /.info-box -->
                                 </div>
+
                                 <div class="col-12 col-sm-4 col-md-3">
                                     <a href="{{ route('achievement') }}">
                                         <div class="info-box mb-3">
@@ -162,6 +166,89 @@
                     </div>
 
                 </div>
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-4">
+                                    <div class="card">
+                                        <div class="card-header bg-success">
+                                            Visitor Count
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-bordered">
+                                                <thead>
+
+                                                    <tr>
+                                                        <td>Today</td>
+                                                        <td>10</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>This Month</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>This Year</td>
+                                                        <td>20</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Overall</td>
+                                                        <td>20</td>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="card">
+                                        <div class="card-header bg-success">
+                                            Order
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="example5" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <td>SL</td>
+                                                        <td>IP</td>
+                                                        <td>Client</td>
+                                                        <td>Browser</td>
+                                                        <td>OS</td>
+                                                        <td>Country</td>
+                                                        <td>Region</td>
+                                                        <td>City</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @php
+                                                        $i = 1;
+                                                    @endphp
+                                                    @forelse ($visitor as $each)
+                                                        <tr>
+                                                            <td>{{ $i++ }}</td>
+                                                            <td>{{ $each->ip }}</td>
+                                                            <td>{{ $each->user_id }}</td>
+                                                            <td>{{ $each->browser }}</td>
+                                                            <td>{{ $each->os }}</td>
+                                                            <td>{{ $each->country_name }}</td>
+                                                            <td>{{ $each->region_name }}</td>
+                                                            <td>{{ $each->city }}</td>
+                                                        </tr>
+                                                    @empty
+                                                        <p>No data</p>
+                                                    @endforelse
+
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="container-fluid">
                     <div class="card">
@@ -170,7 +257,7 @@
 
                                 <div class="col-md-6">
                                     <div class="card">
-                                        <div class="card-header bg-light">
+                                        <div class="card-header bg-info">
                                             Order
                                         </div>
                                         <div class="card-body bg-light">
@@ -246,7 +333,7 @@
 
                                 <div class="col-md-6">
                                     <div class="card">
-                                        <div class="card-header bg-light">
+                                        <div class="card-header bg-info">
                                             Inquery
                                         </div>
                                         <div class="card-body bg-light">

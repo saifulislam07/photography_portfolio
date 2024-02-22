@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FrontEnd;
-use App\Models\story;
-use App\Models\Aboutme;
-use App\Models\Achievement;
-use App\Models\Category;
-use App\Models\Client;
-use App\Models\Commercial;
-use App\Models\medialink;
-use App\Models\Publication;
-use App\Models\Socialmedia;
-use App\Models\TearSheet;
-use App\Models\Video;
-use App\Models\WebGallery;
-use Illuminate\Http\Request;
 use DB;
 use Auth;
+use App\Models\story;
+use App\Models\Video;
+use App\Models\Client;
+use App\Models\Aboutme;
+use App\Models\Category;
+use App\Models\FrontEnd;
+use App\Models\medialink;
+use App\Models\TearSheet;
+use App\Models\Commercial;
+use App\Models\WebGallery;
+use App\Models\Achievement;
+use App\Models\Publication;
+use App\Models\Socialmedia;
+use Illuminate\Http\Request;
+use Sarfraznawaz2005\VisitLog\Facades\VisitLog;
+
 
 //namespace App\Http\Controllers\Auth;
 
@@ -314,6 +316,8 @@ class FrontEndController extends Controller
 
     public function index()
     {
+
+        VisitLog::save();
 
         $aboutme = Aboutme::first();
         $websetting = websetup();

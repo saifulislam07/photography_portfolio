@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Feb 17, 2024 at 12:59 PM
+-- Generation Time: Feb 19, 2024 at 12:28 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -123,6 +123,40 @@ CREATE TABLE `clients` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `image`, `created_at`, `updated_at`) VALUES
+(1, '1708239458.clients.png', '2024-02-18 00:57:39', '2024-02-18 00:57:39'),
+(2, '1708239465.clients.png', '2024-02-18 00:57:45', '2024-02-18 00:57:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_messages`
+--
+
+CREATE TABLE `client_messages` (
+  `id` bigint UNSIGNED NOT NULL,
+  `status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Inactive',
+  `client_id` int NOT NULL,
+  `client_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `client_messages`
+--
+
+INSERT INTO `client_messages` (`id`, `status`, `client_id`, `client_name`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Inactive', 5, 'sdfasd', 'asdfasdfasdf', NULL, '2024-02-18 00:47:48'),
+(2, 'Active', 5, 'Saiful Islam', 'hellow world', '2024-02-17 23:42:22', '2024-02-18 00:47:30'),
+(3, 'Inactive', 5, 'Saiful Islam', 'hellow world  sdfsadf 2222 asdfasdfasd', '2024-02-17 23:42:37', '2024-02-17 23:51:11'),
+(4, 'Inactive', 5, 'Saiful Islam', 'sdfasdf', '2024-02-17 23:42:46', '2024-02-17 23:42:46');
 
 -- --------------------------------------------------------
 
@@ -344,7 +378,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2024_02_10_063851_create_orders_table', 4),
 (25, '2024_02_10_063943_create_suborders_table', 4),
 (26, '2024_02_10_064024_create_invoices_table', 4),
-(27, '2024_02_12_055617_create_menus_table', 5);
+(27, '2024_02_12_055617_create_menus_table', 5),
+(28, '2024_02_18_051817_create_client_messages_table', 6);
 
 -- --------------------------------------------------------
 
@@ -449,7 +484,8 @@ CREATE TABLE `sliders` (
 INSERT INTO `sliders` (`id`, `title`, `type`, `image`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'ertebete', '1', '1707817598.jpg', '0', '2024-02-13 03:46:38', '2024-02-13 03:46:38'),
 (2, 'weerwer', '1', '1707817605.png', '0', '2024-02-13 03:46:45', '2024-02-13 03:46:45'),
-(3, 'yuiyuiyu', '1', '1707817610.jpg', '0', '2024-02-13 03:46:50', '2024-02-13 03:46:50');
+(3, 'yuiyuiyu', '1', '1707817610.jpg', '0', '2024-02-13 03:46:50', '2024-02-13 03:46:50'),
+(4, 'asdfasd', '1', '1708247430.jpg', '0', '2024-02-18 03:10:30', '2024-02-18 03:10:30');
 
 -- --------------------------------------------------------
 
@@ -743,6 +779,12 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `client_messages`
+--
+ALTER TABLE `client_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `commercials`
 --
 ALTER TABLE `commercials`
@@ -904,7 +946,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `client_messages`
+--
+ALTER TABLE `client_messages`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `commercials`
@@ -952,7 +1000,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -976,7 +1024,7 @@ ALTER TABLE `publications`
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `socialmedia`

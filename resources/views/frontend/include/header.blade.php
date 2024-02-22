@@ -8,10 +8,10 @@
     <title>{{ $websetting->site_name }} - {{ $title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Archi is best selling interior design website template with responsive stunning design">
+        content="EFIAP, ABPS is recognized as one of the leading travel & documentary photographers in Bangladesh.">
     <meta name="keywords"
-        content="architecture,building,business,bootstrap,creative,exterior design,furniture design,gallery,garden design,house,interior design,landscape design,multipurpose,onepage,portfolio,studio">
-    <meta name="author" content="">
+        content="EFIAP,ABPS,bps,sale,photography,nature,travel,photo,PhotoSale,PhotographyArt,PhotographySale,PhotographyGallery,PrintsForSale,ArtForSale,portfolio,PhotoCollector">
+    <meta name="Badal Chandra Sarker" content="Badal Sarkar is a professional photographer based in Bangladesh.">
 
 
     <!-- CSS Files

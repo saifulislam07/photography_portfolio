@@ -8,7 +8,55 @@
 
 
         <div id="wrapper">
-            <section id="section-text " style="padding-bottom: 5px!important">
+            <section id="section-about-us-2" class="side-bg no-padding">
+                <div class="row mt-4 pb-4">
+                    <div class="col-lg-3 col-md-6 offset-lg-2">
+                        <!-- team member -->
+                        <div class="de-team-list">
+                            <div class="team-pic">
+                                <img style="width: 467px" src="{{ asset('aboutmes/' . $aboutme->homeimage) }}"
+                                    alt="{{ $aboutme->homeimage }}" class="img-responsive img-fluid wow fadeInUp">
+                            </div>
+                            <div class="team-desc text-center">
+                                <h3>{{ $aboutme->your_name }}</h3>
+                                <p class="lead">{{ $aboutme->title }}</p>
+
+
+                                <div class="social text-center">
+
+                                    <div class="social-icons">
+                                        <a target="_blank" href="{{ $socialMedia->facebook }}"><i
+                                                class="fa fa-facebook fa-lg"></i></a>
+                                        <a target="_blank" href="{{ $socialMedia->twitter }}"><i
+                                                class="fa fa-twitter fa-lg"></i></a>
+                                        <a target="_blank" href="{{ $socialMedia->instagram }}"><i
+                                                class="fa fa-instagram fa-lg"></i></a>
+                                        <a target="_blank" href="{{ $socialMedia->linkedin }}"><i
+                                                class="fa fa-linkedin fa-lg"></i></a>
+                                    </div>
+
+                                    <div class="transbox mt-2">
+                                        <img style="width: 450px" src="{{ asset('aboutmes/' . $aboutme->homeimage) }}"
+                                            alt="{{ $aboutme->homeimage }}" class="img-responsive img-fluid wow fadeInUp">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 ">
+                        <!-- team member -->
+                        <div class="team-desc">
+                            <h2>{{ $aboutme->title }}</h2>
+                            <p class="intro">
+                                {!! $aboutme->details !!}
+                            </p>
+                        </div>
+                        <!-- team close -->
+                    </div>
+                </div>
+            </section>
+            {{-- <section id="section-text " style="padding-bottom: 5px!important">
                 <div class="container">
 
 
@@ -59,7 +107,9 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
+
+
             <hr>
             <section class="no-top no-bottom  sm-mt0">
                 <div class="container">
