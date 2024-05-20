@@ -197,13 +197,19 @@ class FrontEndController extends Controller
         $aboutme = Aboutme::first();
         $socialMedia = Socialmedia::first();
 
-
-
         $allcategorycount = WebGallery::select("categories.title as catname", "categories.id as catId", DB::raw('COUNT(web_galleries.category) as total'))
             ->join("categories", "categories.id", "=", "web_galleries.category")
             ->where('web_galleries.status', '1')
-            ->groupBy("web_galleries.category", "categories.title") // Include categories.title in GROUP BY
+            ->groupBy("categories.id", "categories.title")
             ->get();
+
+
+
+        // $allcategorycount = WebGallery::select("categories.title as catname", "categories.id as catId", DB::raw('COUNT(web_galleries.category) as total'))
+        //     ->join("categories", "categories.id", "=", "web_galleries.category")
+        //     ->where('web_galleries.status', '1')
+        //     ->groupBy("web_galleries.category", "categories.title") // Include categories.title in GROUP BY
+        //     ->get();
 
 
 
@@ -242,7 +248,7 @@ class FrontEndController extends Controller
         $allcategorycount = WebGallery::select("categories.title as catname", "categories.id as catId", DB::raw('COUNT(web_galleries.category) as total'))
             ->join("categories", "categories.id", "=", "web_galleries.category")
             ->where('web_galleries.status', '1')
-            ->groupBy("web_galleries.category", "categories.title") // Include categories.title in GROUP BY
+            ->groupBy("web_galleries.category", "categories.title")
             ->get();
 
 
@@ -324,7 +330,7 @@ class FrontEndController extends Controller
         $socialMedia = Socialmedia::first();
 
         // dd($slidersImages);
-        $recentimages = WebGallery::orderBy('id', 'desc')->where('status', '1')->take(12)->get();
+        $recentimages = WebGallery::orderBy('id', 'desc')->where('status', '1')->take(36)->get();
 
         $title = 'HOME';
         // dd($recentimages);

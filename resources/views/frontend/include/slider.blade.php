@@ -35,7 +35,7 @@
         <!-- revolution slider begin -->
         <section id="section-slider" class="fullwidthbanner-container" aria-label="section-slider">
             @php
-                $slidersImages = DB::table('sliders')->select('*')->where('type', 1)->get();
+                $slidersImages = DB::table('sliders')->select('*')->orderBy('id', 'desc')->where('type', 1)->get();
             @endphp
             <div id="revolution-slider">
                 <ul>

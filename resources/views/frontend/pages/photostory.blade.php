@@ -47,10 +47,13 @@
                                         </div>
 
                                         <div class="post-text">
-                                            <h3><a href="#">{{ $story->title }}</a></h3>
-                                            <p>
-                                                {{ $story->short_details }}
-                                            </p>
+                                            <h3><a href="#">{{ $story->title }}</a>
+                                            </h3>
+                                            <div class="line-clamp-2">
+                                                <p class="">
+                                                    {!! $story->details !!}
+                                                </p>
+                                            </div>
                                         </div>
 
                                         <a href="{{ route('storyDetails', $story->id) }}" class="btn-more">Read More</a>

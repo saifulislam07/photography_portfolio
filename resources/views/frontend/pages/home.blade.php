@@ -49,8 +49,24 @@
                         <div class="team-desc">
                             <h2>{{ $aboutme->title }}</h2>
                             <p class="intro">
-                                {!! $aboutme->details !!}
+                                {!! // Assuming $aboutme->details contains your text content
+                                    $text = $aboutme->details;
+                                
+                                // Check if the length of the text without HTML tags is greater than 50
+                                if (strlen(strip_tags($text)) > 50) {
+                                    // If it is, truncate the text to 100 words
+                                    $truncated_text = implode(' ', array_slice(str_word_count(strip_tags($text), 1), 0, 100));
+                                    // Output the truncated text with "ReadMore" link
+                                    echo $truncated_text . '... <a href="#">ReadMore</a>';
+                                } else {
+                                    // If the length is not greater than 50, simply output the text
+                                    echo $text;
+                                } !!}
+                                {{-- {!! $aboutme->details !!} --}}
+                                {{-- {{ strlen(strip_tags($aboutme->details)) > 50 ? '...ReadMore' : '' }} --}}
                             </p>
+                            {{-- <a href="{{ route('mygallery') }}" class="btn-slider">My Gallery
+                            </a> --}}
                         </div>
                         <!-- team close -->
                     </div>
@@ -119,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid" data-col="4" data-gridspace="10" data-ratio="466/700">
+                <div class="grid" data-col="6" data-gridspace="10" data-ratio="466/700">
 
                     <div class="grid-sizer"></div>
                     @foreach ($recentimages as $recent)
@@ -146,7 +162,7 @@
 
 
             <!-- section begin -->
-            @include('frontend.include.clientComments');
+            @include('frontend.include.clientComments')
 
         </div>
     </div>
