@@ -170,9 +170,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Sarfraznawaz2005\VisitLog\VisitLogServiceProvider::class,
-
-
-
+        Intervention\Image\ImageServiceProvider::class
     ])->toArray(),
 
     /*
@@ -190,6 +188,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
         'VisitLog' => Sarfraznawaz2005\VisitLog\Facades\VisitLog::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ])->toArray(),
 

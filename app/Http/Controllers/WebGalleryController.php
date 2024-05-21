@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\WebGallery;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class WebGalleryController extends Controller
 {
@@ -118,24 +119,103 @@ class WebGalleryController extends Controller
         return back()->with('success', 'File has successfully uploaded!');
     }
 
+    // public function insertImage(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'title' => 'required',
+    //         'category_id' => 'required|integer',
+    //         'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+    //     ]);
 
+    //     $imageFile = $request->file('images');
+    //     $extension = $imageFile->getClientOriginalExtension();
+    //     $fileName = 'images_' . time() . '.' . $extension;
+
+    //     $image = Image::make($imageFile->getPathname());
+
+    //     // Load watermark image
+    //     $watermark = Image::make(public_path('site_logo/1703400484.logo_black.png'));
+
+    //     // Set opacity of watermark
+    //     $watermark->opacity(80);
+
+    //     // Get image and watermark dimensions
+    //     $imageWidth = $image->width();
+    //     $imageHeight = $image->height();
+    //     $watermarkWidth = $watermark->width();
+    //     $watermarkHeight = $watermark->height();
+
+    //     // Calculate the number of times watermark fits across and down the image
+    //     $numAcross = ceil($imageWidth / $watermarkWidth);
+    //     $numDown = ceil($imageHeight / $watermarkHeight);
+
+    //     // Apply watermark multiple times across and down the image
+    //     for ($x = 0; $x < $numAcross; $x++) {
+    //         for ($y = 0; $y < $numDown; $y++) {
+    //             $image->insert($watermark, 'top-left', $x * $watermarkWidth, $y * $watermarkHeight);
+    //         }
+    //     }
+
+    //     // Save the image with watermark
+    //     $image->save(public_path('galleryImage/' . $fileName));
+
+    //     $imageModel = WebGallery::create([
+    //         'details' => $request->details,
+    //         'url' => $request->url,
+    //         'price' => $request->price,
+    //         'title' => $request->title,
+    //         'category' => $request->category_id,
+    //         'tags' => $request->tags,
+    //         'images' => $fileName,
+    //     ]);
+
+    //     return true;
+    // }
     public function insertImage(Request $request)
     {
-
         $validatedData = $request->validate([
-            // 'url' => 'required|url',
             'title' => 'required',
-            // 'price' => 'required',
             'category_id' => 'required|integer',
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
 
-        $extension = $request->file('images')->getClientOriginalExtension();
+        $imageFile = $request->file('images');
+        $extension = $imageFile->getClientOriginalExtension();
         $fileName = 'images_' . time() . '.' . $extension;
 
-        $request->file('images')->move(public_path('galleryImage'), $fileName);
+        $image = Image::make($imageFile->getPathname());
 
-        $image = WebGallery::create([
+        // Load and resize watermark image
+        $watermark = Image::make(public_path('site_logo/1713174284.water_mark.png'))->resize(50, 25);
+
+        // Set opacity of watermark
+        $watermark->opacity(10);
+
+        // Get image and watermark dimensions
+        $imageWidth = $image->width();
+        $imageHeight = $image->height();
+        $watermarkWidth = $watermark->width();
+        $watermarkHeight = $watermark->height();
+
+        // Define the spacing between watermarks
+        $spacingX = $watermarkWidth + 20; // 10 pixels horizontal spacing
+        $spacingY = $watermarkHeight + 20; // 10 pixels vertical spacing
+
+        // Calculate the number of times watermark fits across and down the image
+        $numAcross = ceil($imageWidth / $spacingX);
+        $numDown = ceil($imageHeight / $spacingY);
+
+        // Apply watermark multiple times across and down the image
+        for ($x = 0; $x < $numAcross; $x++) {
+            for ($y = 0; $y < $numDown; $y++) {
+                $image->insert($watermark, 'top-left', $x * $spacingX, $y * $spacingY);
+            }
+        }
+
+        // Save the image with watermark
+        $image->save(public_path('galleryImage/' . $fileName));
+
+        $imageModel = WebGallery::create([
             'details' => $request->details,
             'url' => $request->url,
             'price' => $request->price,
@@ -147,6 +227,69 @@ class WebGalleryController extends Controller
 
         return true;
     }
+
+
+    // public function insertImage(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'title' => 'required',
+    //         'category_id' => 'required|integer',
+    //         'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+    //     ]);
+
+    //     $imageFile = $request->file('images');
+    //     $extension = $imageFile->getClientOriginalExtension();
+    //     $fileName = 'images_' . time() . '.' . $extension;
+
+    //     $image = Image::make($imageFile->getPathname());
+
+    //     // Add watermark
+    //     $watermark = Image::make(public_path('site_logo/1703400484.logo_black.png'));
+    //     $image->insert($watermark, 'bottom-right', 10, 10);
+
+    //     // Save the image with watermark
+    //     $image->save(public_path('galleryImage/' . $fileName));
+
+    //     $imageModel = WebGallery::create([
+    //         'details' => $request->details,
+    //         'url' => $request->url,
+    //         'price' => $request->price,
+    //         'title' => $request->title,
+    //         'category' => $request->category_id,
+    //         'tags' => $request->tags,
+    //         'images' => $fileName,
+    //     ]);
+
+    //     return true;
+    // }
+    // public function insertImage(Request $request)
+    // {
+
+    //     $validatedData = $request->validate([
+    //         // 'url' => 'required|url',
+    //         'title' => 'required',
+    //         // 'price' => 'required',
+    //         'category_id' => 'required|integer',
+    //         'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+    //     ]);
+
+    //     $extension = $request->file('images')->getClientOriginalExtension();
+    //     $fileName = 'images_' . time() . '.' . $extension;
+
+    //     $request->file('images')->move(public_path('galleryImage'), $fileName);
+
+    //     $image = WebGallery::create([
+    //         'details' => $request->details,
+    //         'url' => $request->url,
+    //         'price' => $request->price,
+    //         'title' => $request->title,
+    //         'category' => $request->category_id,
+    //         'tags' => $request->tags,
+    //         'images' => $fileName,
+    //     ]);
+
+    //     return true;
+    // }
 
     public function deleteImage(Request $request, $id)
     {
