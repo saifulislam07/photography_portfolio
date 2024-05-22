@@ -82,6 +82,23 @@ class WebGalleryController extends Controller
     }
 
 
+    public function updateImageStatus(Request $request)
+    {
+        $image = WebGallery::find($request->id);
+
+        if ($image) {
+            $image->my_best = $request->status;
+            $image->save();
+            if ($request->status == 1) {
+                return response()->json(['success' => 'Best of best added successfully.']);
+            } else {
+                return response()->json(['success' => 'Remove form Best of best successfully.']);
+            }
+        } else {
+            return response()->json(['info' => 'Image not found.'], 404);
+        }
+    }
+
     public function store(Request $req)
     {
         // dd($req->all());

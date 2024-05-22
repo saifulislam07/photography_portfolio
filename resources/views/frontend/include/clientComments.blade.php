@@ -1,30 +1,41 @@
 @php
     $clientMessage = App\Models\ClientMessage::where('status', 'Active')->get();
+    $bestofbest = App\Models\WebGallery::where('status', 1)->where('my_best', '1')->get();
 
 @endphp
 <section id="section-testimonial" class="text-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                <h1>Happy Clients Says</h1>
-                <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-                <div class="spacer-single"></div>
-            </div>
-        </div>
-        <div id="testimonial-carousel" class="owl-carousel owl-theme de_carousel wow fadeInUp" data-wow-delay=".3s">
-            @foreach ($clientMessage as $each)
-                <div class="item">
-                    <div class="de_testi">
-                        <blockquote>
-                            <p>{{ $each->message }}</p>
-                            <div class="de_testi_by">
-                                {{ $each->client_name }}
-                            </div>
-                        </blockquote>
+    <div class="col-md-12">
+        <div class="widget widget_tags mt-5">
 
-                    </div>
+            <div class="card mb-4" style="border: 1px solid orange; background: orange">
+                <div class="card-body text-center">
+                    <h1>BEST OF BEST
+                    </h1>
                 </div>
-            @endforeach
+            </div>
+
+            <div class="row">
+                <div id="testimonial-carousel-4-cols" class="owl-carousel owl-theme wow fadeInUp">
+                    @forelse ($bestofbest as $related)
+                        <div class="col-md-12" style="border: 1px solid rgb(48, 43, 43); ">
+                            <div class="p-1">
+                                <img src="{{ asset('/galleryImage/' . $related->images) }}" alt="" />
+
+                            </div>
+                            <div class="text-center line-clamp-1" style="margin-bottom: 2px;">
+                                {{ $related->title }}
+                            </div>
+                        </div>
+                    @empty
+                        <div class="card" style="border: 1px solid orange">
+                            <div class="card-body text-center">
+                                <h1>NO BEST OF BEST IMAGES SELECTED</h1>
+                            </div>
+                        </div>
+                    @endforelse
+
+                </div>
+            </div>
         </div>
     </div>
 </section>

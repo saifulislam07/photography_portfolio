@@ -166,6 +166,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/vstore', [VideoController::class, 'store'])->name('vstore');
     Route::get('/delete-Image/{media}', [WebGalleryController::class, 'deleteImage'])->name('delete-Image');
     Route::get('/delete-video/{media}', [VideoController::class, 'deletevideo'])->name('delete-video');
+    Route::post('/update-image-status', [WebGalleryController::class, 'updateImageStatus'])->name('updateImageStatus');
+
 
     Route::post('/insert-image', [WebGalleryController::class, 'insertImage'])->name('insertImage');
 

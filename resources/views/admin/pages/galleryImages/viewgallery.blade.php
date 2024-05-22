@@ -51,7 +51,7 @@
                                             <th>Price</th>
                                             <th>Image</th>
                                             <th>Create Time</th>
-                                            <th>Tags</th>
+                                            <th>BOB</th>
                                             <th>Details</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -72,7 +72,9 @@
                                                     {{ \Carbon\Carbon::parse($value->created_at)->format('j F, Y h:i A') }}
                                                 </td>
                                                 <td>
-                                                    {{ Str::of($value->tags)->limit(20) }}
+                                                    <input type="checkbox" name="bob" class="status-checkbox"
+                                                        data-id="{{ $value->id }}"
+                                                        {{ $value->my_best == 1 ? 'checked' : '' }}>
                                                 </td>
                                                 <td>
                                                     {{ Str::of($value->details)->limit(20) }}
@@ -111,6 +113,35 @@
 @endsection
 @section('js')
     <script type="text/javascript">
+        $(document).ready(function() {
+            // Initialize DataTable
+            $('#example1').DataTable();
+
+            // Event delegation for dynamically loaded elements
+            $('#example1').on('change', '.status-checkbox', function() {
+                var status = $(this).prop('checked') ? 1 : 0;
+                var imageId = $(this).data('id');
+
+                $.ajax({
+                    url: '{{ route('updateImageStatus') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: imageId,
+                        status: status
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            toastr.success(response.success);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+
         function imageActiveInactive(id) {
             var status = $('#image_active_inactive_' + id).prop('checked') ? 1 : 0;
 
