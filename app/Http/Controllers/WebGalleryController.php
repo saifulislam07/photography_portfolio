@@ -313,4 +313,44 @@ class WebGalleryController extends Controller
         DB::table('web_galleries')->where('id', $id)->delete();
         return back()->with('success', 'Image Deleted successfully !');
     }
+
+
+    public function insertWatermarkToAllImagesInFolder(Request $request)
+    {
+        // $validatedData = $request->validate([
+        //     'folder_path' => 'required|string',
+        // ]);
+
+        $folderPath = public_path('/galleryImage/');
+        $watermark = Image::make(public_path('site_logo/1703400484.logo_black.png'))->resize(50, 50);
+        $watermark->opacity(5);
+
+        $images = glob($folderPath . '/*.{jpeg,jpg,png,gif,svg}', GLOB_BRACE);
+
+        foreach ($images as $imagePath) {
+            $image = Image::make($imagePath);
+
+            $imageWidth = $image->width();
+            $imageHeight = $image->height();
+            $watermarkWidth = $watermark->width();
+            $watermarkHeight = $watermark->height();
+
+            $spacingX = $watermarkWidth + 50;
+            $spacingY = $watermarkHeight + 50;
+
+            $numAcross = ceil($imageWidth / $spacingX);
+            $numDown = ceil($imageHeight / $spacingY);
+
+            for ($x = 0; $x < $numAcross; $x++) {
+                for ($y = 0; $y < $numDown; $y++) {
+                    $image->insert($watermark, 'top-left', $x * $spacingX, $y * $spacingY);
+                }
+            }
+
+            // Save the image with watermark, overwriting the original file
+            $image->save($imagePath);
+        }
+
+        return response()->json(['message' => 'Watermark applied to all images in folder successfully.']);
+    }
 }

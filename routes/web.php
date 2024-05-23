@@ -35,6 +35,9 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes([
     'register' => false
 ]);
+
+Route::get('/watermark-all-images', [WebGalleryController::class, 'insertWatermarkToAllImagesInFolder']);
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
