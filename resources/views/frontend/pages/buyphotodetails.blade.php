@@ -5,7 +5,7 @@
 @section('front-main-content')
     <div id="content" class="no-bottom no-top">
 
-        <section id="subheader" data-speed="8" data-type="background">
+        <section id="subheader" data-speed="8" data-type="background" style="padding-bottom: 0">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -21,7 +21,7 @@
         </section>
 
 
-        <div id="content">
+        <div id="content" style="padding-top: 0px">
             <div class="container">
                 <div class="row">
 
@@ -61,10 +61,7 @@
                                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                                                 data-bs-target="#nav-home" type="button" role="tab"
                                                 aria-controls="nav-home" aria-selected="true">Description</button>
-                                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                                data-bs-target="#nav-profile" type="button" role="tab"
-                                                aria-controls="nav-profile" aria-selected="false">Additional
-                                                Information</button>
+
                                         </div>
                                     </nav>
 

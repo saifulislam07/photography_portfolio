@@ -254,6 +254,9 @@ class FrontEndController extends Controller
 
 
         // dd($allcategorycount);
+
+
+
         $allrecentimages = WebGallery::orderBy('web_galleries.id', 'desc')
             ->select('web_galleries.*', 'categories.title')
             ->join("categories", "categories.id", "=", "web_galleries.category")

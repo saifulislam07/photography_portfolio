@@ -7,7 +7,7 @@
     <div class="col-md-12">
         <div class="widget widget_tags mt-5">
 
-            <div class="card mb-4" style="border: 1px solid orange; background: orange">
+            <div class="card mb-4" style="border: 1px solid orange; background: rgb(173, 164, 145)">
                 <div class="card-body text-center">
                     <h1>BEST OF BEST
                     </h1>
