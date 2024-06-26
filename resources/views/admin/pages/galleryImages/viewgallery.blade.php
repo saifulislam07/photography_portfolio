@@ -40,7 +40,7 @@
                             <div class="card-header bg-cyan">
                                 <h3 class="card-title"> <i class="fa fa-users"></i> ALL GALLERY IMAGES</h3>
                             </div>
-                            <!-- /.card-header -->
+
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -52,6 +52,7 @@
                                             <th>Image</th>
                                             <th>Create Time</th>
                                             <th>BOB</th>
+                                            <th>MCI</th>
                                             <th>Details</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -77,6 +78,11 @@
                                                         {{ $value->my_best == 1 ? 'checked' : '' }}>
                                                 </td>
                                                 <td>
+                                                    <input type="checkbox" name="mci" class="mci-status-checkbox"
+                                                        data-mci="{{ $value->id }}"
+                                                        {{ $value->mci == 1 ? 'checked' : '' }}>
+                                                </td>
+                                                <td>
                                                     {{ Str::of($value->details)->limit(20) }}
                                                 </td>
                                                 <td>
@@ -87,8 +93,6 @@
                                                         data-on="Active" data-off="Inactive"
                                                         @if ($value->status == 1) {{ 'checked' }} @endif
                                                         onchange="imageActiveInactive({{ $value->id }})">
-
-
                                                 </td>
                                                 <td>
                                                     <a onclick="return confirm('Are you sure you want to Delete This Record ?')"
@@ -114,16 +118,43 @@
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
-            // Initialize DataTable
             $('#example1').DataTable();
 
-            // Event delegation for dynamically loaded elements
             $('#example1').on('change', '.status-checkbox', function() {
                 var status = $(this).prop('checked') ? 1 : 0;
                 var imageId = $(this).data('id');
 
                 $.ajax({
                     url: '{{ route('updateImageStatus') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: imageId,
+                        status: status
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            toastr.success(response.success);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+
+
+        $(document).ready(function() {
+            $('#example1').DataTable();
+
+
+            $('#example1').on('change', '.mci-status-checkbox', function() {
+                var status = $(this).prop('checked') ? 1 : 0;
+                var imageId = $(this).data('mci');
+
+                $.ajax({
+                    url: '{{ route('updateImageStatusMci') }}',
                     type: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',

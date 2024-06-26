@@ -4,13 +4,27 @@
 @endsection
 @section('front-main-content')
     @include('frontend.include.slider')
+
+    <style>
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 8;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .de-team-list img {
+            width: 70%;
+
+        }
+    </style>
     <div id="content" class="no-bottom no-top">
 
 
         <div id="wrapper">
             <section id="section-about-us-2" class="side-bg no-padding">
                 <div class="row mt-4 pb-4">
-                    <div class="col-lg-3 col-md-6 offset-lg-2">
+                    <div class="col-lg-2 col-md-6 offset-lg-2">
                         <!-- team member -->
                         <div class="de-team-list">
                             <div class="team-pic">
@@ -36,7 +50,7 @@
                                     </div>
 
                                     <div class="transbox mt-2">
-                                        <img style="width: 450px" src="{{ asset('aboutmes/' . $aboutme->homeimage) }}"
+                                        <img src="{{ asset('aboutmes/' . $aboutme->homeimage) }}"
                                             alt="{{ $aboutme->homeimage }}" class="img-responsive img-fluid wow fadeInUp">
                                     </div>
                                 </div>
@@ -49,26 +63,21 @@
                         <div class="team-desc">
                             <h2>{{ $aboutme->title }}</h2>
                             <p class="intro">
-                                {!! // Assuming $aboutme->details contains your text content
-                                    $text = $aboutme->details;
-                                
-                                // Check if the length of the text without HTML tags is greater than 50
-                                if (strlen(strip_tags($text)) > 50) {
-                                    // If it is, truncate the text to 100 words
-                                    $truncated_text = implode(' ', array_slice(str_word_count(strip_tags($text), 1), 0, 100));
-                                    // Output the truncated text with "ReadMore" link
-                                    echo $truncated_text . '... <a href="#">ReadMore</a>';
-                                } else {
-                                    // If the length is not greater than 50, simply output the text
-                                    echo $text;
-                                } !!}
-                                {{-- {!! $aboutme->details !!} --}}
-                                {{-- {{ strlen(strip_tags($aboutme->details)) > 50 ? '...ReadMore' : '' }} --}}
+                            <div class="line-clamp-3">
+                                {!! $aboutme->details !!}
+                            </div>
+                            <a href="{{ route('aboutsme') }}" style="color: orange">Read More</a>
+                            {{-- {!! $text = $aboutme->details;
+                            if (strlen(strip_tags($text)) > 50) {
+                                $truncated_text = implode(' ', array_slice(str_word_count(strip_tags($text), 1), 0, 100));
+                                echo $truncated_text . '... <a href="#">ReadMore</a>';
+                            } else {
+                                echo $text;
+                            } !!} --}}
                             </p>
-                            {{-- <a href="{{ route('mygallery') }}" class="btn-slider">My Gallery
-                            </a> --}}
+
                         </div>
-                        <!-- team close -->
+
                     </div>
                 </div>
             </section>

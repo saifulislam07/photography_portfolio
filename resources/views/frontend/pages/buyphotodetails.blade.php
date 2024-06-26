@@ -21,7 +21,7 @@
         </section>
 
 
-        <div id="content" style="padding-top: 0px">
+        <div id="content" style="padding-top: 0px" class="paddingClass">
             <div class="container">
                 <div class="row">
 

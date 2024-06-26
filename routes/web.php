@@ -170,6 +170,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/delete-Image/{media}', [WebGalleryController::class, 'deleteImage'])->name('delete-Image');
     Route::get('/delete-video/{media}', [VideoController::class, 'deletevideo'])->name('delete-video');
     Route::post('/update-image-status', [WebGalleryController::class, 'updateImageStatus'])->name('updateImageStatus');
+    Route::post('/update-image-status-mci', [WebGalleryController::class, 'updateImageStatusMci'])->name('updateImageStatusMci');
 
 
     Route::post('/insert-image', [WebGalleryController::class, 'insertImage'])->name('insertImage');
@@ -231,6 +232,7 @@ Route::get('/my-photo-gallery', [FrontEndController::class, 'mygallery'])->name(
 
 Route::get('/gallery-images/{id}', [FrontEndController::class, 'getImageList'])->name('getImageList');
 
+Route::post('/gallery-images-by-search', [FrontEndController::class, 'galleryImagesBySearch'])->name('galleryImagesBySearch');
 
 
 Route::get('/my-video-gallery', [FrontEndController::class, 'myvideogallery'])->name('myvideogallery');

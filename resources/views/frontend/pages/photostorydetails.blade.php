@@ -45,6 +45,10 @@
             color: black;
             /* Hover text color */
         }
+
+        .paddingClass {
+            padding-top: 0px !important;
+        }
     </style>
 
 
@@ -66,7 +70,7 @@
             </div>
         </section>
 
-        <div id="content">
+        <div id="content" class="paddingClass">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

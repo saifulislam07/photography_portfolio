@@ -20,7 +20,7 @@
                 </div>
             </section>
 
-            <div id="content" class="no-top no-bottom mt70 sm-mt0">
+            <div id="content" class="no-top no-bottom mt70 sm-mt0 ">
                 <section data-bgcolor="#202124">
                     <div class="text-center">
                         <h1>Click The Link For Details</h1>
@@ -39,7 +39,7 @@
                                                 <div class="pricing-s1">
                                                     <div class="ribbon">Saleable</div>
                                                     <div class="top" style="min-height: 353px;">
-                                                        <h2>{{ $media->title }}</h2>
+                                                        <h2 style="padding-top: 19px;">{{ $media->title }}</h2>
                                                         <p class="price mt-1">
                                                             <img src="{{ asset('media/' . $media->image) }}"
                                                                 alt="{{ $media->title }}" class="img-fluid">

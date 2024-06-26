@@ -1,5 +1,5 @@
 @php
-    $clientMessage = App\Models\ClientMessage::where('status', 'Active')->get();
+    // $clientMessage = App\Models\ClientMessage::where('status', 'Active')->get();
     $bestofbest = App\Models\WebGallery::where('status', 1)->where('my_best', '1')->get();
 
 @endphp

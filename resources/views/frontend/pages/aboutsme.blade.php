@@ -92,7 +92,7 @@
 
 
 
-                @include('frontend.include.clientComments');
+                @include('frontend.include.mychoise')
 
                 <!-- section begin -->
                 <section id="view-all-projects" class="call-to-action bg-color dark text-center" data-speed="5"

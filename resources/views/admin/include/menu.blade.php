@@ -295,6 +295,27 @@
                         </a>
                     </li>
                 </ul>
+            @elseif(Auth::user()->type == 'Moderator')
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item">
+                        <a href="{{ route('category') }}"
+                            class="nav-link @if ($current_route == 'category' || $current_route == 'addnewcat' || $current_route == 'editcat') {{ 'active' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Category </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('gallery') }}"
+                            class="nav-link @if ($current_route == 'gallery' || $current_route == 'list-gallery') {{ 'active' }} @endif"
+                            style="color: rgb(255, 255, 255)">
+                            <i class="nav-icon fa fa-camera-retro"></i>
+                            <p>Image Gallery </p>
+                        </a>
+                    </li>
+                </ul>
             @endif
 
 

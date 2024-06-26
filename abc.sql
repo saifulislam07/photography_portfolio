@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 24, 2024 at 03:18 PM
+-- Host: localhost:3307
+-- Generation Time: Jun 26, 2024 at 12:34 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `badal_da`
+-- Database: `abc`
 --
 
 -- --------------------------------------------------------
@@ -29,18 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `aboutmes` (
   `id` bigint UNSIGNED NOT NULL,
-  `your_name` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
-  `homeimage` longtext COLLATE utf8mb4_unicode_ci,
-  `aboutppageimage` longtext COLLATE utf8mb4_unicode_ci,
-  `storyimage` longtext COLLATE utf8mb4_unicode_ci,
-  `coverimage` longtext COLLATE utf8mb4_unicode_ci,
-  `photo` longtext COLLATE utf8mb4_unicode_ci,
-  `mylogo` longtext COLLATE utf8mb4_unicode_ci,
-  `title` longtext COLLATE utf8mb4_unicode_ci,
+  `your_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `homeimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `aboutppageimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `storyimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `coverimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `photo` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `mylogo` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `title` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` int DEFAULT NULL,
-  `contact` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -60,11 +60,11 @@ INSERT INTO `aboutmes` (`id`, `your_name`, `details`, `homeimage`, `aboutppageim
 
 CREATE TABLE `achievements` (
   `id` bigint UNSIGNED NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci,
-  `url` longtext COLLATE utf8mb4_unicode_ci,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -89,7 +89,7 @@ INSERT INTO `achievements` (`id`, `type`, `title`, `image`, `url`, `details`, `s
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -117,7 +117,7 @@ INSERT INTO `categories` (`id`, `title`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `clients` (
   `id` bigint UNSIGNED NOT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -141,10 +141,10 @@ INSERT INTO `clients` (`id`, `image`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `client_messages` (
   `id` bigint UNSIGNED NOT NULL,
-  `status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Inactive',
+  `status` enum('Active','Inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Inactive',
   `client_id` int NOT NULL,
-  `client_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `client_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -165,9 +165,9 @@ INSERT INTO `client_messages` (`id`, `status`, `client_id`, `client_name`, `mess
 
 CREATE TABLE `commercials` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -177,7 +177,22 @@ CREATE TABLE `commercials` (
 --
 
 INSERT INTO `commercials` (`id`, `title`, `image`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48');
+(1, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(2, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(3, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(4, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(5, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(6, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(7, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(8, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(9, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(10, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(11, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(12, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(13, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(14, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(15, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48'),
+(16, 'Photography Assignment', '1713175728.commercial.jpg', '<p dir=\"auto\" data-pm-slice=\"1 1 []\">Badal Sarkar offers regular photographic services to commercial clients throughout Bangladesh. He is available for photography assignments and video documentary filmmaking at competitive rates. His experience spans a wide variety of clients from different geo-NGOs, news agencies, industries, and business sectors, ensuring he delivers exceptional photographs tailored to your needs. His artistic skill, understanding of light, extensive experience in creating photo stories, work ethic, and social interpersonal skills all contribute to producing impressive images from each assignment. To discuss your requirements, please contact us.</p>', '2024-04-15 17:08:48', '2024-04-15 17:08:48');
 
 -- --------------------------------------------------------
 
@@ -187,11 +202,11 @@ INSERT INTO `commercials` (`id`, `title`, `image`, `details`, `created_at`, `upd
 
 CREATE TABLE `contactmes` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `story_id` int DEFAULT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci,
-  `status` enum('Unread','Read') COLLATE utf8mb4_unicode_ci DEFAULT 'Unread',
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `status` enum('Unread','Read') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Unread',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -212,11 +227,11 @@ INSERT INTO `contactmes` (`id`, `name`, `email`, `story_id`, `message`, `status`
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -229,13 +244,13 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `invoices` (
   `id` bigint UNSIGNED NOT NULL,
   `order_id` int NOT NULL,
-  `payment_type` enum('PayPal','Bkash') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'PayPal',
-  `customer_email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `customer_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_type` enum('PayPal','Bkash') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'PayPal',
+  `customer_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` double NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -249,13 +264,13 @@ CREATE TABLE `invoices` (
 
 CREATE TABLE `mailsettings` (
   `id` bigint UNSIGNED NOT NULL,
-  `mail_transport` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail_host` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail_port` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail_username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail_encryption` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail_from` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_transport` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_host` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_port` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_encryption` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail_from` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -275,9 +290,9 @@ INSERT INTO `mailsettings` (`id`, `mail_transport`, `mail_host`, `mail_port`, `m
 
 CREATE TABLE `medialinks` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` longtext COLLATE utf8mb4_unicode_ci,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -300,10 +315,10 @@ INSERT INTO `medialinks` (`id`, `title`, `image`, `url`, `status`, `created_at`,
 CREATE TABLE `menus` (
   `id` bigint UNSIGNED NOT NULL,
   `parent_id` int DEFAULT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `serial` int NOT NULL,
-  `status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Active',
+  `status` enum('Active','Inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Active',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -336,7 +351,7 @@ INSERT INTO `menus` (`id`, `parent_id`, `name`, `route`, `serial`, `status`, `cr
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -385,7 +400,7 @@ CREATE TABLE `orders` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` int NOT NULL,
   `invoice_id` int DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -405,8 +420,8 @@ INSERT INTO `orders` (`id`, `user_id`, `invoice_id`, `status`, `created_at`, `up
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -418,11 +433,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -437,10 +452,10 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `publications` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -461,10 +476,10 @@ INSERT INTO `publications` (`id`, `title`, `image`, `url`, `details`, `created_a
 
 CREATE TABLE `sliders` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -490,11 +505,11 @@ INSERT INTO `sliders` (`id`, `title`, `type`, `image`, `status`, `created_at`, `
 
 CREATE TABLE `socialmedia` (
   `id` bigint UNSIGNED NOT NULL,
-  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `google` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -514,12 +529,12 @@ INSERT INTO `socialmedia` (`id`, `facebook`, `google`, `twitter`, `instagram`, `
 
 CREATE TABLE `stories` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` int DEFAULT NULL,
-  `tages` longtext COLLATE utf8mb4_unicode_ci,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `tages` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` int DEFAULT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci,
+  `image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -557,9 +572,9 @@ CREATE TABLE `suborders` (
 
 CREATE TABLE `tear_sheets` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` longtext COLLATE utf8mb4_unicode_ci,
-  `url` longtext COLLATE utf8mb4_unicode_ci,
+  `title` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -580,14 +595,14 @@ INSERT INTO `tear_sheets` (`id`, `title`, `image`, `url`, `created_at`, `updated
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `type` set('Admin','User') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'User',
+  `type` set('Admin','User','Moderator') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'User',
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -600,7 +615,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `status`, `type`, `email_ve
 (1, 'Md Saiful Islam rana', 'saiful.rana@gmail.com', NULL, 1, 'Admin', NULL, '$2y$12$kySlk4VZY58G6QFfPuvtdeLDBglcsL0FP3A3zzxmXH7OeC6DB2Z5e', NULL, '2023-12-14 09:42:05', '2024-02-12 01:14:52'),
 (7, 'Barsho sarker', 'agrinewsbd@gmail.com', '01917543200', 1, 'User', NULL, '$2y$12$R6P7a8ogVbq/PV20WzAa9uKMVpVS3wMg2ZAfjuuPkEUm2Cthw22pq', NULL, '2024-04-15 19:45:02', '2024-04-18 00:06:53'),
 (8, 'Mr. Ashis', 'ashis.aico@gmail.com', '01604708405', 1, 'User', NULL, '$2y$12$iqSF.voABs30kkbU0InDiuh.0Fa8Ux/m6kvGu1SRucx6isJXFjECG', NULL, '2024-04-17 16:38:11', '2024-04-17 22:13:14'),
-(9, 'Nazrul Islam, Freedom Fighter', 'kbd.nazrul.bd@gmail.com', '01711531821', 1, 'User', NULL, '$2y$12$b00Qso7aLFbs81sjg6L.bu3O3v/4bqYSOUk9XBSDp6AU9exORVMkS', NULL, '2024-04-17 22:19:28', '2024-04-17 22:19:28');
+(9, 'Nazrul Islam, Freedom Fighter', 'kbd.nazrul.bd@gmail.com', '01711531821', 1, 'User', NULL, '$2y$12$b00Qso7aLFbs81sjg6L.bu3O3v/4bqYSOUk9XBSDp6AU9exORVMkS', NULL, '2024-04-17 22:19:28', '2024-04-17 22:19:28'),
+(10, 'Saiful Islam', 'iwb.saiful@gmail.com', NULL, 1, 'Moderator', NULL, '$2y$12$kySlk4VZY58G6QFfPuvtdeLDBglcsL0FP3A3zzxmXH7OeC6DB2Z5e', NULL, '2023-12-14 09:42:05', '2024-02-12 01:14:52');
 
 -- --------------------------------------------------------
 
@@ -610,12 +626,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `status`, `type`, `email_ve
 
 CREATE TABLE `videos` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` int NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `video` text COLLATE utf8mb4_unicode_ci,
-  `link` longtext COLLATE utf8mb4_unicode_ci,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `video` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `link` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -636,19 +652,19 @@ INSERT INTO `videos` (`id`, `title`, `category_id`, `description`, `video`, `lin
 
 CREATE TABLE `visitlogs` (
   `id` int UNSIGNED NOT NULL,
-  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
-  `browser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `os` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `region_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `zip_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `time_zone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `latitude` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
+  `browser` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `os` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `region_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time_zone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `latitude` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `longitude` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_banned` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1724,7 +1740,7 @@ INSERT INTO `visitlogs` (`id`, `ip`, `browser`, `os`, `user_id`, `user_name`, `c
 (1060, '209.97.149.186', 'Chrome (41.0.2272.104)', 'Apple', '0', 'Guest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2024-05-20 18:23:45', '2024-05-20 18:23:45'),
 (1061, '209.97.146.120', 'Chrome (41.0.2272.104)', 'Apple', '0', 'Guest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2024-05-20 18:23:48', '2024-05-20 18:23:48'),
 (1062, '45.134.26.11', 'Chrome (114.0.0.0)', 'Windows', '0', 'Guest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2024-05-20 18:37:25', '2024-05-20 18:37:25'),
-(1063, '127.0.0.1', 'Chrome (126.0.0.0)', 'Windows', '0', 'Guest', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2024-05-20 09:25:54', '2024-06-24 09:17:08');
+(1063, '127.0.0.1', 'Chrome (126.0.0.0)', 'Windows', '1', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2024-05-20 09:25:54', '2024-06-26 06:09:46');
 
 -- --------------------------------------------------------
 
@@ -1735,7 +1751,7 @@ INSERT INTO `visitlogs` (`id`, `ip`, `browser`, `os`, `user_id`, `user_name`, `c
 CREATE TABLE `visitors` (
   `id` int NOT NULL,
   `date` date DEFAULT NULL,
-  `ip` varchar(512) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `ip` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1746,15 +1762,16 @@ CREATE TABLE `visitors` (
 
 CREATE TABLE `web_galleries` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `url` longtext COLLATE utf8mb4_unicode_ci,
-  `tags` text COLLATE utf8mb4_unicode_ci,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `images` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `tags` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `status` int NOT NULL DEFAULT '1',
-  `my_best` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `my_best` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `mci` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1763,41 +1780,41 @@ CREATE TABLE `web_galleries` (
 -- Dumping data for table `web_galleries`
 --
 
-INSERT INTO `web_galleries` (`id`, `title`, `price`, `category`, `images`, `url`, `tags`, `details`, `status`, `my_best`, `created_at`, `updated_at`) VALUES
-(1, 'shewla, serajgonj', 120.00, '10', 'images_1706068080.jpg', 'https://new.badalphoto.com', '#abc #def', 'test details', 1, '0', '2024-01-24 11:48:00', '2024-02-09 20:39:47'),
-(2, 'Cabbage field', 5.00, '1', 'images_1707148120.jpg', 'https://www.flickr.com/photos/bcsarker/15368080017/in/album-72157649711975639/', 'agriculture, agri field', 'Green Cabbage field', 1, '0', '2024-02-05 23:48:40', '2024-02-05 23:48:40'),
-(3, 'flower and bee', 10.00, '9', 'images_1707582291.jpg', 'https://drive.google.com/file/d/1O_HQFxvA0Kn88sp8i3JpYAxPY9-6bAof/view', 'flower and bee; flower; bee', 'A honeybee (Apis mellifera) sips nectar from an aster in a butterfly garden.', 1, '0', '2024-02-11 00:24:51', '2024-02-11 00:24:51'),
-(4, 'Grasshopper', 10.00, '9', 'images_1707583566.jpg', 'https://drive.google.com/file/d/1HbqkukbWEEzidG-rdGVb8o7UJmOFOZKf/view', 'Gree Hopper', 'Grasshopper', 1, '0', '2024-02-11 00:46:06', '2024-02-11 00:46:06'),
-(5, 'Flower 2', 10.00, '9', 'images_1707587377.jpg', 'https://drive.google.com/file/d/1iQDonji4K4PD1d82i9Kfqr6Dl7CsePns/view', 'Bee,\r\nFlower,\r\nHoney Bee,\r\nPollination,\r\nPollen,\r\nAster,\r\nPollinator,\r\nPurple,\r\nYellow,\r\nInsect,\r\nFlowerbed,\r\nColor Image,\r\nHorizontal,\r\nNo People,\r\nOutdoors,\r\nPhotography,', 'Flower 2', 1, '0', '2024-02-11 01:49:37', '2024-02-11 01:49:37'),
-(6, 'cosmos flower & bee', 10.00, '9', 'images_1707587885.jpg', 'https://drive.google.com/file/d/1rMJvP0u7Tdr5o5Dl4YloG6709ZGq-hzk/view', 'Bee,\r\nHoney Bee,\r\nFlower,\r\nClose-up,\r\nMacrophotography,\r\nFlying,\r\nExtreme Close-Up,\r\nPollen,\r\nPollination,\r\nFlower Head,\r\nAnimals In The Wild,\r\nOne Animal,\r\nSingle Object,\r\nAnimal,\r\nAnimal Body Part,\r\nAnimal Wing,\r\nBeauty In Nature,\r\nBlack Color,\r\nBlossom,\r\nColor Image,\r\nHoney,\r\nHorizontal,\r\nImage,\r\nInsect,\r\nMulti Colored,\r\nNature,\r\nNo People,\r\nOutdoors,\r\nPetal,\r\nPhotography,\r\nPlant,\r\nSingle Flower,\r\nSpringtime,\r\nStamen,\r\nSummer,\r\nYellow,', 'cosmos flower & bee', 1, '0', '2024-02-11 01:58:05', '2024-02-11 01:58:05'),
-(7, 'Smart agriculture', 50.00, '1', 'images_1707588556.jpg', 'https://drive.google.com/file/d/1URqIBZPpJhSI_C-s3LR6UpKDExUYM1bR/view', 'Smart agriculture, Agriculture,\r\nSmart Farming,\r\nDigital Tablet,\r\nTechnology,\r\nGreen Color,\r\nFarmer,\r\nInnovation,\r\nNature,\r\nRural Scene,\r\nPeople,\r\nAgricultural Field,\r\nDigital Display,\r\nBusiness,\r\nBusinessman,\r\nExamining,\r\nPlantation,\r\nCrop - Plant,\r\nLandscape - Scenery,\r\nGrowth,\r\nBrazil,\r\nColor Image,\r\nOccupation,\r\nOne Person,\r\nWorking,\r\nOutdoors,\r\nProfessional Occupation,\r\nAgricultural Activity,\r\nComputer,\r\nModern,\r\nCereal Plant,\r\nEnvironment,\r\nFood,\r\nLooking,\r\nPhotography,\r\nUsing Digital Tablet,\r\nYoung Adult,\r\nCultivated,\r\nInternet,\r\nMen,\r\n30-34 Years,\r\nAdult,\r\nAdults Only,\r\nAgronomist,\r\nBrazilian Ethnicity,\r\nContented Emotion,\r\nCopy Space,\r\nFarm,\r\nHorizontal,\r\nLatin American and Hispanic Ethnicity,\r\nLifestyles,\r\nMales,\r\nMid Adult,\r\nMid Adult Men,\r\nMultiracial Person,\r\nOne Man Only,\r\nOnly Men,\r\nOrganic,\r\nOrganic Farm,\r\nPlant,\r\nUnrecognizable Person,\r\nWhite People,\r\nWireless Technology,', 'A Smart Farmer using Laptop to check Rice Field problems', 1, '0', '2024-02-11 02:09:16', '2024-02-11 02:09:16'),
-(8, 'Body temple', 10.00, '11', 'images_1707590851.jpg', 'https://drive.google.com/file/d/1vy7PF-TvEJaax96B60KLQpNFydmBuU7h/view', 'Body temple, Panchari Shantipur Aranya Kutir , Architecture,\r\nBangladesh,\r\nBangladeshi Culture,\r\nBuddha,\r\nBuddhism,\r\nColor Image,\r\nCox\'s Bazaar,\r\nCultures,\r\nFamous Place,\r\nGod,\r\nGold Colored,\r\nHorizontal,\r\nLying Down,\r\nNo People,\r\nPhotography,\r\nPhysical Structure,\r\nReclining,\r\nRelaxation,\r\nRelief Carving,\r\nReligion,\r\nReligious Icon,\r\nSculpture,\r\nSpirituality,\r\nStatue,\r\nTemple - Building,\r\nThe Human Body,\r\nTourism,', 'Khagrachhari (Bengali: খাগড়াছড়ি) is a district in south-eastern Bangladesh. It is a part of the Chittagong Division and the Chittagong Hill Tracts. Its local name is “Chengmi”. Khagrachhari is also known as Phalang Htaung or the Mong Circle (of the rest of the three hill districts Rangamati is the Chakma Circle and Bandarban is the Bohmong Circle). Khagrachhari town is the home town of the Mong Chief (currently King, or Raja, Saching Prue Chowdhury who is the head of the Arakanese descendants living in the circle. It also is the administrative headquarters of Khagrachhari district.\r\n\r\nPanchari Shantipur Aranya Kutir – 25 km south from Khagrachhari is peripheral region. The largest Buddha sculpture of Bangladesh  (Panchari Brihot Buddha Sculpture) is situated here.', 1, '0', '2024-02-11 02:47:31', '2024-02-11 02:47:31'),
-(9, 'Guava floating market', 50.00, '14', 'images_1707632445.jpg', 'https://drive.google.com/file/d/19DQbbRjab7ncXO-TXtQABVWMJwyy0vNX/view', 'Lake,\r\nAgriculture,\r\nApple - Fruit,\r\nBangladesh,\r\nBerry,\r\nBusiness Finance and Industry,\r\nCanoe,\r\nDhaka,\r\nDrone Point of View,\r\nEconomy,\r\nFinance and Economy,\r\nFloating Market,\r\nGeographical Locations,\r\nGuava,\r\nLand,\r\nMexico,\r\nNautical Vessel,\r\nNo People,\r\nOutdoors,\r\nPeru,\r\nPirojpur District,\r\nTradition,\r\nTree,\r\nTropical Climate,\r\nWater,\r\nWorking,', 'The floating market appears as the center of Barisal’s (aka The Venice of Bengal) beauty. Nobody knows when the idea of this floating market began, but it’s a hundred-year-old tradition. Development and modernization are taking over the country but it’s surprising to see them not reaching this river-oriented life yet. For more than 100 years, the local farmers have been experiencing the ups and downs of life along with the ebb and flow of the river. Many farmers and wholesalers gather here every day. Not the only guava, but there are also other fruits sold in this market.\r\n\r\nThe southern region of Bangladesh is famous for guavas, more popularly known in Bangladesh as ‘Bengal’s Apple’. Especially in Jhalakathi Sadar Upazila and at Swarupkathi and Banaripara Upazila in Pirozpur, farmers heavily rely on guava farming. Such diversity of life is hard to be found in other places in the country. Loss in guava farming in one season usually leads to extreme distress for the farmers throughout the year. The current year is one of those.', 1, '0', '2024-02-11 14:20:45', '2024-02-11 14:20:45'),
-(10, 'Ghagot river', 10.00, '10', 'images_1707633357.jpg', 'https://drive.google.com/file/d/1x-oZ_WDN40BQzYz8omaQRmWCXD2Hgh-z/view', 'Ghagot river, Rangpur, oldes river,', 'Ghagot River is next to Harirampur and is located in Rangpur Division, Bangladesh. Ghagot River has a length of 34.06 kilometres.', 1, '0', '2024-02-11 14:35:57', '2024-02-11 14:35:57'),
-(11, 'Water collection', 20.00, '3', 'images_1707634022.jpg', 'https://drive.google.com/file/d/1C8C39JtM4HMptGtgXfdMWyh75pyDriOM/view', 'Water collection, Collection,\r\nOnly Women,\r\nPoverty,\r\nTogetherness,\r\nWalking,\r\nWater,\r\nWomen,\r\nAdult,\r\nAdults Only,\r\nBalance,\r\nBucket,\r\nCandid,\r\nCarrying,\r\nCarrying On Head,\r\nCold Drink,\r\nCulture of India,\r\nDay,\r\nDiminishing Perspective,\r\nDrinking,\r\nDrinking Water,\r\nHeadscarf,\r\nIndia,\r\nJar,\r\nJug,\r\nLarge Group Of People,\r\nOn The Move,\r\nOutdoors,\r\nPeople,\r\nPicking Up,\r\nRajasthan,\r\nReal People,\r\nRear View,\r\nRemote Location,\r\nSari,\r\nStanding,\r\nTraditional Clothing,\r\nUnrecognisable Person,\r\nVeil,\r\nWomen\'s Issues,\r\nWorking,\r\nYellow,', 'Indian women collecting drinking water in jars in 2018 in Purolia, INDIA. Collecting and carrying water are women\'s responsibilities in India. Purolia women often walk long distances through the desert to bring back jugs of water that they carry on their heads.', 1, '0', '2024-02-11 14:47:02', '2024-02-11 14:47:02'),
-(12, 'Green bee eater', 20.00, '12', 'images_1707634520.jpg', 'https://drive.google.com/file/d/1hJX2d3f6qPqWkNayXdZqFw9tx3gMgGIQ/view', 'green bee eater, bird background,\r\nwild,\r\nnature animal,\r\ncute bird,\r\noutdoor ,background,\r\nbird,\r\nwild nature,\r\nwildlife,\r\nwild background,\r\nanimals,\r\nwild animals,\r\nanimal , background,\r\nhabitat,\r\njungle animals,\r\nforest animals,\r\njungle, background,\r\njungle,\r\nhd background,\r\ncute animals,\r\nbeautiful,\r\ncolorful colors,\r\nforest,\r\nforest , background,\r\ngreen forest,\r\nnature, background,\r\ncolorful,\r\nhd,\r\ncolor,\r\nbee,\r\ntail,\r\ngreen, background,\r\ngreen,\r\ncute bee,\r\nexotic,\r\ngreen nature,,', 'Green bee-eater beautiful birds of Bangladesh', 1, '0', '2024-02-11 14:55:20', '2024-02-11 14:55:20'),
-(13, 'Sunrising', 20.00, '10', 'images_1707664569.jpg', 'https://drive.google.com/file/d/1SHeTPh4i-uCDCZV05Bo0LTiL-5ePjygI/view', 'clouds suberising, color, container,Sunset,\r\nBeach,\r\nSunrise - Dawn,\r\nMiami,\r\nFlorida - US State,\r\nSky,\r\nSea,\r\nDawn,\r\nColor Image,\r\nScenics - Nature,\r\nDusk,\r\nBeauty,\r\nLandscape - Scenery,\r\nMiami Beach,\r\nCityscape,\r\nTranquility,\r\nVibrant Color,\r\nSummer,\r\nUSA,\r\nUrban Skyline,\r\nFun,\r\nSouth,\r\nBlue,\r\nNo People,\r\nSand,\r\nWater,\r\nSouth Beach,\r\nTropical Climate,\r\nHorizontal,\r\nArt Deco District - Miami,\r\nPhotography,\r\nBeauty In Nature,\r\nBoulevard,\r\nCalm Before The Storm,\r\nFamous Place,\r\nGulf Coast States,\r\nHeadlight,\r\nJourney,\r\nLight - Natural Phenomenon,\r\nMotion,\r\nMoving Past,\r\nNature,\r\nOcean Drive - Miami,\r\nOutdoors,\r\nReflection,\r\nRenovation,\r\nRestaurant,\r\nSouth Pointe,\r\nSun,\r\nTravel,\r\nTravel Destinations,\r\nWave - Water,', 'Person walking on padma river at sunrise', 1, '0', '2024-02-11 23:16:09', '2024-02-11 23:16:09'),
-(14, 'Fishing time', 20.00, '10', 'images_1707664823.jpg', 'https://drive.google.com/file/d/1-0PzN4_0CjVF6XPjqCsD82V0q8WJQ0gn/view', 'Beach,\r\nSummer,\r\nSun,\r\nSunlight,\r\nHeat - Temperature,\r\nVacations,\r\nFamily,\r\nPeople,\r\nSea,\r\nSunrise - Dawn,\r\nChild,\r\nRunning,\r\nTeenage Girls,\r\nFun,\r\nGirls,\r\nHappiness,\r\nSpain,\r\nEnjoyment,\r\nTeenager,\r\nMotion,\r\nVitality,\r\nCandid,\r\nTravel Destinations,\r\nHeat Haze,\r\nOutdoors,\r\nAndalusia,\r\nWellbeing,\r\nNature,\r\nDawn,\r\nLifestyles,\r\nBikini,\r\nJoy,\r\nSplashing,\r\nSport,\r\nSand,\r\nBeach Holiday,\r\nHealthy Lifestyle,\r\nDusk,\r\nPlaying,\r\nEurope,\r\nSunbeam,\r\nBoys,\r\nBack Lit,\r\nTourist,\r\nTourism,\r\nReal People,\r\nTwo People,\r\nIdyllic,\r\nPhotography,\r\nColor Image,\r\nSea Foam,\r\nBreaking Wave,\r\nCádiz,\r\nTranquil Scene,\r\nPacific Islands,\r\nWhite People,\r\nActive Lifestyle,\r\nClear Sky,\r\nFoam - Material,\r\nFull Length,\r\nHorizontal,\r\nRomantic Sky,\r\nSwimwear,\r\nWet, fishing, sunset.', 'Fishing time when after the sunset', 1, '0', '2024-02-11 23:20:23', '2024-02-11 23:20:23'),
-(15, 'sunset fishing', 20.00, '10', 'images_1707665029.jpg', 'https://drive.google.com/file/d/1-M2LEC4Gjm_3Sahwo06Ww1x-IyyT-6iD/view', 'Fishing,\r\nSunset,\r\nFamily,\r\nLake,\r\nGrandfather,\r\nIn Silhouette,\r\nPier,\r\nChild,\r\nGrandparent,\r\nGrandchild,\r\nGrandson,\r\nOutdoors,\r\nSummer,\r\nQuebec,\r\nTeaching,\r\nMen,\r\nCanada,\r\nBoys,\r\nPhotography,\r\nHobbies,\r\nMulti-Generation Family,\r\nFishing Rod,\r\nFreshwater Fishing,\r\nSenior Adult,\r\nMulti Colored,\r\nVacations,\r\nPeople,\r\nTogetherness,\r\n4-5 Years,\r\n70-79 Years,\r\nActive Lifestyle,\r\nActive Seniors,\r\nAdult,\r\nBack Lit,\r\nBonding,\r\nCatching,\r\nChildhood,\r\nColor Image,\r\nEnjoyment,\r\nFish,\r\nFisher - Role,\r\nFisherman,\r\nFishing Bait,\r\nFun,\r\nHappiness,\r\nHorizontal,\r\nLearning,\r\nLeisure Activity,\r\nMales,\r\nOrange Color,\r\nRecreational Pursuit,\r\nRed,\r\nRedhead,\r\nRomantic Sky,\r\nSenior Men,\r\nSibling,\r\nTwo People,\r\nVitality,\r\nWater,\r\nWhite People,', 'They are fishing on the Padma River. It is a beautiful summer day at sunset. Across the river', 1, '0', '2024-02-11 23:23:49', '2024-02-11 23:23:49'),
-(16, 'Rakher Upobash', 20.00, '11', 'images_1713274587.jpg', NULL, 'Rakher Upobash, Upobash, Festival, hindu festival, bangladesh, cauture,', NULL, 1, '0', '2024-04-16 20:36:27', '2024-04-16 20:36:27'),
-(17, 'Kartik Brati', 20.00, '11', 'images_1713275113.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '2024-04-16 20:45:13', '2024-04-16 20:45:13'),
-(18, 'Rakher Upobash', 20.00, '11', 'images_1713275287.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '2024-04-16 20:48:07', '2024-04-16 20:48:07'),
-(19, 'Rakher Upobash in drone', 20.00, '11', 'images_1713275453.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '2024-04-16 20:50:53', '2024-04-16 20:50:53'),
-(20, 'Devotion with light', 20.00, '11', 'images_1713275563.jpg', NULL, 'Devotion with light; Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '2024-04-16 20:52:43', '2024-04-16 20:52:43'),
-(21, 'Rakher Upobash', 20.00, '11', 'images_1713275869.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '2024-04-16 20:57:49', '2024-04-16 20:57:49'),
-(22, 'Rakher Upobash', 10.00, '11', 'images_1713276022.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '1', '2024-04-16 21:00:22', '2024-05-21 22:39:24'),
-(23, 'All Souls Day', 25.00, '11', 'images_1713276242.jpg', NULL, 'All Souls Day', NULL, 1, '0', '2024-04-16 21:04:02', '2024-04-16 21:04:02'),
-(24, 'Lalkach', 25.00, '11', 'images_1713276813.jpg', NULL, 'Lalkach, Dholkach, লালকাচ', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '0', '2024-04-16 21:13:33', '2024-04-16 21:13:33'),
-(25, 'Dholkach', 25.00, '11', 'images_1713276956.jpg', NULL, 'Dholkach; Lalkach', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '1', '2024-04-16 21:15:56', '2024-05-21 22:39:26'),
-(26, 'Lalkach', 25.00, '11', 'images_1713277165.jpg', NULL, 'Lalkach; Dholkach;', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '0', '2024-04-16 21:19:25', '2024-04-16 21:19:25'),
-(27, 'Dholkach', 25.00, '11', 'images_1713277214.jpg', NULL, 'Dholkach; Lalkach;', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '1', '2024-04-16 21:20:14', '2024-05-21 22:39:20'),
-(28, 'Charak Puja', 25.00, '11', 'images_1713277443.jpg', NULL, 'Charak Puja, nil puja, barshi puja, চড়ক পুজা', 'Charak puja honors Shiva and Kali, symbolising renewal, forgiveness, and agricultural prosperity. It is celebrated on the occasion of Chaitra Sankranti, the last day (April 14) of the month of Chaitra, which is followed by the Bengali New Year.', 1, '0', '2024-04-16 21:24:03', '2024-04-16 21:24:03'),
-(29, 'Cox\'s Bazar Railway Station', 50.00, '10', 'images_1713279171.jpg', 'https://drive.google.com/file/d/13G8ZGd0VMNMfcyxiBu1uk5EJ6-Tr2-GH/view?usp=drive_link', 'Cox\'s Bazar Railway Station; Cox\'s Bazar; Railway Station;', 'Cox\'s Bazar Railway Station is a railway station in Bangladesh, situated near the bus terminal of the city of Cox\'s Bazar. The railway station was officially inaugurated on 11 November 2023 and is considered the first iconic railway station in the country', 1, '1', '2024-04-16 21:52:51', '2024-05-21 22:38:02'),
-(30, 'Cox\'s Bazar beach', 25.00, '10', 'images_1713279821.jpg', 'https://drive.google.com/file/d/1kzTh0_mg_rrZmtdUq-HKwC6949FnKJZE/view?usp=drive_link', 'Cox\'s Bazar;  Cox\'s Bazar Beach; longest natural sea beach;', 'The beach in Cox\'s Bazar is the main attraction of the town with an unbroken length of 150 km (93 mi) also termed the \"longest natural sea beach;', 1, '0', '2024-04-16 22:03:41', '2024-04-16 22:03:41'),
-(31, 'longest natural sea beach', 25.00, '10', 'images_1713279981.jpg', 'https://drive.google.com/file/d/1OyjiwHa6H29VGj2EpVNss6-qO9YRpXJ7/view?usp=drive_link', 'Cox\'s Bazar;  Cox\'s Bazar Beach; longest natural sea beach;', 'The beach in Cox\'s Bazar is the main attraction of the town with an unbroken length of 150 km (93 mi) also termed the \"longest natural sea beach;', 1, '0', '2024-04-16 22:06:21', '2024-04-16 22:06:21'),
-(32, 'Cox\'s Bazar Beach', 25.00, '10', 'images_1713280162.jpg', 'https://drive.google.com/file/d/1qZZiT64kj1u7cyTRbVimkmCkrg8igt0w/view?usp=drive_link', 'Cox\'s Bazar;  Cox\'s Bazar Beach; longest natural sea beach;', 'The beach in Cox\'s Bazar is the main attraction of the town with an unbroken length of 150 km (93 mi) also termed the \"longest natural sea beach;', 1, '0', '2024-04-16 22:09:22', '2024-04-16 22:09:22'),
-(33, 'Red chilies drying', 20.00, '14', 'images_1715360354.jpg', NULL, 'red chilies, chilies drying', 'Aerial view of people working in fields drying red chilies at Mirzapur, Panchagarh, Bangladesh.', 1, '1', '2024-05-10 23:59:14', '2024-05-21 22:39:19'),
-(34, 'tanguar haor', 20.00, '10', 'images_1715789766.jpg', NULL, 'tanguar haor, beautiful bangladesh', 'tanguar haor', 1, '1', '2024-05-15 23:16:06', '2024-05-21 22:39:18');
+INSERT INTO `web_galleries` (`id`, `title`, `price`, `category`, `images`, `url`, `tags`, `details`, `status`, `my_best`, `mci`, `created_at`, `updated_at`) VALUES
+(1, 'shewla, serajgonj', 120.00, '10', 'images_1706068080.jpg', 'https://new.badalphoto.com', '#abc #def', 'test details', 1, '0', '0', '2024-01-24 11:48:00', '2024-02-09 20:39:47'),
+(2, 'Cabbage field', 5.00, '1', 'images_1707148120.jpg', 'https://www.flickr.com/photos/bcsarker/15368080017/in/album-72157649711975639/', 'agriculture, agri field', 'Green Cabbage field', 1, '0', '0', '2024-02-05 23:48:40', '2024-02-05 23:48:40'),
+(3, 'flower and bee', 10.00, '9', 'images_1707582291.jpg', 'https://drive.google.com/file/d/1O_HQFxvA0Kn88sp8i3JpYAxPY9-6bAof/view', 'flower and bee; flower; bee', 'A honeybee (Apis mellifera) sips nectar from an aster in a butterfly garden.', 1, '0', '0', '2024-02-11 00:24:51', '2024-02-11 00:24:51'),
+(4, 'Grasshopper', 10.00, '9', 'images_1707583566.jpg', 'https://drive.google.com/file/d/1HbqkukbWEEzidG-rdGVb8o7UJmOFOZKf/view', 'Gree Hopper', 'Grasshopper', 1, '0', '0', '2024-02-11 00:46:06', '2024-02-11 00:46:06'),
+(5, 'Flower 2', 10.00, '9', 'images_1707587377.jpg', 'https://drive.google.com/file/d/1iQDonji4K4PD1d82i9Kfqr6Dl7CsePns/view', 'Bee,\r\nFlower,\r\nHoney Bee,\r\nPollination,\r\nPollen,\r\nAster,\r\nPollinator,\r\nPurple,\r\nYellow,\r\nInsect,\r\nFlowerbed,\r\nColor Image,\r\nHorizontal,\r\nNo People,\r\nOutdoors,\r\nPhotography,', 'Flower 2', 1, '0', '0', '2024-02-11 01:49:37', '2024-02-11 01:49:37'),
+(6, 'cosmos flower & bee', 10.00, '9', 'images_1707587885.jpg', 'https://drive.google.com/file/d/1rMJvP0u7Tdr5o5Dl4YloG6709ZGq-hzk/view', 'Bee,\r\nHoney Bee,\r\nFlower,\r\nClose-up,\r\nMacrophotography,\r\nFlying,\r\nExtreme Close-Up,\r\nPollen,\r\nPollination,\r\nFlower Head,\r\nAnimals In The Wild,\r\nOne Animal,\r\nSingle Object,\r\nAnimal,\r\nAnimal Body Part,\r\nAnimal Wing,\r\nBeauty In Nature,\r\nBlack Color,\r\nBlossom,\r\nColor Image,\r\nHoney,\r\nHorizontal,\r\nImage,\r\nInsect,\r\nMulti Colored,\r\nNature,\r\nNo People,\r\nOutdoors,\r\nPetal,\r\nPhotography,\r\nPlant,\r\nSingle Flower,\r\nSpringtime,\r\nStamen,\r\nSummer,\r\nYellow,', 'cosmos flower & bee', 1, '0', '0', '2024-02-11 01:58:05', '2024-02-11 01:58:05'),
+(7, 'Smart agriculture', 50.00, '1', 'images_1707588556.jpg', 'https://drive.google.com/file/d/1URqIBZPpJhSI_C-s3LR6UpKDExUYM1bR/view', 'Smart agriculture, Agriculture,\r\nSmart Farming,\r\nDigital Tablet,\r\nTechnology,\r\nGreen Color,\r\nFarmer,\r\nInnovation,\r\nNature,\r\nRural Scene,\r\nPeople,\r\nAgricultural Field,\r\nDigital Display,\r\nBusiness,\r\nBusinessman,\r\nExamining,\r\nPlantation,\r\nCrop - Plant,\r\nLandscape - Scenery,\r\nGrowth,\r\nBrazil,\r\nColor Image,\r\nOccupation,\r\nOne Person,\r\nWorking,\r\nOutdoors,\r\nProfessional Occupation,\r\nAgricultural Activity,\r\nComputer,\r\nModern,\r\nCereal Plant,\r\nEnvironment,\r\nFood,\r\nLooking,\r\nPhotography,\r\nUsing Digital Tablet,\r\nYoung Adult,\r\nCultivated,\r\nInternet,\r\nMen,\r\n30-34 Years,\r\nAdult,\r\nAdults Only,\r\nAgronomist,\r\nBrazilian Ethnicity,\r\nContented Emotion,\r\nCopy Space,\r\nFarm,\r\nHorizontal,\r\nLatin American and Hispanic Ethnicity,\r\nLifestyles,\r\nMales,\r\nMid Adult,\r\nMid Adult Men,\r\nMultiracial Person,\r\nOne Man Only,\r\nOnly Men,\r\nOrganic,\r\nOrganic Farm,\r\nPlant,\r\nUnrecognizable Person,\r\nWhite People,\r\nWireless Technology,', 'A Smart Farmer using Laptop to check Rice Field problems', 1, '0', '0', '2024-02-11 02:09:16', '2024-02-11 02:09:16'),
+(8, 'Body temple', 10.00, '11', 'images_1707590851.jpg', 'https://drive.google.com/file/d/1vy7PF-TvEJaax96B60KLQpNFydmBuU7h/view', 'Body temple, Panchari Shantipur Aranya Kutir , Architecture,\r\nBangladesh,\r\nBangladeshi Culture,\r\nBuddha,\r\nBuddhism,\r\nColor Image,\r\nCox\'s Bazaar,\r\nCultures,\r\nFamous Place,\r\nGod,\r\nGold Colored,\r\nHorizontal,\r\nLying Down,\r\nNo People,\r\nPhotography,\r\nPhysical Structure,\r\nReclining,\r\nRelaxation,\r\nRelief Carving,\r\nReligion,\r\nReligious Icon,\r\nSculpture,\r\nSpirituality,\r\nStatue,\r\nTemple - Building,\r\nThe Human Body,\r\nTourism,', 'Khagrachhari (Bengali: খাগড়াছড়ি) is a district in south-eastern Bangladesh. It is a part of the Chittagong Division and the Chittagong Hill Tracts. Its local name is “Chengmi”. Khagrachhari is also known as Phalang Htaung or the Mong Circle (of the rest of the three hill districts Rangamati is the Chakma Circle and Bandarban is the Bohmong Circle). Khagrachhari town is the home town of the Mong Chief (currently King, or Raja, Saching Prue Chowdhury who is the head of the Arakanese descendants living in the circle. It also is the administrative headquarters of Khagrachhari district.\r\n\r\nPanchari Shantipur Aranya Kutir – 25 km south from Khagrachhari is peripheral region. The largest Buddha sculpture of Bangladesh  (Panchari Brihot Buddha Sculpture) is situated here.', 1, '0', '0', '2024-02-11 02:47:31', '2024-02-11 02:47:31'),
+(9, 'Guava floating market', 50.00, '14', 'images_1707632445.jpg', 'https://drive.google.com/file/d/19DQbbRjab7ncXO-TXtQABVWMJwyy0vNX/view', 'Lake,\r\nAgriculture,\r\nApple - Fruit,\r\nBangladesh,\r\nBerry,\r\nBusiness Finance and Industry,\r\nCanoe,\r\nDhaka,\r\nDrone Point of View,\r\nEconomy,\r\nFinance and Economy,\r\nFloating Market,\r\nGeographical Locations,\r\nGuava,\r\nLand,\r\nMexico,\r\nNautical Vessel,\r\nNo People,\r\nOutdoors,\r\nPeru,\r\nPirojpur District,\r\nTradition,\r\nTree,\r\nTropical Climate,\r\nWater,\r\nWorking,', 'The floating market appears as the center of Barisal’s (aka The Venice of Bengal) beauty. Nobody knows when the idea of this floating market began, but it’s a hundred-year-old tradition. Development and modernization are taking over the country but it’s surprising to see them not reaching this river-oriented life yet. For more than 100 years, the local farmers have been experiencing the ups and downs of life along with the ebb and flow of the river. Many farmers and wholesalers gather here every day. Not the only guava, but there are also other fruits sold in this market.\r\n\r\nThe southern region of Bangladesh is famous for guavas, more popularly known in Bangladesh as ‘Bengal’s Apple’. Especially in Jhalakathi Sadar Upazila and at Swarupkathi and Banaripara Upazila in Pirozpur, farmers heavily rely on guava farming. Such diversity of life is hard to be found in other places in the country. Loss in guava farming in one season usually leads to extreme distress for the farmers throughout the year. The current year is one of those.', 1, '0', '0', '2024-02-11 14:20:45', '2024-02-11 14:20:45'),
+(10, 'Ghagot river', 10.00, '10', 'images_1707633357.jpg', 'https://drive.google.com/file/d/1x-oZ_WDN40BQzYz8omaQRmWCXD2Hgh-z/view', 'Ghagot river, Rangpur, oldes river,', 'Ghagot River is next to Harirampur and is located in Rangpur Division, Bangladesh. Ghagot River has a length of 34.06 kilometres.', 1, '0', '0', '2024-02-11 14:35:57', '2024-02-11 14:35:57'),
+(11, 'Water collection', 20.00, '3', 'images_1707634022.jpg', 'https://drive.google.com/file/d/1C8C39JtM4HMptGtgXfdMWyh75pyDriOM/view', 'Water collection, Collection,\r\nOnly Women,\r\nPoverty,\r\nTogetherness,\r\nWalking,\r\nWater,\r\nWomen,\r\nAdult,\r\nAdults Only,\r\nBalance,\r\nBucket,\r\nCandid,\r\nCarrying,\r\nCarrying On Head,\r\nCold Drink,\r\nCulture of India,\r\nDay,\r\nDiminishing Perspective,\r\nDrinking,\r\nDrinking Water,\r\nHeadscarf,\r\nIndia,\r\nJar,\r\nJug,\r\nLarge Group Of People,\r\nOn The Move,\r\nOutdoors,\r\nPeople,\r\nPicking Up,\r\nRajasthan,\r\nReal People,\r\nRear View,\r\nRemote Location,\r\nSari,\r\nStanding,\r\nTraditional Clothing,\r\nUnrecognisable Person,\r\nVeil,\r\nWomen\'s Issues,\r\nWorking,\r\nYellow,', 'Indian women collecting drinking water in jars in 2018 in Purolia, INDIA. Collecting and carrying water are women\'s responsibilities in India. Purolia women often walk long distances through the desert to bring back jugs of water that they carry on their heads.', 1, '0', '0', '2024-02-11 14:47:02', '2024-02-11 14:47:02'),
+(12, 'Green bee eater', 20.00, '12', 'images_1707634520.jpg', 'https://drive.google.com/file/d/1hJX2d3f6qPqWkNayXdZqFw9tx3gMgGIQ/view', 'green bee eater, bird background,\r\nwild,\r\nnature animal,\r\ncute bird,\r\noutdoor ,background,\r\nbird,\r\nwild nature,\r\nwildlife,\r\nwild background,\r\nanimals,\r\nwild animals,\r\nanimal , background,\r\nhabitat,\r\njungle animals,\r\nforest animals,\r\njungle, background,\r\njungle,\r\nhd background,\r\ncute animals,\r\nbeautiful,\r\ncolorful colors,\r\nforest,\r\nforest , background,\r\ngreen forest,\r\nnature, background,\r\ncolorful,\r\nhd,\r\ncolor,\r\nbee,\r\ntail,\r\ngreen, background,\r\ngreen,\r\ncute bee,\r\nexotic,\r\ngreen nature,,', 'Green bee-eater beautiful birds of Bangladesh', 1, '0', '0', '2024-02-11 14:55:20', '2024-02-11 14:55:20'),
+(13, 'Sunrising', 20.00, '10', 'images_1707664569.jpg', 'https://drive.google.com/file/d/1SHeTPh4i-uCDCZV05Bo0LTiL-5ePjygI/view', 'clouds suberising, color, container,Sunset,\r\nBeach,\r\nSunrise - Dawn,\r\nMiami,\r\nFlorida - US State,\r\nSky,\r\nSea,\r\nDawn,\r\nColor Image,\r\nScenics - Nature,\r\nDusk,\r\nBeauty,\r\nLandscape - Scenery,\r\nMiami Beach,\r\nCityscape,\r\nTranquility,\r\nVibrant Color,\r\nSummer,\r\nUSA,\r\nUrban Skyline,\r\nFun,\r\nSouth,\r\nBlue,\r\nNo People,\r\nSand,\r\nWater,\r\nSouth Beach,\r\nTropical Climate,\r\nHorizontal,\r\nArt Deco District - Miami,\r\nPhotography,\r\nBeauty In Nature,\r\nBoulevard,\r\nCalm Before The Storm,\r\nFamous Place,\r\nGulf Coast States,\r\nHeadlight,\r\nJourney,\r\nLight - Natural Phenomenon,\r\nMotion,\r\nMoving Past,\r\nNature,\r\nOcean Drive - Miami,\r\nOutdoors,\r\nReflection,\r\nRenovation,\r\nRestaurant,\r\nSouth Pointe,\r\nSun,\r\nTravel,\r\nTravel Destinations,\r\nWave - Water,', 'Person walking on padma river at sunrise', 1, '0', '0', '2024-02-11 23:16:09', '2024-02-11 23:16:09'),
+(14, 'Fishing time', 20.00, '10', 'images_1707664823.jpg', 'https://drive.google.com/file/d/1-0PzN4_0CjVF6XPjqCsD82V0q8WJQ0gn/view', 'Beach,\r\nSummer,\r\nSun,\r\nSunlight,\r\nHeat - Temperature,\r\nVacations,\r\nFamily,\r\nPeople,\r\nSea,\r\nSunrise - Dawn,\r\nChild,\r\nRunning,\r\nTeenage Girls,\r\nFun,\r\nGirls,\r\nHappiness,\r\nSpain,\r\nEnjoyment,\r\nTeenager,\r\nMotion,\r\nVitality,\r\nCandid,\r\nTravel Destinations,\r\nHeat Haze,\r\nOutdoors,\r\nAndalusia,\r\nWellbeing,\r\nNature,\r\nDawn,\r\nLifestyles,\r\nBikini,\r\nJoy,\r\nSplashing,\r\nSport,\r\nSand,\r\nBeach Holiday,\r\nHealthy Lifestyle,\r\nDusk,\r\nPlaying,\r\nEurope,\r\nSunbeam,\r\nBoys,\r\nBack Lit,\r\nTourist,\r\nTourism,\r\nReal People,\r\nTwo People,\r\nIdyllic,\r\nPhotography,\r\nColor Image,\r\nSea Foam,\r\nBreaking Wave,\r\nCádiz,\r\nTranquil Scene,\r\nPacific Islands,\r\nWhite People,\r\nActive Lifestyle,\r\nClear Sky,\r\nFoam - Material,\r\nFull Length,\r\nHorizontal,\r\nRomantic Sky,\r\nSwimwear,\r\nWet, fishing, sunset.', 'Fishing time when after the sunset', 1, '0', '0', '2024-02-11 23:20:23', '2024-02-11 23:20:23'),
+(15, 'sunset fishing', 20.00, '10', 'images_1707665029.jpg', 'https://drive.google.com/file/d/1-M2LEC4Gjm_3Sahwo06Ww1x-IyyT-6iD/view', 'Fishing,\r\nSunset,\r\nFamily,\r\nLake,\r\nGrandfather,\r\nIn Silhouette,\r\nPier,\r\nChild,\r\nGrandparent,\r\nGrandchild,\r\nGrandson,\r\nOutdoors,\r\nSummer,\r\nQuebec,\r\nTeaching,\r\nMen,\r\nCanada,\r\nBoys,\r\nPhotography,\r\nHobbies,\r\nMulti-Generation Family,\r\nFishing Rod,\r\nFreshwater Fishing,\r\nSenior Adult,\r\nMulti Colored,\r\nVacations,\r\nPeople,\r\nTogetherness,\r\n4-5 Years,\r\n70-79 Years,\r\nActive Lifestyle,\r\nActive Seniors,\r\nAdult,\r\nBack Lit,\r\nBonding,\r\nCatching,\r\nChildhood,\r\nColor Image,\r\nEnjoyment,\r\nFish,\r\nFisher - Role,\r\nFisherman,\r\nFishing Bait,\r\nFun,\r\nHappiness,\r\nHorizontal,\r\nLearning,\r\nLeisure Activity,\r\nMales,\r\nOrange Color,\r\nRecreational Pursuit,\r\nRed,\r\nRedhead,\r\nRomantic Sky,\r\nSenior Men,\r\nSibling,\r\nTwo People,\r\nVitality,\r\nWater,\r\nWhite People,', 'They are fishing on the Padma River. It is a beautiful summer day at sunset. Across the river', 1, '0', '0', '2024-02-11 23:23:49', '2024-06-26 03:21:24'),
+(16, 'Rakher Upobash', 20.00, '11', 'images_1713274587.jpg', NULL, 'Rakher Upobash, Upobash, Festival, hindu festival, bangladesh, cauture,', NULL, 1, '0', '0', '2024-04-16 20:36:27', '2024-06-26 03:21:23'),
+(17, 'Kartik Brati', 20.00, '11', 'images_1713275113.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '0', '2024-04-16 20:45:13', '2024-04-16 20:45:13'),
+(18, 'Rakher Upobash', 20.00, '11', 'images_1713275287.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '1', '0', '2024-04-16 20:48:07', '2024-06-26 03:14:06'),
+(19, 'Rakher Upobash in drone', 20.00, '11', 'images_1713275453.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '0', '2024-04-16 20:50:53', '2024-06-26 03:21:22'),
+(20, 'Devotion with light', 20.00, '11', 'images_1713275563.jpg', NULL, 'Devotion with light; Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '0', '2024-04-16 20:52:43', '2024-04-16 20:52:43'),
+(21, 'Rakher Upobash', 20.00, '11', 'images_1713275869.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '0', '0', '2024-04-16 20:57:49', '2024-04-16 20:57:49'),
+(22, 'Rakher Upobash', 10.00, '11', 'images_1713276022.jpg', NULL, 'Kartik Brati; Rakher Upobash; Narayanganj, Bangladesh; Devotees; prayer; hindu faith; celebrating, baba lokenath;', 'Devotees attend prayer with burning incense and light oil lamps before break fasting during a religious festival called Rakher Upobash or Kartik Brati in Narayanganj, Bangladesh . Bengali people of the Hindu faith in Bangladesh sit in prayer celebrating the 18th century Hindu Saint Baba Lokenath with a \'Rakher Upobas\' prayer and fast day Every year thousands of Hindu devotees gather in front of Shri Shri Lokenath Brahmachari Ashram temple for the Kartik Brati or Rakher Upobash religious festival in Narayanganj, Bangladesh. Faithful sit in front of candles light ( named locally as Prodip ) and absorb in prayer. Lokenath Brahmachari who is called Baba Lokenath was an 18th Century Hindu saint and philosopher in Bengal. Hindu worshipers fast and pray in earnest to the gods for their favors during the traditional ritual called Kartik Brati or Rakher Upobash. Lokenath Brahmachari devotees pray with light to save their family and dear from cholera and pox disease. \r\nLokenath Brahmachari was born to a Brahman (an elite caste reserved for spiritual service in the caste system) family on the birth date of the Hindu Lord Krishna in 1730. At eleven, he ventured off to the woods with his guru to practice Ashtanga and Hatha Yoga. When he left, he is said to have lived a life of complete asceticism until reaching enlightenment at the age of 90, after which he traveled extensively through Afghanistan, Persia and Arabia, including making three pilgrimages to Mecca. At the age of 136 he is said to have settled in a small town near Dhaka to tend to people who came seeking his teachings and blessings.', 1, '1', '0', '2024-04-16 21:00:22', '2024-05-21 22:39:24'),
+(23, 'All Souls Day', 25.00, '11', 'images_1713276242.jpg', NULL, 'All Souls Day', NULL, 1, '0', '0', '2024-04-16 21:04:02', '2024-04-16 21:04:02'),
+(24, 'Lalkach', 25.00, '11', 'images_1713276813.jpg', NULL, 'Lalkach, Dholkach, লালকাচ', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '0', '0', '2024-04-16 21:13:33', '2024-04-16 21:13:33'),
+(25, 'Dholkach', 25.00, '11', 'images_1713276956.jpg', NULL, 'Dholkach; Lalkach', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '1', '0', '2024-04-16 21:15:56', '2024-05-21 22:39:26'),
+(26, 'Lalkach', 25.00, '11', 'images_1713277165.jpg', NULL, 'Lalkach; Dholkach;', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '1', '0', '2024-04-16 21:19:25', '2024-06-26 03:21:28'),
+(27, 'Dholkach', 25.00, '11', 'images_1713277214.jpg', NULL, 'Dholkach; Lalkach;', 'This centuries-old glass dance is also known as Lalkach or Dholkach. According to Sanatana Dharmalambi, every year on the eve of Chaitra Sankranti, Kachan Narti is performed. Lalkach or Dholkach is organized this year at Loknath Temple next to Abdullahpur crematorium. Uma Shankar, one of the organizers, said that on Saturday, the Kachanritya premises became buzzing with the presence of thousands of devotees. He said that the red glass festival started in the afternoon. Five thousand devotees participated in the festival at Abdullahpur Loknath temple around 4:30 pm.', 1, '1', '0', '2024-04-16 21:20:14', '2024-05-21 22:39:20'),
+(28, 'Charak Puja', 25.00, '11', 'images_1713277443.jpg', NULL, 'Charak Puja, nil puja, barshi puja, চড়ক পুজা', 'Charak puja honors Shiva and Kali, symbolising renewal, forgiveness, and agricultural prosperity. It is celebrated on the occasion of Chaitra Sankranti, the last day (April 14) of the month of Chaitra, which is followed by the Bengali New Year.', 1, '0', '0', '2024-04-16 21:24:03', '2024-04-16 21:24:03'),
+(29, 'Cox\'s Bazar Railway Station', 50.00, '10', 'images_1713279171.jpg', 'https://drive.google.com/file/d/13G8ZGd0VMNMfcyxiBu1uk5EJ6-Tr2-GH/view?usp=drive_link', 'Cox\'s Bazar Railway Station; Cox\'s Bazar; Railway Station;', 'Cox\'s Bazar Railway Station is a railway station in Bangladesh, situated near the bus terminal of the city of Cox\'s Bazar. The railway station was officially inaugurated on 11 November 2023 and is considered the first iconic railway station in the country', 1, '1', '0', '2024-04-16 21:52:51', '2024-05-21 22:38:02'),
+(30, 'Cox\'s Bazar beach', 25.00, '10', 'images_1713279821.jpg', 'https://drive.google.com/file/d/1kzTh0_mg_rrZmtdUq-HKwC6949FnKJZE/view?usp=drive_link', 'Cox\'s Bazar;  Cox\'s Bazar Beach; longest natural sea beach;', 'The beach in Cox\'s Bazar is the main attraction of the town with an unbroken length of 150 km (93 mi) also termed the \"longest natural sea beach;', 1, '0', '0', '2024-04-16 22:03:41', '2024-06-26 03:21:29'),
+(31, 'longest natural sea beach', 25.00, '10', 'images_1713279981.jpg', 'https://drive.google.com/file/d/1OyjiwHa6H29VGj2EpVNss6-qO9YRpXJ7/view?usp=drive_link', 'Cox\'s Bazar;  Cox\'s Bazar Beach; longest natural sea beach;', 'The beach in Cox\'s Bazar is the main attraction of the town with an unbroken length of 150 km (93 mi) also termed the \"longest natural sea beach;', 0, '0', '0', '2024-04-16 22:06:21', '2024-06-26 03:07:02'),
+(32, 'Cox\'s Bazar Beach', 25.00, '10', 'images_1713280162.jpg', 'https://drive.google.com/file/d/1qZZiT64kj1u7cyTRbVimkmCkrg8igt0w/view?usp=drive_link', 'Cox\'s Bazar;  Cox\'s Bazar Beach; longest natural sea beach;', 'The beach in Cox\'s Bazar is the main attraction of the town with an unbroken length of 150 km (93 mi) also termed the \"longest natural sea beach;', 1, '0', '1', '2024-04-16 22:09:22', '2024-06-26 03:22:18'),
+(33, 'Red chilies drying', 20.00, '14', 'images_1715360354.jpg', NULL, 'red chilies, chilies drying', 'Aerial view of people working in fields drying red chilies at Mirzapur, Panchagarh, Bangladesh.', 1, '1', '0', '2024-05-10 23:59:14', '2024-06-26 03:21:26'),
+(34, 'tanguar haor', 20.00, '10', 'images_1715789766.jpg', NULL, 'tanguar haor, beautiful bangladesh', 'tanguar haor', 1, '1', '0', '2024-05-15 23:16:06', '2024-06-26 03:21:26');
 
 -- --------------------------------------------------------
 
@@ -1807,18 +1824,18 @@ INSERT INTO `web_galleries` (`id`, `title`, `price`, `category`, `images`, `url`
 
 CREATE TABLE `web_setups` (
   `id` bigint UNSIGNED NOT NULL,
-  `site_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo_black` longtext COLLATE utf8mb4_unicode_ci,
-  `logo_white` longtext COLLATE utf8mb4_unicode_ci,
-  `water_mark` longtext COLLATE utf8mb4_unicode_ci,
-  `number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` longtext COLLATE utf8mb4_unicode_ci,
-  `whatsapp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` longtext COLLATE utf8mb4_unicode_ci,
-  `altr_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `copyright` longtext COLLATE utf8mb4_unicode_ci,
-  `copyright_note` longtext COLLATE utf8mb4_unicode_ci,
+  `site_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo_black` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `logo_white` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `water_mark` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `background_image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `whatsapp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `altr_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copyright` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `copyright_note` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2044,7 +2061,7 @@ ALTER TABLE `client_messages`
 -- AUTO_INCREMENT for table `commercials`
 --
 ALTER TABLE `commercials`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `contactmes`
@@ -2140,7 +2157,7 @@ ALTER TABLE `tear_sheets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `videos`

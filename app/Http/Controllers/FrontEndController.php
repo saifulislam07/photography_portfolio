@@ -175,7 +175,8 @@ class FrontEndController extends Controller
 
         $mycommercials = Commercial::get();
 
-        return view('frontend.pages.mycommercials', get_defined_vars());
+        return view('frontend.pages.mycommercials-details', get_defined_vars());
+        // return view('frontend.pages.mycommercials', get_defined_vars());
     }
 
     public function mycommercialsDetails($id)
@@ -233,6 +234,59 @@ class FrontEndController extends Controller
         }
 
         $allrecentimages = $allrecentimages->get();
+        return view('frontend.pages.mygallery', get_defined_vars());
+    }
+
+
+    public function galleryImagesBySearch(Request $request)
+    {
+
+        $searchValue = $request->input('search_value');
+
+
+
+        $title = 'Photo Gallery';
+        $websetting = websetup();
+        $aboutme = Aboutme::first();
+        $socialMedia = Socialmedia::first();
+
+        $allcategorycount = WebGallery::select("categories.title as catname", "categories.id as catId", DB::raw('COUNT(web_galleries.category) as total'))
+            ->join("categories", "categories.id", "=", "web_galleries.category")
+            ->where('web_galleries.status', '1')
+            ->groupBy("categories.id", "categories.title")
+            ->get();
+
+
+
+
+        if ($searchValue != null) {
+            $allrecentimages = WebGallery::orderBy('web_galleries.id', 'desc')
+                ->select('web_galleries.*', 'categories.title')
+                ->join("categories", "categories.id", "=", "web_galleries.category")
+                ->where('web_galleries.status', 1)
+                ->where(function ($query) use ($searchValue) {
+                    // Exact match for numbers
+                    if (is_numeric($searchValue)) {
+                        $query->where('web_galleries.price', $searchValue);
+                    } else {
+                        // Exact match for full word in strings
+                        $query->where('web_galleries.title', 'LIKE', "% {$searchValue} %")
+                            ->orWhere('web_galleries.tags', 'LIKE', "% {$searchValue} %")
+                            ->orWhere('web_galleries.details', 'LIKE', "% {$searchValue} %")
+                            ->orWhere('categories.title', 'LIKE', "% {$searchValue} %");
+                    }
+                })
+                ->get();
+        } else {
+            $allrecentimages = WebGallery::orderBy('web_galleries.id', 'desc')
+                ->select('web_galleries.*', 'categories.title')
+                ->join("categories", "categories.id", "=", "web_galleries.category")
+                ->where('web_galleries.status', 1);
+            $allrecentimages = $allrecentimages->get();
+        }
+
+
+
         return view('frontend.pages.mygallery', get_defined_vars());
     }
 

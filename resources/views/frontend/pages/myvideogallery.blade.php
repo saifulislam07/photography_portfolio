@@ -22,7 +22,7 @@
             <!-- subheader close -->
 
             <!-- content begin -->
-            <div id="content">
+            <div id="content" class="paddingClass">
                 <div class="container">
 
                     <div class="spacer-single"></div>

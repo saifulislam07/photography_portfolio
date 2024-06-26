@@ -19,22 +19,32 @@
                     </div>
                 </div>
             </section>
-            <div id="content" class="bg-white">
+            <div id="content" class="bg-white paddingClass">
+                <br>
                 <div class="container">
-                    <div class="row ">
 
-                        <div class="col-md-4 mb-2 ">
-                            <img style="border: 3px solid orange" src="{{ asset('/commercial/' . $mycommercials->image) }}"
-                                class="img-responsive" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <h3><span class="id-color">{{ $mycommercials->title }}</span></h3>
-                            <p> {!! $mycommercials->details !!}</p>
-                            <div class="spacer-single"></div>
-                            <a href="{{ route('mycommercials') }}" class="btn-line bg-warning">Back</a>
-                        </div>
 
-                    </div>
+
+
+
+                    @foreach ($mycommercials as $com)
+                        <div class="row ">
+                            <div class="col-md-4 mb-2 ">
+                                <img style="border: 3px solid orange" src="{{ asset('/commercial/' . $com->image) }}"
+                                    class="img-responsive" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <h3><span class="id-color">{{ $com->title }}</span></h3>
+                                <p> {!! $com->details !!}</p>
+                                <div class="spacer-single"></div>
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
+
+
+
+
                 </div>
 
 

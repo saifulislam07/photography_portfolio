@@ -3,6 +3,44 @@
     Photo story
 @endsection
 @section('front-main-content')
+    <style>
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .post-text {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .post-text p {
+                margin-top: 10px;
+            }
+
+            .btn-more {
+                padding: 7px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .post-text h3 {
+                font-size: 1.2rem;
+            }
+
+            .post-text p {
+                margin-top: 8px;
+            }
+
+            .btn-more {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .paddingClass {
+            padding-top: 0px !important;
+        }
+    </style>
+
+
     <div id="content" class="no-bottom no-top">
 
         <section id="subheader" data-speed="8" data-type="background">
@@ -20,11 +58,13 @@
             </div>
         </section>
 
-        <div id="content">
+        <div id="content" class="paddingClass">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <ul class="blog-list">
+
+
                             @foreach ($lastStory as $story)
                                 <li>
                                     <div class="post-content">
@@ -46,17 +86,23 @@
                                                 {{ $year }}</div>
                                         </div>
 
-                                        <div class="post-text">
-                                            <h3><a href="#">{{ $story->title }}</a>
+                                        <div class="post-text d-flex justify-content-between ">
+                                            <h3>
+                                                <a href="#">{{ $story->title }}</a>
                                             </h3>
-                                            <div class="line-clamp-2">
-                                                <p class="">
-                                                    {!! $story->details !!}
-                                                </p>
-                                            </div>
+                                            <p style="margin-top: 15px">
+                                                <a href="{{ route('storyDetails', $story->id) }}" class="btn-more">Read
+                                                    More</a>
+                                            </p>
                                         </div>
 
-                                        <a href="{{ route('storyDetails', $story->id) }}" class="btn-more">Read More</a>
+
+
+                                    </div>
+                                    <div class="line-clamp-2">
+                                        <p class="">
+                                            {!! $story->details !!}
+                                        </p>
                                     </div>
                                 </li>
                             @endforeach
@@ -68,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div id="sidebar" class="col-md-4" style="margin-top: 10px">
+                    {{-- <div id="sidebar" class="col-md-4" style="margin-top: 10px">
                         <div class="widget widget-text">
                             <img class="mb-3" width="300px" src="{{ asset('aboutmes/' . $aboutme->storyimage) }}"
                                 alt="">
@@ -82,8 +128,9 @@
                             @endif
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

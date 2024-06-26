@@ -4,10 +4,33 @@
 @endsection
 @section('front-main-content')
     <style>
-        .hidden {
-            display: none;
+        .normal_css {
+            background: orange !important;
+            color: white !important
+        }
+
+        .menuActive {
+            background: rgb(255, 255, 255);
+            color: orange !important;
+        }
+
+        @media only screen and (max-width: 992px) {
+            .container .col-md-11 {
+                margin-bottom: 0px;
+            }
         }
     </style>
+    @php
+
+        $current_route = Route::current()->parameters;
+        $current_route_id = 0;
+
+        if (empty($current_route)) {
+            $current_route_id = 0;
+        } else {
+            $current_route_id = $current_route['id'];
+        }
+    @endphp
     <div class="content-wrapper">
         <div id="wrapper">
             <section id="subheader" data-speed="8" data-type="background">
@@ -50,19 +73,32 @@
                                 </ul>
                             </div>
                         </div>
+
+
                         <!-- portfolio filter close -->
-                        <input type="text" id="searchInput" placeholder="Search for images..." onkeyup="searchImages()">
+                        <form action="{{ route('galleryImagesBySearch') }}" class="form-inline" method="POST">
+                            @csrf
+                            <div class="row form-row align-items-center">
+                                <div class=" col-md-11">
+                                    <input type="text" class="form-control mb-2" name="search_value"
+                                        placeholder="search by amount, title, tag ...." value="{{ $searchValue ?? '' }}">
+                                </div>
+                                <div class=" col-md-1">
+                                    <button type="submit" class="btn btn-warning mb-2">SEARCH</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
                         <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
                             @foreach ($allrecentimages as $eachimage)
                                 @php
                                     $imagecatid = str_replace(' ', '', $eachimage->title);
                                 @endphp
                                 <div class="col-md-3 item {{ $imagecatid }}">
-                                    <input type="hidden" class="image-title" value="{{ $eachimage->title }}">
-                                    <input type="hidden" class="category-title" value="{{ $eachimage->category_title }}">
-                                    <input type="hidden" class="tag-list" value="{{ $eachimage->tags }}">
-                                    <input type="hidden" class="photo-details" value="{{ $eachimage->details }}">
-                                    <input type="hidden" class="photo-price" value="{{ $eachimage->price }}">
+
                                     <div class="picframe">
                                         <a class="image-popup-gallery"
                                             href="{{ asset('/galleryImage/' . $eachimage->images) }}">
@@ -107,34 +143,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function searchImages() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const items = document.querySelectorAll('#gallery .item');
-
-            // Create a regular expression that matches whole words
-            const regex = new RegExp(`\\b${input}\\b`);
-
-            items.forEach(item => {
-                const title = item.querySelector('.image-title') ? item.querySelector('.image-title').value
-                    .toLowerCase() : '';
-                const category = item.querySelector('.category-title') ? item.querySelector('.category-title').value
-                    .toLowerCase() : '';
-                const tags = item.querySelector('.tag-list') ? item.querySelector('.tag-list').value.toLowerCase() :
-                    '';
-                const details = item.querySelector('.photo-details') ? item.querySelector('.photo-details').value
-                    .toLowerCase() : '';
-                const price = item.querySelector('.photo-price') ? item.querySelector('.photo-price').value
-                    .toLowerCase() : '';
-
-                if (regex.test(title) || regex.test(category) || regex.test(tags) || regex.test(details) || regex
-                    .test(price)) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-        }
-    </script>
 @endsection

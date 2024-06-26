@@ -71,6 +71,15 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
+
+        #subheader {
+            background-repeat: no-repeat;
+        }
+
+        .paddingClass {
+            padding-top: 0px !important;
+        }
     </style>
 </head>
 
