@@ -11,7 +11,7 @@
                         <div class="col-md-12">
                             <h1>Projects Video</h1>
                             <ul class="crumb">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li class="sep">/</li>
                                 <li>Projects Video</li>
                             </ul>

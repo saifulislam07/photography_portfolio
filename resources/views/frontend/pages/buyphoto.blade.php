@@ -10,7 +10,7 @@
                     <div class="col-md-12">
                         <h1>BUY photo</h1>
                         <ul class="crumb">
-                            <li><a href="index.html">Go</a></li>
+                            <li><a href="/">Go</a></li>
                             <li class="sep">/</li>
                             <li>
                                 @if (Auth::check())

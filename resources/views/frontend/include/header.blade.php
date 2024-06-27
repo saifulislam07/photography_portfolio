@@ -34,6 +34,20 @@
     <!-- revolution slider -->
     <link rel="stylesheet" href="{{ asset('frontend_assets/rs-plugin/css/settings.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/rev-settings.css') }}" type="text/css">
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0Z9MENLDR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z0Z9MENLDR');
+    </script>
     @php
         $bg_image = DB::table('web_setups')->first();
         $imagePath = $bg_image->background_image;

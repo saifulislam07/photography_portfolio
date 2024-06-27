@@ -84,9 +84,16 @@
                                                     <span class="custom-checkbox">
 
                                                         <label for="1"></label>
-                                                    </span> Forgat Password? <a href="#" class="cl-success"
-                                                        style="color: #fab702">Click
-                                                        Here</a>
+                                                    </span> Forgat Password?
+                                                    @if (Route::has('forget.password.get'))
+                                                        <a class="cl-success" style="color: #fab702"
+                                                            href="{{ route('forget.password.get') }}">
+                                                            {{ __('CLICK HERE') }}
+                                                        </a>
+                                                    @endif
+
+
+
                                                 </div>
                                             </div>
                                             <div class="row">

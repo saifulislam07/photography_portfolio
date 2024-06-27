@@ -19,6 +19,70 @@
                 margin-bottom: 0px;
             }
         }
+
+
+
+        .social-icons-inline {
+            display: flex;
+            align-items: center;
+            /* Align items vertically in the center */
+        }
+
+        .social-icons-inline ul {
+            list-style: none;
+            /* Remove default list styles */
+            margin: 0;
+            /* Remove default margin */
+            padding: 0;
+            /* Remove default padding */
+            display: flex;
+        }
+
+        .social-icons-inline ul li {
+            margin-right: 10px;
+            /* Adjust spacing between icons */
+        }
+
+        .social-icons-inline ul li a {
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+            color: white;
+            /* Default text color */
+            background-color: transparent;
+            /* Default background color */
+
+            /* 50% border-radius for full round shape */
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition effect */
+        }
+
+        .social-icons-inline ul li a:hover {
+            background-color: orange;
+            /* Hover background color */
+            color: black;
+            /* Hover text color */
+        }
+
+        .paddingClass {
+            padding-top: 0px !important;
+        }
+
+        .fa-facebook {
+            color: blue;
+        }
+
+        .fa-twitter {
+            color: rgb(17, 134, 212);
+        }
+
+        .fa-linkedin {
+            color: rgb(7, 46, 71);
+        }
+
+        .fa-whatsapp {
+            color: green;
+        }
     </style>
     @php
 
@@ -39,7 +103,7 @@
                         <div class="col-md-12">
                             <h1>Gallery</h1>
                             <ul class="crumb">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li class="sep">/</li>
                                 <li>Gallery</li>
                             </ul>
@@ -114,13 +178,29 @@
                                     </div>
 
                                     @if ($eachimage->price)
-                                        <div style="background: rgb(230, 227, 227)" class="mt-1">
-                                            <a href="{{ route('add.to.cart', $eachimage->id) }}">
-                                                <i style="font-size: 20px; color: orange" class="fa fa-fw"
-                                                    aria-hidden="true" title="Copy to use cart-plus"></i>
-                                            </a>
-                                            <b style="color: orange; margin-right: 2px"
-                                                class="float-end">{{ $eachimage->price }}$</b>
+                                        <div style="background: rgb(230, 227, 227); 
+}" class="mt-1">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <a href="{{ route('add.to.cart', $eachimage->id) }}">
+                                                        <i style="font-size: 20px; color: orange" class="fa fa-fw"
+                                                            aria-hidden="true" title="Copy to use cart-plus"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-5" style="font-size: 13px;">
+                                                    @php
+                                                        $shareButtonss = ShareWidget();
+                                                    @endphp
+
+                                                    <div class="social-icons-inline" style="text-align: center;">
+                                                        {!! $shareButtonss !!}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4" style="text-align: right;">
+                                                    <b style="color: orange; margin-right:3px">{{ $eachimage->price }}$
+                                                    </b>
+                                                </div>
+                                            </div>
                                         </div>
                                     @else
                                         <div style="background: rgb(230, 227, 227)">
